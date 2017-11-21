@@ -20,6 +20,15 @@ if($row)
     echo "<br><br> Account's ID is ".$row['account_ID'];
     echo "<br> Account's e-mail is ".$row['account_email'];
     echo "<br> Account's name is ".$row['account_fname']." ".$row['account_lname'];
+
+    $_SESSION['current_id']=$row['account_ID'];
+    $_SESSION['current_fname']=$row['account_fname'];
+    $_SESSION['current_lname']=$row['account_lname'];
+    $_SESSION['current_name']=$row['account_fname']." ".$row['account_lname'];
+    $_SESSION['current_email']=$row['account_email'];
+    $_SESSION['current_password']=$row['account_password'];
+    $_SESSION['current_type']=$row['account_type'];
+
     if ($row['account_type']=="Admin"){
         echo "<br><br>This is Admin account";
         $q = "SELECT * FROM admin NATURAL JOIN account 
@@ -29,6 +38,11 @@ if($row)
         if ($row){
             echo "<br>Staff ID: ".$row['staff_ID'];
             echo "<br>Staff Position: ".$row['staff_position'];
+
+
+            $_SESSION['current_staff_id']=$row['staff_ID'];
+            $_SESSION['current_staff_position']=$row['staff_position'];
+
         }
     }
     else if ($row['account_type']=="Organizer"){
@@ -43,6 +57,14 @@ if($row)
             echo "<br>Organizer Phone Number: ".$row['organizer_phone'];
             echo "<br>Organizer E-Mail: ".$row['organizer_email'];
             echo "<br>Organizer Status: ".$row['organizer_status'];
+
+            $_SESSION['current_organizer_name']=$row['organizer_name'];
+            $_SESSION['current_organizer_address']=$row['organizer_address'];
+            $_SESSION['current_organizer_phone']=$row['organizer_phone'];
+            $_SESSION['current_organizer_email']=$row['organizer_email'];
+            $_SESSION['current_organizer_status']=$row['organizer_status'];
+
+
         }
     }
     else if ($row['account_type']=="Customer") {
@@ -54,6 +76,9 @@ if($row)
         if ($row) {
             echo "<br>Customer Age: " . $row['customer_age'];
             echo "<br>Customer Status: " . $row['customer_status'];
+
+            $_SESSION['current_customer_age']=$row['customer_age'];
+            $_SESSION['current_customer_status']=$row['customer_status'];
         }
     }
     /*$_SESSION['id']=$row['id'];
