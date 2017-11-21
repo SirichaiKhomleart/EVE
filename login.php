@@ -1,40 +1,6 @@
-<?php
-error_reporting(0);
-
-$fname="user.txt";
-$error=false;
-$describe="test";
-//open file and wirte
-$user =$_GET['email'];
-$password=$_GET['password'];
-$file = file_get_contents("user.txt"); // Returns a string
-
-$result = explode(" ",$file);
-$boolC= false;
-
-for($i=0; $i< count($result); $i++)
-{
-    //echo "1";//justcheck
-    if($result[$i] === $user)
-    {
-        //echo "     2";//justcheck
-        $boolC=true;
-        $i =$i+1;
-        if($boolC === true)
-        {
-            //echo "     3";//justcheck
-            if($result[$i]===$password)
-            {
-                echo 'Password and Username Correct';
-                $describe=$result[$i+1]." ".$result[$i+2];
-            }
-        }
-
-    }
-}
+<!--error_reporting(0);-->
 
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,7 +117,7 @@ for($i=0; $i< count($result); $i++)
             <div class="left">
                 
                 <h1>Log In</h1>
-                <form action = usermain.php>
+                <form action = checklogin.php method="post">
                 <input type="text" name="email" placeholder="E-mail" />
                 <input type="password" name="password" placeholder="Password" />
 
