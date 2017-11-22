@@ -21,6 +21,8 @@ if($row)
     echo "<br> Account's e-mail is ".$row['account_email'];
     echo "<br> Account's name is ".$row['account_fname']." ".$row['account_lname'];
 
+
+    $_SESSION['current_login_status']="already login";
     $_SESSION['current_id']=$row['account_ID'];
     $_SESSION['current_fname']=$row['account_fname'];
     $_SESSION['current_lname']=$row['account_lname'];
@@ -79,7 +81,19 @@ if($row)
 
             $_SESSION['current_customer_age']=$row['customer_age'];
             $_SESSION['current_customer_status']=$row['customer_status'];
+
+            echo "<br><a href='customer_index.php'>Customer Index</a>";
         }
+    }
+
+    else{
+        echo "<br><br>This account is invalid. (Not specific type) 
+              <br>Please contact website administrator ";
+
+        echo "<br><a href='logout.php'>Logout</a>";
+
+
+
     }
     /*$_SESSION['id']=$row['id'];
     $_SESSION['name']=$row['name'];
