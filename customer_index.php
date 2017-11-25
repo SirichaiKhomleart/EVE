@@ -32,25 +32,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="ninodezign.com, ninodezign@gmail.com">
-    <meta name="copyright" content="ninodezign.com">
-    <title>Eve | Event booking</title>
-    <!-- favicon -->
-    <link rel="shortcut icon" href="images/poster/v-icon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" />
-    <link rel="stylesheet" type="text/css" href="css/unslider.css" />
-    <link rel="stylesheet" type="text/css" href="css/template.css" />
+    <?php html_headcode(); ?>
 </head>
 
 <body data-target="#nino-navbar" data-spy="scroll">
@@ -82,10 +64,15 @@ echo "<br><a href='logout.php'>Logout</a>";*/
 
             <?php if($_SESSION['current_customer_status']==0){
                 echo    "<br><br><br><br> <font color='#dc143c'> This account already deactivated.</font><br>";
-                echo "<br><br>";
-                echo "<button class=\"btn btn-success\" type=\"submit\" id='activate'>ACTIVATE AGAIN</button>";
-            } ?>
+
+            ?>
         </h2>
+        <br><br>
+        <h4 style="text-align:center;">To reactivate this account, please contact administrator.
+            <br><br>
+            <button class="btn btn-success" type="submit" id='contactAdmin'>Send Message to Administrator</button>
+        </h4>
+            <?php } ?>
 
     </div>
 </section><!--/#nino-name-->
