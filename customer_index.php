@@ -38,12 +38,12 @@ echo "<br><a href='logout.php'>Logout</a>";*/
     <meta name="author" content="ninodezign.com, ninodezign@gmail.com">
     <meta name="copyright" content="ninodezign.com">
     <title>Eve | Event booking</title>
-<!--    <!-- favicon -->-->
-<!--    <link rel="shortcut icon" href="images/poster/v-icon.png">-->
-<!--    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">-->
-<!--    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">-->
-<!--    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">-->
-<!--    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/poster/v-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
@@ -68,36 +68,8 @@ echo "<br><a href='logout.php'>Logout</a>";*/
 <!-- Header
     ================================================== -->
 <header id="nino-header2">
-    <div id="nino-header2Inner">
-        <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="homepage.html">Eve</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="nino-menuItem pull-right">
-                    <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-                        <ul class="nav navbar-nav1">
-                            <?php print_menus(); ?>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                    <ul class="nino-iconsGroup nav navbar-nav">
-                        <!-- <li> --><a href="usermain.php?email=sirichai.khomleart%40gmail.com&password=dragon&signup_submit=LOG+IN"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
-                        <!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
-                    </ul>
-                </div>
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
+    <?php header_zone(); ?>
 </header><!--/#header-->
-
 
 
 <!-- name
