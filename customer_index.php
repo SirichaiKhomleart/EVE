@@ -4,15 +4,15 @@ require_once ('helper.php');
 
 //case user not login yet
 if (!isset($_SESSION['current_ID'])){
-    header('Location: logout.php');
+    header('Location: homepage.php');
 }
 //case user type isn't Customer
 if (isset($_SESSION['current_type'])){
     if ($_SESSION['current_type']!="Customer"){
-        header('Location: logout.php');
+        header('Location: homepage.php');
     }
 }else{
-    header('Location: logout.php');
+    header('Location: homepage.php');
 }
 
 //Only Customer type can go through this zone

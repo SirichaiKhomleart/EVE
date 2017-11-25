@@ -8,7 +8,7 @@ if (!isset($_SESSION['current_ID'])){
 }
 //case user type isn't Customer
 if (isset($_SESSION['current_type'])){
-    if ($_SESSION['current_type']!="Admin"){
+    if ($_SESSION['current_type']!="Organizer"){
         header('Location: homepage.php');
     }
 }else{

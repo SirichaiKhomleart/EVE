@@ -5,14 +5,19 @@ function print_menus(){
         if($_SESSION['current_type']=="Customer") {
             echo '<a href="homepage.php">Home</a>';
             echo '<a href="customer_index.php">My Tickets</a>';
+            echo '<a href="customer_payment.php">Payments history</a>';
             echo '<a href="logout.php">Log Out</a>';
         }elseif ($_SESSION['current_type']=="Organizer"){
             echo '<a href="homepage.php">Home</a>';
+            echo '<a href="organizer_createEvent.php">Create Event</a>';
             echo '<a href="organizer_index.php">My Events</a>';
+            echo '<a href="organizer_stat.php">Statistic</a>';
+            echo '<a href="organizer_noti.php">Notification</a>';
             echo '<a href="logout.php">Log Out</a>';
         }elseif ($_SESSION['current_type']=="Admin"){
             echo '<a href="homepage.php">Home</a>';
             echo '<a href="admin_index.php">Admin System</a>';
+            echo '<a href="admin_noti.php">Notification</a>';
             echo '<a href="logout.php">Log Out</a>';
         }
 
@@ -44,7 +49,7 @@ function header_zone(){
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="nino-menuItem pull-right">
                     <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-                        <ul class="nav navbar-nav1">
+                        <ul class="nav navbar-nav">
                             <?php print_menus(); ?>
                         </ul>
                     </div><!-- /.navbar-collapse -->
