@@ -1,8 +1,9 @@
 <?php
 session_start();
+require_once ('helper.php');
 
 //case user not login yet
-if (!isset($_SESSION['current_login_status'])){
+if (!isset($_SESSION['current_ID'])){
     header('Location: logout.php');
 }
 //case user type isn't Customer
@@ -15,7 +16,6 @@ if (isset($_SESSION['current_type'])){
 }
 
 //Only Customer type can go through this zone
-
 /*echo "<br>".$_SESSION['current_login_status'];
 echo "<br>".$_SESSION['current_id'];
 echo "<br>".$_SESSION['current_fname'];
@@ -26,6 +26,7 @@ echo "<br>".$_SESSION['current_password'];
 echo "<br>".$_SESSION['current_type'];
 
 echo "<br><a href='logout.php'>Logout</a>";*/
+
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +38,12 @@ echo "<br><a href='logout.php'>Logout</a>";*/
     <meta name="author" content="ninodezign.com, ninodezign@gmail.com">
     <meta name="copyright" content="ninodezign.com">
     <title>Eve | Event booking</title>
-    <!-- favicon -->
-    <link rel="shortcut icon" href="images/poster/v-icon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+<!--    <!-- favicon -->-->
+<!--    <link rel="shortcut icon" href="images/poster/v-icon.png">-->
+<!--    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">-->
+<!--    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">-->
+<!--    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">-->
+<!--    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
@@ -84,12 +85,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                 <div class="nino-menuItem pull-right">
                     <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
                         <ul class="nav navbar-nav1">
-                            <a href="index_login.html">Home </a>
-                            <a href="login.php">Log Out</a>
-                            <!-- <li><a href="#nino-services">Service</a></li>
-                            <li><a href="#nino-ourTeam">Our Team</a></li>
-                            <li><a href="#nino-portfolio">Work</a></li>
-                            <li><a href="#nino-latestBlog">Blog</a></li> -->
+                            <?php print_menus(); ?>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                     <ul class="nino-iconsGroup nav navbar-nav">
