@@ -201,6 +201,30 @@ img.img-full-width {
 	text-align: left;
 	align-items: left;
 }
+.ticketbox{
+	background-color: #fff;
+	padding-top: 2%;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-bottom: 2%;
+	margin-left: 2%;
+	margin-right: 2%; 
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: left;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.detail_ticketbox{
+	align-items: center;
+	background-color: #fff;
+	width: calc(100%-100px);
+	height: calc(100%+100px);
+	padding-bottom: 2%;
+	margin-right: 2%;
+	margin-left: 2%;
+
+	
+}
 .detail{
 	align-items: center;
 	background-color: #fff;
@@ -252,6 +276,13 @@ img.img-full-width {
 	font-size: 17px;
 	font-weight: 300;
 	margin-bottom: 10px;
+	text-align: left;
+	font-family: 'Prompt', sans-serif;
+	color: #000;
+}
+.detail .quotet2 {
+	
+	font-weight: 400;
 	text-align: left;
 	font-family: 'Prompt', sans-serif;
 	color: #000;
@@ -349,6 +380,19 @@ img.img-full-width {
 	float: right ;
 	background-color: #fff;
 }
+.nino-btnn {
+	display: inline-block;
+	color: #95e1d3;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
+	float: right ;
+	background-color: #fff;
+}
 .nino-btnc {
 	display: inline-block;
 	color: #95e1d3;
@@ -429,6 +473,18 @@ img.img-full-width {
 	font-size: 12px;
 	line-height: 100%;
 	width: 120px;
+}
+.nino-btnn:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
 }
 .nino-btnc:hover {
 	display: inline-block;

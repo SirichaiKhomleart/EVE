@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 	
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min2.css" />
 	<link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" />
@@ -57,8 +57,8 @@
 					<div class="nino-menuItem pull-right">
 						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
 							<ul class="nav navbar-nav">
-								<a href="index_login.html">Home </a>
-								<a href="login.php">Log Out</a>
+								<a href="index.html">Home </a>
+								<a href="login.php">Log in</a>
 								<!-- <li><a href="#nino-services">Service</a></li>
 								<li><a href="#nino-ourTeam">Our Team</a></li>
 								<li><a href="#nino-portfolio">Work</a></li>
@@ -66,7 +66,7 @@
 							</ul>
 						</div><!-- /.navbar-collapse -->
 						<ul class="nino-iconsGroup nav navbar-nav">
-							<!-- <li> --><a href="usermain.php?email=sirichai.khomleart%40gmail.com&password=dragon&signup_submit=LOG+IN"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
+							<!-- <li> --><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
 							<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
 						</ul>
 					</div>
@@ -75,94 +75,46 @@
 
 
 
+
+
+
+			</section> -->
+		</div>
+	</header><!--/#header-->
+
+
 	<!-- Brand
     ================================================== -->
      <section id="nino-brand">
     	<div class="verticalCenter fw" >
     		<div class="container">
-    			<div class="detail">
+    			<div class="detail_ticketbox">
     				
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Edit Event Request</h4>						
+						<h4 class="nino-sectionHeading">Your Tickets</h4>						
 					</div>
 					
-					<div class="box4">
-						<hr>
+					<div class="ticketbox">
+						
 						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone1.jpg" width="150">
+							<div class="col-md-3">
+								<img src="images/poster/icone1.jpg" width="100%">
 							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								
-								<p class="date1"><br>From : 31/10/2017 18:00 PM<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
+							<div class="col-md-6 " >
+								<h4 class="quotet2">Normal Ticket</h4>
+								<p class="quotet2">3,500 ฿<br>Nuttapol Saiboonruen</p>
+								<h5 class="date1">Chang Music Connection Presents Waterzonic 2017</h5>
+								<p class="date1">20 October 2017<br><img src="images/ico/loca.png" width="15px"> SIIT</p>
+								<a href="detail.html" class="nino-btnn">More Details</a>
+							</div>
+							<div class="col-md-3 " >
+								<img src="images/qrcode/qr-code.png" width="100%">
 							</div>
 							<div style="clear:both;"></div>
 						</div>
 					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone2.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017 18:00 PM<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone3.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone4.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone5.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
+					
 				</div>
 				<br><br>
     		</div>
