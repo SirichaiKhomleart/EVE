@@ -201,6 +201,11 @@ img.img-full-width {
 	text-align: left;
 	align-items: left;
 }
+.paymentbox{
+	align-items: center;
+	background-color: #fff;
+
+}
 .ticketbox{
 	background-color: #fff;
 	padding-top: 2%;
@@ -222,9 +227,8 @@ img.img-full-width {
 	padding-bottom: 2%;
 	margin-right: 2%;
 	margin-left: 2%;
-
-	
 }
+
 .detail{
 	align-items: center;
 	background-color: #fff;
@@ -322,6 +326,11 @@ img.img-full-width {
 	text-decoration:underline;
 	font-family: 'Prompt', sans-serif;
 }
+.detail .topic6 {
+	font-size: 22px;
+	text-align: left;
+	font-family: 'Prompt', sans-serif;
+}
 .detail .topic3 {
 	font-size: 26px;
 	text-align: center;
@@ -392,6 +401,23 @@ img.img-full-width {
 	width: 150px;
 	float: right ;
 	background-color: #fff;
+	margin-right:1%; 
+	margin-left:1%;
+}
+.nino-btndisap {
+	display: inline-block;
+	color: #ff9999;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #ff9999;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
+	float: right ;
+	background-color: #fff;
+	margin-right:1%; 
+	margin-left:1%;
 }
 .nino-btnc {
 	display: inline-block;
@@ -482,6 +508,18 @@ img.img-full-width {
 	text-align: center;
 	background-color: #95e1d3 ;
 	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
+}
+.nino-btndisap:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #ff9999;
+	border: 2px solid #ff9999;
 	font-size: 12px;
 	line-height: 100%;
 	width: 150px;
