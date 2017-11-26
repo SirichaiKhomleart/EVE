@@ -159,13 +159,13 @@
 									<div class="col-md-3 pull-left ">										
 									</div>
 									<div class="col-md-3 pull-left">
-										<input class="input3 " type="text" name="myInputs[]">
+										<input class="input3 " type="text" name="ticket_type1">
 									</div>
 									<div class="col-md-3 ">
-										<input class="input3" type="text" name="myInputs[]">
+										<input class="input3" type="text" name="ticket_price1">
 									</div>
 									<div class="col-md-3 ">
-										<input class='input3' type="text" name="myInputs[]">
+										<input class='input3' type="text" name="ticket_total1">
 									</div>
 								</div>
 								
