@@ -1,29 +1,17 @@
-<!--error_reporting(0);-->
 <?php
 session_start();
 require_once('helper.php');
 require_once('connect.php');
+//error_reporting(0);
 
-//in case of already login
-if (isset($_SESSION['current_ID'])){
-    if($_SESSION['current_type']=='Customer'){
-        header('Location:customer_index.php');
-        exit;
-    }
-    elseif ($_SESSION['current_type']=='Organizer'){
-        header('Location:organizer_index.php');
-        exit;
-    }
-    elseif ($_SESSION['current_type']=='Admin'){
-        header('Location:admin_index.php');
-        exit;
-    }
-    else{
-        header('Location:logout.php');
-        exit;
-    }
-}
+//in case already log in
+if(isset($_SESSION['current_ID'])){ header('Location:homepage.php');exit; }
+
+
+//echo $_SESSION['wrongSignup_status'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,11 +23,15 @@ if (isset($_SESSION['current_ID'])){
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!--    forSIGNUP-->
     <meta charset="UTF-8">
     <title>Material design sign up form</title>
-    <link rel="stylesheet" href="CSS2/loginformstyle.css">
+
+    <link rel="stylesheet" href="CSS2/signupformorganstyle.css">
     <!--    endsignup-->
+
+
 </head>
 
 <body data-target="#nino-navbar" data-spy="scroll">
@@ -63,38 +55,36 @@ if (isset($_SESSION['current_ID'])){
 
 
 
-<!-- login
+<!-- signup
 ================================================== -->
 <section id="nino-story">
     <div class="container">
         <h1 class="nino-sectionHeading">
-            <span class="nino-subHeading">Need some inspirations?</span>
-            We, EVE, are here to help you.
+            <span class="nino-subHeading">Become an Organizer</span>
+            Join us here, at EVE.
         </h1>
         <div id="login-box">
             <div class="left">
-                
-                <h1>Log In with<br>Eve account</h1>
-                <form action = checklogin.php method="post">
-                <input type="text" name="email" placeholder="E-mail" />
-                <input type="password" name="password" placeholder="Password" />
-                <input type="submit" name="signup_submit" value="LOG IN" />
-                </form>
-
-<!--                <font color="#dc143c">    --><?php //echo $describe; ?><!-- </font> <br><br>-->
+                <h1>Organizer Details</h1>
                 <br>
-                <span>
-                    <br><a class="nino-subHeading" href="signup.php">Not have an account yet, <br> Sign Up here!</a>
-                </span>
+                <form method="post" action="checksignup_organizer.php">
+
+                    <input type="text" name="organizer_name" placeholder="Name of Your Organization" />
+                    <input type="text" name="organizer_email" placeholder="Organization's Email" />
+                    <input type="text" name="organizer_phone" placeholder="Organization's Phone Number" />
+
+                    <p style="text-align:left; color: #aaaaaa"> Organization's Address  </p>
+                    <input type="text" name="organizer_address">
+
+                    <br><br>
+                    <input type="submit" name="organizer_signup_submit" value="SUBMIT" /></form>
+                    <br>
+                    <a class="nino-subHeading" href="logout.php">Cancel</a>
+                <br><br><br>
+
             </div>
 
-            <div class="right">
-                <h1>LOG IN WITH<br>SOCIAL ACCOUNT</h1><br>
-                <button class="social-signin facebook">Log In with Facebook</button>
-                <button class="social-signin twitter">Log In with Twitter</button>
-                <button class="social-signin google">Log In with Google</button>
-            </div>
-            <div class="or">OR</div>
+
         </div>
     </div>
 </section><!--/#nino-signup-->
@@ -123,6 +113,14 @@ if (isset($_SESSION['current_ID'])){
 <script type="text/javascript" src="js/unslider-min.js"></script>
 <script type="text/javascript" src="js/template.js"></script>
 
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!-- css3-mediaqueries.js for IE less than 9 -->
+<!--[if lt IE 9]>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
 
 </body>
 </html>

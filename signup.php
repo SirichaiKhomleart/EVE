@@ -5,8 +5,10 @@ require_once('connect.php');
 //error_reporting(0);
 
 //in case already log in
-if(isset($_SESSION['current_ID'])){ header('Location:homepage.php'); }
+if(isset($_SESSION['current_ID'])){ header('Location:homepage.php');exit; }
 
+
+//echo $_SESSION['wrongSignup_status'];
 ?>
 
 
@@ -82,15 +84,15 @@ if(isset($_SESSION['current_ID'])){ header('Location:homepage.php'); }
                 <input type="text" name="age" placeholder="Age (need to be 18 or more)" />
 
                     <p style="text-align:left; color: #aaaaaa"> Gender  </p>
-                    <input type="radio" name="gender" value="male" checked> Male &emsp;
-                    <input type="radio" name="gender" value="female"> Female  &emsp;
-                    <input type="radio" name="gender" value="other"> Others
+                    <input type="radio" name="gender" value="Male" checked> Male &emsp;
+                    <input type="radio" name="gender" value="Female"> Female  &emsp;
+                    <input type="radio" name="gender" value="Others"> Others
 
                 <h4><br>Choose your password,<br>your password must be 8-16 characters.</h4>
                 <input type="password" name="password" placeholder="Password" />
                 <input type="password" name="cpassword" placeholder="Confirm Password" />
 
-                <h4><br>Are you event organizer?<br>Check this box and you will able to public your own event.</h4>
+                <h4><br>Are you an event organizer?<br>Check this box and you will able to public your own event.</h4>
                 <input type="checkbox" name="OrganSignup" value=True /> &emsp;  I am an organizer<br>
                     <br>
                     <p style="text-align:left; color: #aaaaaa"> Be careful!

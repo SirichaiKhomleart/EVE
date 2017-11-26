@@ -24,6 +24,7 @@ function print_menus(){
     }else{
         echo '<a href="homepage.php">Home</a>';
         echo '<a href="login.php">Log In</a>';
+        echo '<a href="signup.php">Sign Up</a>';
     }
 
 }

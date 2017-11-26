@@ -18,7 +18,8 @@ if($row)
 {
     echo "Login success";
     $_SESSION['wrongLogin_status']=NULL;
-
+    session_destroy();
+    session_start();
     $accountid = $row['account_ID'];
     echo "<br><br> Account's ID is ".$row['account_ID'];
     echo "<br> Account's e-mail is ".$row['account_email'];
@@ -115,6 +116,7 @@ else
     $_SESSION['wrongLogin_status']="Incorrect username or password!";
     //echo "<br><a href='login.php'>Retry Login</a>";
     header('Location: login.php');
+    exit;
 }
 
 ?>

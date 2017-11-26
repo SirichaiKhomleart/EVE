@@ -6,14 +6,17 @@ require_once('connect.php');
 //case user not login yet
 if (!isset($_SESSION['current_ID'])){
     header('Location: homepage.php');
+    exit;
 }
 //case user type isn't Customer
 if (isset($_SESSION['current_type'])){
     if ($_SESSION['current_type']!="Customer"){
         header('Location: homepage.php');
+        exit;
     }
 }else{
     header('Location: homepage.php');
+    exit;
 }
 
 //Only Customer type can go through this zone
