@@ -5,28 +5,16 @@ require_once('connect.php');
 
 //case user not login yet
 if (!isset($_SESSION['current_ID'])){
-    header('Location: homepage.php');
+    header('Location: homepage.php');exit;
 }
 //case user type isn't Customer
 if (isset($_SESSION['current_type'])){
     if ($_SESSION['current_type']!="Organizer"){
-        header('Location: homepage.php');
+        header('Location: homepage.php');exit;
     }
 }else{
-    header('Location: homepage.php');
+    header('Location: homepage.php');exit;
 }
-
-//Only Customer type can go through this zone
-/*echo "<br>".$_SESSION['current_login_status'];
-echo "<br>".$_SESSION['current_id'];
-echo "<br>".$_SESSION['current_fname'];
-echo "<br>".$_SESSION['current_lname'];
-echo "<br>".$_SESSION['current_name'];
-echo "<br>".$_SESSION['current_email'];
-echo "<br>".$_SESSION['current_password'];
-echo "<br>".$_SESSION['current_type'];
-
-echo "<br><a href='logout.php'>Logout</a>";*/
 
 ?>
 
@@ -63,7 +51,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
             <span class="nino-subHeading">Welcome Back!</span>
             <?php echo $_SESSION['current_name'];?>
 
-            <?php if($_SESSION['current_customer_status']==0){
+            <?php if($_SESSION['current_organizer_status']==0){
             echo    "<br><br><br><br> <font color='#dc143c'> This account already deactivated.</font><br>";
 
             ?>
@@ -78,14 +66,14 @@ echo "<br><a href='logout.php'>Logout</a>";*/
     </div>
 </section><!--/#nino-name-->
 
-<?php if($_SESSION['current_customer_status']==1){ ?>
-    <!-- Your ticket
+<?php if($_SESSION['current_organizer_status']==1){ ?>
+    <!-- Your Event
     ================================================== -->
     <section id="nino-latestBlog">
         <div class="container">
             <h2 class="nino-sectionHeading">
-                <span class="nino-subHeading">Ready to go?</span>
-                Your Ticket is Here.
+                <span class="nino-subHeading"><?php echo $_SESSION['current_organizer_name'];?></span>
+                Here are your currently active events.
             </h2>
             <div class="sectionContent">
                 <div class="row">
@@ -136,72 +124,144 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                 </div>
             </div>
         </div>
-    </section><!--/#nino-yourHistory-->
+    </section><!--/#nino-yourevent-->
 
-
-
-
-              <!-- Search for next event
-              ================================================== -->
-    <section id="nino-story">
+                  <!-- Your wait Event
+         ================================================== -->
+    <section id="nino-latestBlog">
         <div class="container">
-            <h1 class="nino-sectionHeading">
-                <span class="nino-subHeading">Finding your inspiration?</span>
-                Search For Next Event
-            </h1>
-            <br>
-            <form action="search_login.php">
-                <div class="box2">
-                    <div >
-                        <input name="keyword" type="text" class="form-control"  placeholder="Name, Location, or somethings that you interest" required>
-                        <br><br>
-                        <span><button class="btn btn-success" type="submit">Search</button></span>
-                    </div>
+            <h2 class="nino-sectionHeading">
+                <!--                <span class="nino-subHeading">--><?php //echo $_SESSION['current_organizer_name'];?><!--</span>-->
+                Here are your approve-waiting events.
+            </h2>
+            <div class="sectionContent">
+                <div class="row">
 
-            </form>
+                    <!--loop check event from file-->
+                    <?php
+                    $efile = file_get_contents("userevent.txt"); // Returns a string
+                    $eresult = explode("\r\n",$efile);
+                    //                var_dump($eresult);
+                    for($i=0; $i< count($eresult); $i++)
+                    {
+                        $edetail=$eresult[$i];
+                        $edetailsplit = explode("&&&",$edetail);
+//                    echo "<br><br>";
+//                    var_dump($edetailsplit);
+                        $eimgscr=$edetailsplit[0];
+                        $edate=$edetailsplit[1];
+                        $emonth=$edetailsplit[2];
+                        $etitle=$edetailsplit[3];
+                        $edesc=$edetailsplit[4];
+                        ?>
+                        <div class="col-md-4 col-sm-4">
+                            <article>
+                                <div class="articleThumb">
+                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
+                                    <div class="date">
+                                        <span class="number"><?php echo $edate; ?></span>
+                                        <span class="text"><?php echo $emonth; ?></span>
+                                    </div>
+                                </div>
+                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
+                                <p class="articleDesc">
+                                    <?php echo $edesc; ?>
+                                </p>
+                                <div class="articleMeta">
+                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
+                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
+                                </div>
+                            </article>
+                        </div>
 
-            <br><br>
-            <p class="nino-sectionDesc-custom">Not sure what to find? Don't worry! - Check out some "tag" that we only prepared for you here. </p>
-        </div>
-        <div class="sectionContent">
-            <div class="row nino-hoverEffect">
-                <div class="col-md-4 col-sm-4">
-                    <div class="item">
-                        <a class="overlay" href="search_login.php?keyword=yourself">
-								<span class="content">
-									<i class="mdi mdi-account-multiple nino-icon"></i>
-									#FindingYourself
-								</span>
-                            <img src="images/user/1.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="item">
-                        <a class="overlay" href="search_login.php?keyword=developer">
-								<span class="content">
-									<i class="mdi mdi-airplay nino-icon"></i>
-									#Deverloper
-								</span>
-                            <img src="images/user/2.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="item">
-                        <a class="overlay" href="search_login.php?keyword=photography">
-								<span class="content">
-									<i class="mdi mdi-image-filter-center-focus-weak nino-icon"></i>
-									#Photography
-								</span>
-                            <img src="images/user/3.jpg" alt="">
-                        </a>
-                    </div>
+                        <?php
+
+                    }
+                    ?>
+
+
                 </div>
             </div>
         </div>
+    </section><!--/#nino-yourWAITevent-->
+
+                  <!-- Your Past Event
+         ================================================== -->
+    <section id="nino-latestBlog">
+        <div class="container">
+            <h2 class="nino-sectionHeading">
+<!--                <span class="nino-subHeading">--><?php //echo $_SESSION['current_organizer_name'];?><!--</span>-->
+                Here are your past events.
+            </h2>
+            <div class="sectionContent">
+                <div class="row">
+
+                    <!--loop check event from file-->
+                    <?php
+                    $efile = file_get_contents("userevent.txt"); // Returns a string
+                    $eresult = explode("\r\n",$efile);
+                    //                var_dump($eresult);
+                    for($i=0; $i< count($eresult); $i++)
+                    {
+                        $edetail=$eresult[$i];
+                        $edetailsplit = explode("&&&",$edetail);
+//                    echo "<br><br>";
+//                    var_dump($edetailsplit);
+                        $eimgscr=$edetailsplit[0];
+                        $edate=$edetailsplit[1];
+                        $emonth=$edetailsplit[2];
+                        $etitle=$edetailsplit[3];
+                        $edesc=$edetailsplit[4];
+                        ?>
+                        <div class="col-md-4 col-sm-4">
+                            <article>
+                                <div class="articleThumb">
+                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
+                                    <div class="date">
+                                        <span class="number"><?php echo $edate; ?></span>
+                                        <span class="text"><?php echo $emonth; ?></span>
+                                    </div>
+                                </div>
+                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
+                                <p class="articleDesc">
+                                    <?php echo $edesc; ?>
+                                </p>
+                                <div class="articleMeta">
+                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
+                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <?php
+
+                    }
+                    ?>
+
+
+                </div>
+            </div>
         </div>
-    </section><!--/#nino-search-->
+    </section><!--/#nino-yourPASTevent-->
+
+<!--    contact admin                                -->
+    <section id="nino-services">
+        <div class="container">
+            <h2 class="nino-sectionHeading">
+                <span class="nino-subHeading">Having Problem</span>
+
+            <h4 style="text-align:center;">If you have any problem with our services, please contact administrator.
+                <br><br>
+                <button class="btn btn-success" type="submit" id='contactAdmin'>Send Message to Administrator</button>
+            </h4>
+
+        </div>
+    </section><!--/#nino-name-->
+
+
+
+
+
 
 <?php } ?>
 
