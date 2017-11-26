@@ -42,14 +42,14 @@ if (isset($_SESSION['current_type'])){
 ================================================== -->
 
 <!-- Brand
-================================================== -->
+    ================================================== -->
 <section id="nino-brand">
     <div class="verticalCenter fw" >
         <div class="container">
             <div class="detail">
                 <div class="box1">
-                    <br>
                     <form action="check_organizer_createEvent.php" method="post">
+                    <br>
                     <h4 class="nino-sectionHeading">Create Event</h4>
                     <div class="box4">
                         <div class="input">
@@ -57,7 +57,7 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Event Name : </span>
                             </div>
                             <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="event_name">
+                                <input class="input" type="text" name="name">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -66,7 +66,7 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Organizer : </span>
                             </div>
                             <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="event_organizer" placeholder="<?php echo $_SESSION['current_organizer_name'];?>" disabled>
+                                <input class="input" type="text" name="organizer">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -74,14 +74,8 @@ if (isset($_SESSION['current_type'])){
                             <div class="col-md-3 pull-left">
                                 <span class="quotet">Date : </span>
                             </div>
-                            <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="event_dateStart">
-                            </div>
-                            <div class="col-md-2 pull-left">
-                                <span class="quoteinput">To : </span>
-                            </div>
-                            <div class="col-md-4 pull-left">
-                                <input class="input1" type="text" name="event_dateEnd">
+                            <div class="col-md-9 pull-left">
+                                <input class="input" type="text" name="eventdate">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -90,13 +84,13 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Time : </span>
                             </div>
                             <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="event_timeStart">
+                                <input class="input1" type="text" name="eventtimef">
                             </div>
                             <div class="col-md-2 pull-left">
                                 <span class="quoteinput">To : </span>
                             </div>
                             <div class="col-md-4 pull-left">
-                                <input class="input1" type="text" name="event_timeEnd">
+                                <input class="input1" type="text" name="eventtimet">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -117,13 +111,13 @@ if (isset($_SESSION['current_type'])){
                                 <div class="col-md-3 pull-left ">
                                 </div>
                                 <div class="col-md-3 pull-left">
-                                    <input class="input3 " type="text" name="ticket_type">
+                                    <input class="input3 " type="text" name="ticket_type1">
                                 </div>
                                 <div class="col-md-3 ">
-                                    <input class="input3" type="text" name="ticket_price">
+                                    <input class="input3" type="text" name="ticket_price1">
                                 </div>
                                 <div class="col-md-3 ">
-                                    <input class='input3' type="text" name="ticket_totalLimit">
+                                    <input class='input3' type="text" name="ticket_total1">
                                 </div>
                             </div>
 
@@ -165,7 +159,7 @@ if (isset($_SESSION['current_type'])){
                         <a href=".nino-testimonial" class="nino-btnb pull-right">Send Request</a>
                         <div style="clear:both;"></div>
                     </div>
-                        <br></form>
+                    <br>
                 </div>
             </div>
             <br><br>
@@ -173,6 +167,7 @@ if (isset($_SESSION['current_type'])){
         </div>
     </div>
 </section> <!--/#nino-brand-->
+
 
 <!-- Pay
 ================================================== -->
