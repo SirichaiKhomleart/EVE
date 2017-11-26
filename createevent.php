@@ -148,20 +148,28 @@
 								</div>
 								<div class="col-md-3 pull-left">
 									<span class="quotet">Type : </span>
-									<input class="input1 " type="text" name="eventtime">
 								</div>
 								<div class="col-md-3 ">
 									<span class="quotet">Price : </span>
-									<input class="input1" type="text" name="eventtime">
 								</div>
 								<div class="col-md-3 ">
 									<span class="quotet">Total Tickets : </span>
-									<input class="input1" type="text" name="eventtime">
-									<br>
-									<br>
-									
-									<a href=".nino-testimonial" class="nino-btnsmall">Add</a>
 								</div>
+								<div id="dynamicInput">
+									<div class="col-md-3 pull-left ">										
+									</div>
+									<div class="col-md-3 pull-left">
+										<input class="input3 " type="text" name="myInputs[]">
+									</div>
+									<div class="col-md-3 ">
+										<input class="input3" type="text" name="myInputs[]">
+									</div>
+									<div class="col-md-3 ">
+										<input class='input3' type="text" name="myInputs[]">
+									</div>
+								</div>
+								
+								<input class="nino-btnadd pull-right" type="button" value="Add another type" onClick="addInput('dynamicInput');">
 								<div style="clear:both;"></div>
 								<br>
 							</div>
@@ -298,5 +306,6 @@
 	<script type="text/javascript" src="js/unslider-min.js"></script>
 	<script type="text/javascript" src="js/template.js"></script>
 	<script src="js/custom-file-input.js"></script>
+	<script src="js/addInput.js" type="text/javascript"></script>
 </body>
 </html>

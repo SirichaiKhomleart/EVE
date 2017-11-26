@@ -161,6 +161,11 @@ img.img-full-width {
 	background-color: #fff;
 	width: 250px;
 }
+.input3{
+	background-color: #fff;
+	width: 100px;
+	margin-top: 3px;
+}
 .box{
 	align-items: center;
 	background-color: #fff;
@@ -459,6 +464,20 @@ img.img-full-width {
 	width: 120px;
 	margin: auto;
 }
+.nino-btnadd {
+	display: inline-block;
+	color: #95e1d3;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
+	float: right ;
+	background-color: #fff;
+	margin-top: 8px;
+}
 .inputbox{
 	position: relative;
 	display: inline-block;
@@ -499,6 +518,19 @@ img.img-full-width {
 	font-size: 12px;
 	line-height: 100%;
 	width: 120px;
+}
+.nino-btnadd:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 150px;
+	margin-top: 8px;
 }
 .nino-btnn:hover {
 	display: inline-block;
@@ -564,6 +596,9 @@ img.img-full-width {
 
 .bg-white {
 	background-color: #fff !important;
+}
+.nohigh{
+	height: 28px; 
 }
 /* =============== HOVER EFFECT =============== */
 .nino-hoverEffect {
