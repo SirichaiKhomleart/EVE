@@ -132,13 +132,13 @@
 									<span class="quotet">Time : </span>
 								</div>
 								<div class="col-md-3 pull-left">
-									<input class="input1" type="text" name="eventtime">
+									<input class="input1" type="text" name="eventtimef">
 								</div>
 								<div class="col-md-2 pull-left">
 									<span class="quoteinput">To : </span>
 								</div>
 								<div class="col-md-4 pull-left">
-									<input class="input1" type="text" name="eventtime">
+									<input class="input1" type="text" name="eventtimet">
 								</div>		
 								<div style="clear:both;"></div>
 							</div>

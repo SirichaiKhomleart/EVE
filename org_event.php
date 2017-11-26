@@ -92,7 +92,7 @@
     				
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Your Event Status</h4>						
+						<h4 class="nino-sectionHeading">Your Event</h4>						
 					</div>
 					
 					<div class="box4">
@@ -104,10 +104,12 @@
 							<div class="col-md-8">
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
 								
-								<p class="date1">Type : Normal<br>Organize : Change<br>Number of tickets : 2,000<br>Remain : 1,087/2,000<br>Type : Premium<br>Organize : Change<br>Number of tickets : 2,000<br>Remain : 54/2,000</p><br>
-								<br><br><br><br><br><br><br>
-								<a href="detail.html" class="nino-btnb">Cancel Event</a>
+								<p class="date1">Date : 20-22 October 2017<br>Created : 18 October 2017</p>
+								
 							</div>
+							<a href="detail.html" class="nino-btnorgcancel ">Cancel Event</a>
+							<a href="detail.html" class="nino-btnorg ">Edit   Event</a>
+							<a href="detail.html" class="nino-btnorgsta ">Event's Status</a>
 							<div style="clear:both;"></div>
 						</div>
 					</div>
@@ -119,10 +121,13 @@
 							</div>
 							<div class="col-md-8">
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1">Type : Premium<br>Organize : Change<br>Number of tickets : 2,000<br>Remain : 0/2,000<br>Type : Platinum<br>Organize : Change<br>Number of tickets : 2,000<br>Remain : 219/2,000</p><br>
-								<br><br><br><br><br><br><br>
-								<a href="detail.html" class="nino-btnb">Cancel Event</a>
+								
+								<p class="date1">Date : 20-22 October 2017<br>Created : 18 October 2017</p>
+								
 							</div>
+							<a href="detail.html" class="nino-btnorgcancel ">Cancel Event</a>
+							<a href="detail.html" class="nino-btnorg ">Edit   Event</a>
+							<a href="detail.html" class="nino-btnorgsta ">Event's Status</a>
 							<div style="clear:both;"></div>
 						</div>
 					</div>

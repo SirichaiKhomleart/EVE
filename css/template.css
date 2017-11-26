@@ -394,6 +394,54 @@ img.img-full-width {
 	float: right ;
 	background-color: #fff;
 }
+.nino-btnorg {
+	display: inline-block;
+	color: #95e1d3;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	float: right ;
+	background-color: #fff;
+	height: 48px;
+	margin-left:1%;
+	margin-right:1%;
+}
+.nino-btnorgcancel {
+	display: inline-block;
+	color: #ff9999;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #ff9999;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	float: right ;
+	background-color: #fff;
+	height: 48px;
+	margin-left:1%;
+	margin-right:1%;
+}
+.nino-btnorgsta {
+	display: inline-block;
+	color: #81BEF7;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #81BEF7;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	float: right ;
+	background-color: #fff;
+	height: 48px;
+	margin-left:1%;
+	margin-right:1%;
+}
 .nino-btnn {
 	display: inline-block;
 	color: #95e1d3;
@@ -518,6 +566,51 @@ img.img-full-width {
 	font-size: 12px;
 	line-height: 100%;
 	width: 120px;
+}
+.nino-btnorg:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	height: 48px;
+		margin-left:1%;
+	margin-right:1%;
+}
+.nino-btnorgsta:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #81BEF7 ;
+	border: 2px solid #81BEF7;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	height: 48px;
+		margin-left:1%;
+	margin-right:1%;
+}
+.nino-btnorgcancel:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #ff9999 ;
+	border: 2px solid #ff9999;
+	font-size: 12px;
+	line-height: 100%;
+	width: 120px;
+	height: 48px;
+		margin-left:1%;
+	margin-right:1%;
 }
 .nino-btnadd:hover {
 	display: inline-block;
