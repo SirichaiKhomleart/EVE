@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('helper.php');
 require_once('connect.php');
 
 $mail =$_POST['email'];
@@ -16,7 +17,7 @@ $row = $result->fetch_array();
 if($row)
 {
     echo "Login success";
-    $_SESSION['wrongLogin_status']="false";
+    $_SESSION['wrongLogin_status']=NULL;
 
     $accountid = $row['account_ID'];
     echo "<br><br> Account's ID is ".$row['account_ID'];
@@ -110,10 +111,10 @@ if($row)
 }
 else
 {
-    echo "Incorrect username or password!!";
-
-    $_SESSION['wrongLogin_status']="true";
-    echo "<br><a href='login.php'>Retry Login</a>";
+    //echo "Incorrect username or password!!";
+    $_SESSION['wrongLogin_status']="Incorrect username or password!";
+    //echo "<br><a href='login.php'>Retry Login</a>";
+    header('Location: login.php');
 }
 
 ?>

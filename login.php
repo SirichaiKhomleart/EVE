@@ -1,7 +1,8 @@
 <!--error_reporting(0);-->
 <?php
 session_start();
-require_once ('helper.php');
+require_once('helper.php');
+require_once('connect.php');
 
 //in case of already login
 if (isset($_SESSION['current_ID'])){
@@ -58,7 +59,7 @@ if (isset($_SESSION['current_ID'])){
 
 
 
-<!-- signup
+<!-- login
 ================================================== -->
 <section id="nino-story">
     <div class="container">
@@ -69,25 +70,22 @@ if (isset($_SESSION['current_ID'])){
         <div id="login-box">
             <div class="left">
                 
-                <h1>Log In</h1>
+                <h1>Log In with<br>Eve account</h1>
                 <form action = checklogin.php method="post">
                 <input type="text" name="email" placeholder="E-mail" />
                 <input type="password" name="password" placeholder="Password" />
-
                 <input type="submit" name="signup_submit" value="LOG IN" />
-
                 </form>
 
 <!--                <font color="#dc143c">    --><?php //echo $describe; ?><!-- </font> <br><br>-->
-                <br><br><br>
+                <br>
                 <span>
                     <br><a class="nino-subHeading" href="signup.php">Not have an account yet, <br> Sign Up here!</a>
                 </span>
             </div>
 
             <div class="right">
-                <span class="loginwith">Log In with<br /><br>Social Network</span>
-
+                <h1>LOG IN WITH<br>SOCIAL ACCOUNT</h1><br>
                 <button class="social-signin facebook">Log In with Facebook</button>
                 <button class="social-signin twitter">Log In with Twitter</button>
                 <button class="social-signin google">Log In with Google</button>

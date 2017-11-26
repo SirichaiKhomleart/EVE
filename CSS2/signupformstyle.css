@@ -17,7 +17,7 @@ body {
   position: relative;
   margin: 5% auto;
   width: 600px;
-  height: 1000px;
+  height: 1400px;
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -38,6 +38,20 @@ h1 {
   margin: 0 0 20px 0;
   font-weight: 300;
   font-size: 28px;
+}
+
+
+h4 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 16px;
+  text-align: left;
+}
+h6 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 12px;
+  text-align: left;
 }
 
 input[type="text"],
@@ -128,7 +142,7 @@ input[type="submit"]:active {
 
 button.social-signin {
   margin-bottom: 20px;
-  width: 220px;
+  width: 170px;
   height: 36px;
   border: none;
   border-radius: 2px;

@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once ('helper.php');
+require_once('helper.php');
+require_once('connect.php');
 
 //case user not login yet
 if (!isset($_SESSION['current_ID'])){
