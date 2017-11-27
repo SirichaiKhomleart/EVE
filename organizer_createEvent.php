@@ -38,8 +38,6 @@ if (isset($_SESSION['current_type'])){
     <?php header_zone(); ?>
 </header><!--/#header-->
 
-<!-- Story About Us
-================================================== -->
 
 <!-- Brand
     ================================================== -->
@@ -48,7 +46,7 @@ if (isset($_SESSION['current_type'])){
         <div class="container">
             <div class="detail">
                 <div class="box1">
-                    <form action="check_organizer_createEvent.php" method="post">
+                <form action="check_organizer_createEvent.php" method="post">
                     <br>
                     <h4 class="nino-sectionHeading">Create Event</h4>
                     <div class="box4">
@@ -57,7 +55,7 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Event Name : </span>
                             </div>
                             <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="name">
+                                <input class="input" type="text" name="event_name">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -66,7 +64,7 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Organizer : </span>
                             </div>
                             <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="organizer">
+                                <input class="input" type="text" name="event_organizer" placeholder="<?php echo $_SESSION['current_organizer_name'];?>" disabled>
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -74,8 +72,14 @@ if (isset($_SESSION['current_type'])){
                             <div class="col-md-3 pull-left">
                                 <span class="quotet">Date : </span>
                             </div>
-                            <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="eventdate">
+                            <div class="col-md-3 pull-left">
+                                <input class="input1" type="text" name="event_dateStart">
+                            </div>
+                            <div class="col-md-2 pull-left">
+                                <span class="quoteinput">To : </span>
+                            </div>
+                            <div class="col-md-4 pull-left">
+                                <input class="input1" type="text" name="event_dateEnd">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -84,13 +88,13 @@ if (isset($_SESSION['current_type'])){
                                 <span class="quotet">Time : </span>
                             </div>
                             <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="eventtimef">
+                                <input class="input1" type="text" name="event_timeStrat">
                             </div>
                             <div class="col-md-2 pull-left">
                                 <span class="quoteinput">To : </span>
                             </div>
                             <div class="col-md-4 pull-left">
-                                <input class="input1" type="text" name="eventtimet">
+                                <input class="input1" type="text" name="event_timeEnd">
                             </div>
                             <div style="clear:both;"></div>
                         </div>
@@ -153,13 +157,14 @@ if (isset($_SESSION['current_type'])){
                     </div>
                     <div class="box1">
 
-                        <textarea name="eventdetail" cols="90"	rows="10"></textarea>
+                        <textarea name="event_detail" cols="90"	rows="10"></textarea>
                         <br>
                         <br>
-                        <a href=".nino-testimonial" class="nino-btnb pull-right">Send Request</a>
+                        <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right" value="Send Request"></input>
                         <div style="clear:both;"></div>
                     </div>
-                    <br>
+                        <br>
+                </form>
                 </div>
             </div>
             <br><br>
