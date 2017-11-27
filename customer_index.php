@@ -95,55 +95,39 @@ echo "<br><a href='logout.php'>Logout</a>";*/
 
                     <!--loop check event from file-->
                     <?php
-                    $efile = file_get_contents("userevent.txt"); // Returns a string
-                    $eresult = explode("\r\n",$efile);
-                    //                var_dump($eresult);
-                    for($i=0; $i< count($eresult); $i++)
-                    {
-                        $edetail=$eresult[$i];
-                        $edetailsplit = explode("&&&",$edetail);
-//                    echo "<br><br>";
-//                    var_dump($edetailsplit);
-                        $eimgscr=$edetailsplit[0];
-                        $edate=$edetailsplit[1];
-                        $emonth=$edetailsplit[2];
-                        $etitle=$edetailsplit[3];
-                        $edesc=$edetailsplit[4];
-                        ?>
-                        <div class="col-md-4 col-sm-4">
-                            <article>
-                                <div class="articleThumb">
-                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
-                                    <div class="date">
-                                        <span class="number"><?php echo $edate; ?></span>
-                                        <span class="text"><?php echo $emonth; ?></span>
-                                    </div>
-                                </div>
-                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
-                                <p class="articleDesc">
-                                    <?php echo $edesc; ?>
-                                </p>
-                                <div class="articleMeta">
-                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
-                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
-                                </div>
-                            </article>
-                        </div>
-
-                        <?php
-
+                    $q = "SELECT tickettype.ticketType_name,ticket.event_dateStart,tickettype.ticketType_price,event_name,event_iconPicture,event.event_location from ticket,event,tickettype where ticket.event_ID=event.event_ID and account_ID=".$_SESSION['current_ID']." and ticket.event_dateStart>=CURRENT_DATE and ticket.ticketType_ID=tickettype.ticketType_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
                     }
-                    ?>
-
-
+                    while($row=$result->fetch_array()){?>
+                        <div class="ticketbox">                        
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src=<?php echo $row['event_iconPicture']?> width="100%">
+                                </div>
+                                <?php
+                                $date = date_create($row['event_dateStart']);
+                                $datename = date_format($date, 'l jS F Y');
+                                ?>
+                                <div class="col-md-6 " >
+                                    <h4 class="quotet2"><?php echo $row['ticketType_name']?></h4>
+                                    <p class="quotet2"><?php echo "Ticket price: ".$row['ticketType_price']?></p>
+                                    <h5 class="date1"><?php echo $row['event_name']?></h5>
+                                    <p class="date1"><?php echo $datename ?><br><img src="images/ico/loca.png" width="15px"> <?php echo $row['event_location']?></p>
+                                    <a href="detail.html" class="nino-btnn">More Details</a>
+                                </div>
+                                <div class="col-md-3 " >
+                                    <img src="images/qrcode/qr-code.png" width="100%">
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </section><!--/#nino-yourHistory-->
-
-
-
-
               <!-- Search for next event
               ================================================== -->
     <section id="nino-story">
@@ -202,7 +186,6 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section><!--/#nino-search-->
 
