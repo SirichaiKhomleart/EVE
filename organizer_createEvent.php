@@ -4,16 +4,19 @@ require_once('helper.php');
 require_once('connect.php');
 
 //case user not login yet
-if (!isset($_SESSION['current_ID'])){
-    header('Location: homepage.php');exit;
+if (!isset($_SESSION['current_ID'])) {
+    header('Location: homepage.php');
+    exit;
 }
 //case user type isn't Customer
-if (isset($_SESSION['current_type'])){
-    if ($_SESSION['current_type']!="Organizer"){
-        header('Location: homepage.php');exit;
+if (isset($_SESSION['current_type'])) {
+    if ($_SESSION['current_type'] != "Organizer") {
+        header('Location: homepage.php');
+        exit;
     }
-}else{
-    header('Location: homepage.php');exit;
+} else {
+    header('Location: homepage.php');
+    exit;
 }
 
 ?><!DOCTYPE html>
@@ -24,10 +27,11 @@ if (isset($_SESSION['current_type'])){
 
 <body data-target="#nino-navbar" data-spy="scroll">
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.10";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
@@ -41,130 +45,188 @@ if (isset($_SESSION['current_type'])){
 
 <!-- Brand
     ================================================== -->
-<section id="nino-brand">
-    <div class="verticalCenter fw" >
+
+
+<section id="nino-brand" style="background: #ffffff">
+    <div class="verticalCenter fw">
         <div class="container">
             <div class="detail">
                 <div class="box1">
-                <form action="check_organizer_createEvent.php" method="post">
-                    <br>
-                    <h4 class="nino-sectionHeading">Create Event</h4>
-                    <div class="box4">
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Event Name : </span>
+                    <form action="check_organizer_createEvent.php" method="post" enctype="multipart/form-data">
+                        <br>
+                        <h4 class="nino-sectionHeading">
+                            <span class="nino-subHeading">Wanna public an event?</span>
+                            Create Your Event HERE!</h4><br>
+                        <div class="box4">
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Event Name : </span>
+                                </div>
+                                <div class="col-md-9 pull-left">
+                                    <input class="input" type="text" name="event_name">
+
+                                </div>
+
+                                <div style="clear:both;"></div>
                             </div>
-                            <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="event_name">
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Type : </span>
+                                </div>
+                                <div class="col-md-9 pull-left">
+                                    <select name="event_typeID">
+                                        <?php
+                                        $q = "SELECT eventType_name,eventType_ID FROM eventType 
+                                        ORDER BY  eventType_ID ASC";
+                                        $result = $mysqli->query($q);
+                                        while ($row = $result->fetch_array()) {
+                                            $type = $row['eventType_name'];
+                                            $typeID = $row['eventType_ID'];
+
+                                            echo "<option value='$typeID'>$type</option>";
+                                        }
+                                        ?>
+
+                                    </select>
+
+                                </div>
+
+                                <div style="clear:both;"></div>
                             </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Organizer : </span>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Location : </span>
+                                </div>
+                                <div class="col-md-9 pull-left">
+                                    <textarea name="event_location" rows="4" cols="50"></textarea>
+                                </div>
+
+                                <div style="clear:both;"></div>
                             </div>
-                            <div class="col-md-9 pull-left">
-                                <input class="input" type="text" name="event_organizer" placeholder="<?php echo $_SESSION['current_organizer_name'];?>" disabled>
+
+                            <hr>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Organizer : </span>
+                                </div>
+                                <div class="col-md-9 pull-left">
+                                    <input class="input" type="text" name="event_organizer"
+                                           placeholder="<?php echo $_SESSION['current_organizer_name']; ?>" disabled>
+                                    <p><br>To change your organizer's name, go to your profile settings.</p>
+                                </div>
+                                <div style="clear:both;"></div>
                             </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Date : </span>
-                            </div>
-                            <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="event_dateStart">
-                            </div>
-                            <div class="col-md-2 pull-left">
-                                <span class="quoteinput">To : </span>
-                            </div>
-                            <div class="col-md-4 pull-left">
-                                <input class="input1" type="text" name="event_dateEnd">
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Time : </span>
-                            </div>
-                            <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="event_timeStrat">
-                            </div>
-                            <div class="col-md-2 pull-left">
-                                <span class="quoteinput">To : </span>
-                            </div>
-                            <div class="col-md-4 pull-left">
-                                <input class="input1" type="text" name="event_timeEnd">
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Tickets : </span>
-                            </div>
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Type : </span>
-                            </div>
-                            <div class="col-md-3 ">
-                                <span class="quotet">Price : </span>
-                            </div>
-                            <div class="col-md-3 ">
-                                <span class="quotet">Total Tickets : </span>
-                            </div>
-                            <div id="dynamicInput">
-                                <div class="col-md-3 pull-left ">
+                            <hr>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Date : </span>
                                 </div>
                                 <div class="col-md-3 pull-left">
-                                    <input class="input3 " type="text" name="ticket_type1">
+                                    <input class="input1" type="text" name="event_dateStart">
+                                </div>
+                                <div class="col-md-2 pull-left">
+                                    <span class="quoteinput">To : </span>
+                                </div>
+                                <div class="col-md-4 pull-left">
+                                    <input class="input1" type="text" name="event_dateEnd">
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Time : </span>
+                                </div>
+                                <div class="col-md-3 pull-left">
+                                    <input class="input1" type="text" name="event_timeStrat">
+                                </div>
+                                <div class="col-md-2 pull-left">
+                                    <span class="quoteinput">To : </span>
+                                </div>
+                                <div class="col-md-4 pull-left">
+                                    <input class="input1" type="text" name="event_timeEnd">
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Tickets : </span>
+                                </div>
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Type : </span>
                                 </div>
                                 <div class="col-md-3 ">
-                                    <input class="input3" type="text" name="ticket_price1">
+                                    <span class="quotet">Price : </span>
                                 </div>
                                 <div class="col-md-3 ">
-                                    <input class='input3' type="text" name="ticket_total1">
+                                    <span class="quotet">Total Tickets : </span>
+                                </div>
+                                <div id="dynamicInput">
+                                    <div class="col-md-3 pull-left ">
+                                    </div>
+                                    <div class="col-md-3 pull-left">
+                                        <input class="input3 " type="text" name="ticket_type1">
+                                    </div>
+                                    <div class="col-md-3 ">
+                                        <input class="input3" type="text" name="ticket_price1">
+                                    </div>
+                                    <div class="col-md-3 ">
+                                        <input class='input3' type="text" name="ticket_total1">
+                                    </div>
+                                </div>
+
+
+                                <input class="nino-btnadd pull-right" type="button" value="Add another type"
+                                       onClick="addInput('dynamicInput');">
+                                <div style="clear:both;"></div>
+
+                            </div>
+                            <hr>
+                            <!-- <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Ticket Price : </span>
+                                </div>
+                                <div class="col-md-3 pull-left">
+                                    <input class="input1" type="text" name="eventtime">
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div> -->
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Event Poster :</span>
+                                </div>
+                                <div class="col-md-9 pull-left">
+                                    <input type="file" name="fileToUpload" id="fileToUpload" class="inputfile inputfile-2"
+                                           data-multiple-caption="{count} files selected" multiple/>
+                                    <label for="fileToUpload">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
+                                             viewBox="0 0 20 17">
+                                            <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/>
+                                        </svg>
+                                        <span>Choose a file&hellip;</span></label>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <div class="col-md-3 pull-left">
+                                    <span class="quotet">Event Detail : </span>
                                 </div>
                             </div>
-
-                            <input class="nino-btnadd pull-right" type="button" value="Add another type" onClick="addInput('dynamicInput');">
                             <div style="clear:both;"></div>
+                        </div>
+                        <div class="box1">
+
+                            <textarea name="event_detail" cols="80" rows="10"></textarea>
+                            <hr>
                             <br>
-                        </div>
-                        <!-- <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Ticket Price : </span>
-                            </div>
-                            <div class="col-md-3 pull-left">
-                                <input class="input1" type="text" name="eventtime">
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div> -->
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Event Poster :</span>
-                            </div>
-                            <div class="col-md-9 pull-left">
-                                <input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
-                                <label for="file-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
-                            </div>
+                            <br>
+                            <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right"
+                                   value="Send Request"></input>
                             <div style="clear:both;"></div>
                         </div>
-                        <div class="input">
-                            <div class="col-md-3 pull-left">
-                                <span class="quotet">Event Detail : </span>
-                            </div>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
-                    <div class="box1">
-
-                        <textarea name="event_detail" cols="90"	rows="10"></textarea>
                         <br>
-                        <br>
-                        <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right" value="Send Request"></input>
-                        <div style="clear:both;"></div>
-                    </div>
-                        <br>
-                </form>
+                    </form>
                 </div>
             </div>
             <br><br>
@@ -186,13 +248,16 @@ if (isset($_SESSION['current_type'])){
             <div class="col-md-4">
                 <div class="colInfo">
                     <div class="footerLogo">
-                        <a href="#" >EVE</a>
+                        <a href="#">EVE</a>
                     </div>
                     <p>
-                        We believed that everyone should has a chance to find their own inspiration. So, we create a single place that bring creators and people come together in the purpose of linking their creativity.
-                        Our vision is to envision a world where all people – even in the most remote areas of the globe – hold the power to create opportunity for themselves and others.
+                        We believed that everyone should has a chance to find their own inspiration. So, we create a
+                        single place that bring creators and people come together in the purpose of linking their
+                        creativity.
+                        Our vision is to envision a world where all people – even in the most remote areas of the globe
+                        – hold the power to create opportunity for themselves and others.
                         <br><br>"All our dreams can come true if we have the courage to pursue them."
-                        <br><br>     - From us, EVE.
+                        <br><br> - From us, EVE.
                     </p>
                     <div class="nino-followUs">
                         <div class="totalFollow"><span>15k</span> followers</div>
@@ -211,7 +276,13 @@ if (isset($_SESSION['current_type'])){
                 <div class="colInfo">
                     <h3 class="nino-colHeading">Find us on Facebook</h3>
                     <!--facebook-->
-                    <div class="fb-page" data-href="https://www.facebook.com/siittu/" data-tabs="timeline" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/siittu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/siittu/">Sirindhorn International Institute of Technology (SIIT)</a></blockquote></div>
+                    <div class="fb-page" data-href="https://www.facebook.com/siittu/" data-tabs="timeline"
+                         data-height="400" data-small-header="false" data-adapt-container-width="true"
+                         data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/siittu/" class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/siittu/">Sirindhorn International Institute of
+                                Technology (SIIT)</a></blockquote>
+                    </div>
 
 
                 </div>

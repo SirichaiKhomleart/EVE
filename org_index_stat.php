@@ -63,27 +63,22 @@ require_once('helper.php');
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
-                    <p class="text-center"> Welcome MyAdmin</p>
+                    <p class="text-center"> Welcome SIIT Organizer</p>
                     <li class="active ripple">
-                      <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
+                      <a class="tree-toggle nav-header" href="org_index_stat.php"><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
                     <li class="active ripple">
-                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
+                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
-                      <ul class="nav nav-list tree">
-                          <li><a href="dashboard-v1.html">Organizers</a></li>
-                          <li><a href="dashboard-v2.html">Customers</a></li>
-                      </ul>
                     </li>
                     <li class="ripple">
                       <a class="tree-toggle nav-header">
-                        <span class="fa fa-calendar-o"></span> Event
+                        <span class="fa fa-calendar-o"></span> Your Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
-                      
                     </li>
                     
                   </ul>
@@ -102,7 +97,7 @@ require_once('helper.php');
                                     <div class="panel box-v1">
                                       <div class="panel-heading bg-white border-none">
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                          <h4 class="text-left">Event</h4>
+                                          <h4 class="text-left">Your Event</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                            <h4>
@@ -112,26 +107,7 @@ require_once('helper.php');
                                       </div>
                                       <div class="panel-body text-center">
                                         <h1>51181,320</h1>
-                                        <p>Events create</p>
-                                        <hr/>
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="panel box-v1">
-                                      <div class="panel-heading bg-white border-none">
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
-                                          <h4 class="text-left">User</h4>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                                           <h4>
-                                           <span class="icon-user icons icon text-right"></span>
-                                           </h4>
-                                        </div>
-                                      </div>
-                                      <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
-                                        <p>User active</p>
+                                        <p>Events</p>
                                         <hr/>
                                       </div>
                                     </div>
@@ -144,13 +120,32 @@ require_once('helper.php');
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                            <h4>
+                                           <span class="icon-user icons icon text-right"></span>
+                                           </h4>
+                                        </div>
+                                      </div>
+                                      <div class="panel-body text-center">
+                                        <h1>51181,320</h1>
+                                        <p>Payments</p>
+                                        <hr/>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel box-v1">
+                                      <div class="panel-heading bg-white border-none">
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                                          <h4 class="text-left">Refund</h4>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                           <h4>
                                            <span class="icon-basket-loaded icons icon text-right"></span>
                                            </h4>
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
                                         <h1>51181,320</h1>
-                                        <p>Payment</p>
+                                        <p>Refunds</p>
                                         <hr/>
                                       </div>
                                     </div>
@@ -166,7 +161,7 @@ require_once('helper.php');
                         <div class="panel">
                           <div class="panel-heading bg-white border-none" style="padding:20px;">
                             <div class="col-md-6 col-sm-6 col-sm-12 text-left">
-                              <h4>Users</h4>
+                              <h4>Your Customer</h4>
                             </div>
 
                           </div>
@@ -175,17 +170,9 @@ require_once('helper.php');
                                     <canvas class="line-chart" style="margin-top:30px;height:200px;"></canvas>
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
-                                  <div class="col-md-4 col-sm-4 col-xs-6 text-center">
+                                  <div class="col-md-12 col-sm-4 col-xs-6 text-center">
                                       <h2 style="line-height:.4;">12,345,684</h2>
-                                      <small>Total Account</small>
-                                  </div>
-                                  <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">684,515</h2>
-                                      <small>Total Users</small>
-                                  </div>
-                                  <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                                      <h2 style="line-height:.4;">24,286</h2>
-                                      <small>Total Organizer</small>
+                                      <small>Total Customers</small>
                                   </div>
                               </div>
                           </div>
@@ -205,15 +192,18 @@ require_once('helper.php');
                                     <canvas class="bar-chart" style="margin-top:30px;height:200px;"></canvas>
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
-                                  <div class="col-md-6 col-sm-4 col-xs-6 text-center">
+                                  <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                       <h2 style="line-height:.4;">12,351</h2>
                                       <small>Total Payments</small>
                                   </div>
-                                  <div class="col-md-6 col-sm-4 col-xs-6 text-center">
+                                  <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                       <h2 style="line-height:.4;">1,333,484</h2>
                                       <small>Total Price</small>
                                   </div>
-                                  
+                                  <div class="col-md-4 col-sm-4 col-xs-6 text-center">
+                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                      <small>Total Refunds</small>
+                                  </div>
                               </div>
                           </div>
 
