@@ -64,7 +64,7 @@ require_once('helper.php');
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
                     <p class="text-center"> Welcome SIIT Organizer</p>
-                    <li class="active ripple">
+                    <li class="active ripple" onclick="location.href='org_index_stat.php';">
                       <a class="tree-toggle nav-header" href="org_index_stat.php"><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
@@ -120,7 +120,7 @@ require_once('helper.php');
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                            <h4>
-                                           <span class="icon-user icons icon text-right"></span>
+                                           <span class="icon-basket-loaded icons icon text-right"></span>
                                            </h4>
                                         </div>
                                       </div>
@@ -139,7 +139,7 @@ require_once('helper.php');
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
                                            <h4>
-                                           <span class="icon-basket-loaded icons icon text-right"></span>
+                                           <span class="fa fa-tag"></span>
                                            </h4>
                                         </div>
                                       </div>

@@ -72,7 +72,9 @@ td {
 ul li{
   list-style: none;
 }
-
+li a{
+ display:block;
+}
 p.quote{
   font-size: 18px;
   padding: 10px;
