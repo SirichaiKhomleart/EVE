@@ -78,20 +78,26 @@ if (isset($_SESSION['current_type'])){
             <div class="sectionContent">
 
                 <?php
+                $hasEventActive=false;
+
                 $organizerID = $_SESSION['current_ID'];
                 $q = "SELECT * FROM event 
                       WHERE event_organizerID = '$organizerID' 
                       AND event_approveStatus = '1'
-                      AND event_dateEND < CURRENT_DATE 
+                      AND event_dateEND >= CURRENT_DATE 
                       ORDER BY  event_dateStart DESC";
                 $result = $mysqli->query($q);
-                while($row = $result->fetch_array()) { ?>
+                while($row = $result->fetch_array()) {
+                    $hasEventActive=true;
+
+                    ?>
 
                 <div class="box4">
+
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<?php echo $row['event_iconPicture']; ?>" width="150">
+                            <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
                         </div>
                         <div class="col-md-8">
                             <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
@@ -101,7 +107,26 @@ if (isset($_SESSION['current_type'])){
                                 <br> Location : <?php echo $row['event_location']; ?>
                                 <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
                                 &emsp; Time : <?php echo $row['event_timeStart']; ?> to <?php echo $row['event_timeEnd']; ?>
-                                <br> Participated : people
+                                <br><h6> Sold Tickets Information</h6>
+                                <?php
+                                $eventID=$row['event_ID'];
+                                $qtype="SELECT ticketType_name, COUNT(ticket_ID) AS total, (ticketType_price*COUNT(ticket_ID)) AS income 
+                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' 
+                                      GROUP BY ticketType_name ORDER BY ticketType_name ASC";
+                                $resulttype = $mysqli->query($qtype);
+                                $hasTicket=false;
+                                while($rowtype = $resulttype->fetch_array()) {
+                                    echo "Type: ".$rowtype['ticketType_name'].",&emsp;&emsp;";
+                                    echo "Already sold ".$rowtype['total']." tickets, &emsp;&emsp;";
+                                    echo "You got ".$rowtype['income']." bath. &emsp;&emsp;<br>";
+                                    $hasTicket=true;
+                                }
+                                if($hasTicket==false){echo "Your ticket wasn't sold yet.";}
+
+
+                                ?>
+
+
                             </p>
 
 
@@ -116,7 +141,12 @@ if (isset($_SESSION['current_type'])){
                     </div>
                 </div>
 
-                <?php } ?><hr>
+                <?php }
+                if($hasEventActive==false){
+                    echo "<h4 style='text-align: center'><br><br>You have not recently public events yet.</h4>";
+                }
+
+                ?><hr>
             </div>
         </div>
     </section><!--/#nino-yourevent-->
@@ -126,56 +156,149 @@ if (isset($_SESSION['current_type'])){
     <section id="nino-latestBlog">
         <div class="container">
             <h2 class="nino-sectionHeading">
-                <!--                <span class="nino-subHeading">--><?php //echo $_SESSION['current_organizer_name'];?><!--</span>-->
                 Here are your approve-waiting events.
             </h2>
             <div class="sectionContent">
-                <div class="row">
 
-                    <!--loop check event from file-->
-                    <?php
-                    $efile = file_get_contents("userevent.txt"); // Returns a string
-                    $eresult = explode("\r\n",$efile);
-                    //                var_dump($eresult);
-                    for($i=0; $i< count($eresult); $i++)
-                    {
-                        $edetail=$eresult[$i];
-                        $edetailsplit = explode("&&&",$edetail);
-//                    echo "<br><br>";
-//                    var_dump($edetailsplit);
-                        $eimgscr=$edetailsplit[0];
-                        $edate=$edetailsplit[1];
-                        $emonth=$edetailsplit[2];
-                        $etitle=$edetailsplit[3];
-                        $edesc=$edetailsplit[4];
-                        ?>
-                        <div class="col-md-4 col-sm-4">
-                            <article>
-                                <div class="articleThumb">
-                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
-                                    <div class="date">
-                                        <span class="number"><?php echo $edate; ?></span>
-                                        <span class="text"><?php echo $emonth; ?></span>
-                                    </div>
-                                </div>
-                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
-                                <p class="articleDesc">
-                                    <?php echo $edesc; ?>
-                                </p>
-                                <div class="articleMeta">
-                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
-                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
-                                </div>
-                            </article>
-                        </div>
+                <?php
+                $hasEventActive=false;
 
-                        <?php
+                $organizerID = $_SESSION['current_ID'];
+                $q = "SELECT * FROM event 
+                      WHERE event_organizerID = '$organizerID' 
+                      AND event_approveStatus IS NULL
+                      AND event_dateEND >= CURRENT_DATE 
+                      ORDER BY  event_dateStart DESC";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) {
+                    $hasEventActive=true;
 
-                    }
                     ?>
 
+                    <div class="box4">
 
-                </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
+
+                                <p class="date1">
+                                    Public Time : <?php echo $row['event_createTimeStamp']; ?>
+                                    <br> Location : <?php echo $row['event_location']; ?>
+                                    <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
+                                    &emsp; Time : <?php echo $row['event_timeStart']; ?> to <?php echo $row['event_timeEnd']; ?>
+                                    <br><h6> Sold Tickets Information</h6>
+                                <?php
+                                $eventID=$row['event_ID'];
+                                $qtype="SELECT ticketType_name, COUNT(ticket_ID) AS total, (ticketType_price*COUNT(ticket_ID)) AS income 
+                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' 
+                                      GROUP BY ticketType_name ORDER BY ticketType_name ASC";
+                                $resulttype = $mysqli->query($qtype);
+                                $hasTicket=false;
+                                while($rowtype = $resulttype->fetch_array()) {
+                                    echo "Type: ".$rowtype['ticketType_name'].",&emsp;&emsp;";
+                                    echo "Already sold ".$rowtype['total']." tickets, &emsp;&emsp;";
+                                    echo "You got ".$rowtype['income']." bath. &emsp;&emsp;<br>";
+                                    $hasTicket=true;
+                                }
+                                if($hasTicket==false){echo "Your ticket wasn't sold yet.";}
+
+
+                                ?>
+
+
+                                </p>
+
+
+                            </div>
+                            <form action="organizer_manageEvent.php" method="post">
+                                <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
+                                <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
+<!--                                <input type="submit" name="stat--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                            </form>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+
+                <?php }
+
+                ////for rejected event
+                $q = "SELECT * FROM event 
+                      WHERE event_organizerID = '$organizerID' 
+                      AND event_approveStatus ='0'
+                      AND event_dateEND >= CURRENT_DATE 
+                      ORDER BY  event_dateStart DESC";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) {
+                    $hasEventActive=true;
+
+                    ?>
+
+                    <div class="box4">
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="quotet1" style="color: #8a1f11"><?php echo $row['event_name']; ?></h3>
+                                <h4 class="quotet1" style="color: #be2626">This event has been rejected by administrator!</h4>
+                                <h6 style="color: #be2626">It will be delete automatically after &emsp;&emsp;   <?php echo $row['event_dateEnd']; ?>.</h6>
+
+                                <p class="date1">
+                                    Public Time : <?php echo $row['event_createTimeStamp']; ?>
+                                    <br> Location : <?php echo $row['event_location']; ?>
+                                    <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
+                                    &emsp; Time : <?php echo $row['event_timeStart']; ?> to <?php echo $row['event_timeEnd']; ?>
+                                    <br><h6> Sold Tickets Information</h6>
+                                <?php
+                                $eventID=$row['event_ID'];
+                                $qtype="SELECT ticketType_name, COUNT(ticket_ID) AS total, (ticketType_price*COUNT(ticket_ID)) AS income 
+                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' 
+                                      GROUP BY ticketType_name ORDER BY ticketType_name ASC";
+                                $resulttype = $mysqli->query($qtype);
+                                $hasTicket=false;
+                                while($rowtype = $resulttype->fetch_array()) {
+                                    echo "Type: ".$rowtype['ticketType_name'].",&emsp;&emsp;";
+                                    echo "Already sold ".$rowtype['total']." tickets, &emsp;&emsp;";
+                                    echo "You got ".$rowtype['income']." bath. &emsp;&emsp;<br>";
+                                    $hasTicket=true;
+                                }
+                                if($hasTicket==false){echo "Your ticket wasn't sold yet.";}
+
+
+                                ?>
+
+
+                                </p>
+
+
+                            </div>
+                            <form action="organizer_manageEvent.php" method="post">
+                                <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
+                                <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
+                                <!--                                <input type="submit" name="stat--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                            </form>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+
+                <?php }
+                ///end rejected event
+
+
+
+                if($hasEventActive==false){
+                    echo "<h4 style='text-align: center'><br><br>You have not had approve-waiting events yet.</h4>";
+                }
+
+                ?><hr>
             </div>
         </div>
     </section><!--/#nino-yourWAITevent-->
@@ -185,56 +308,80 @@ if (isset($_SESSION['current_type'])){
     <section id="nino-latestBlog">
         <div class="container">
             <h2 class="nino-sectionHeading">
-<!--                <span class="nino-subHeading">--><?php //echo $_SESSION['current_organizer_name'];?><!--</span>-->
-                Here are your past events.
+                Here are your ended events.
             </h2>
             <div class="sectionContent">
-                <div class="row">
 
-                    <!--loop check event from file-->
-                    <?php
-                    $efile = file_get_contents("userevent.txt"); // Returns a string
-                    $eresult = explode("\r\n",$efile);
-                    //                var_dump($eresult);
-                    for($i=0; $i< count($eresult); $i++)
-                    {
-                        $edetail=$eresult[$i];
-                        $edetailsplit = explode("&&&",$edetail);
-//                    echo "<br><br>";
-//                    var_dump($edetailsplit);
-                        $eimgscr=$edetailsplit[0];
-                        $edate=$edetailsplit[1];
-                        $emonth=$edetailsplit[2];
-                        $etitle=$edetailsplit[3];
-                        $edesc=$edetailsplit[4];
-                        ?>
-                        <div class="col-md-4 col-sm-4">
-                            <article>
-                                <div class="articleThumb">
-                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
-                                    <div class="date">
-                                        <span class="number"><?php echo $edate; ?></span>
-                                        <span class="text"><?php echo $emonth; ?></span>
-                                    </div>
-                                </div>
-                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
-                                <p class="articleDesc">
-                                    <?php echo $edesc; ?>
-                                </p>
-                                <div class="articleMeta">
-                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
-                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
-                                </div>
-                            </article>
-                        </div>
+                <?php
+                $hasEventActive=false;
 
-                        <?php
+                $organizerID = $_SESSION['current_ID'];
+                $q = "SELECT * FROM event 
+                      WHERE event_organizerID = '$organizerID' 
+                      AND event_approveStatus = '1'
+                      AND event_dateEND < CURRENT_DATE 
+                      ORDER BY  event_dateStart DESC";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) {
+                    $hasEventActive=true;
 
-                    }
                     ?>
 
+                    <div class="box4">
 
-                </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
+
+                                <p class="date1">
+                                    Public Time : <?php echo $row['event_createTimeStamp']; ?>
+                                    <br> Location : <?php echo $row['event_location']; ?>
+                                    <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
+                                    &emsp; Time : <?php echo $row['event_timeStart']; ?> to <?php echo $row['event_timeEnd']; ?>
+                                    <br><h6> Sold Tickets Information</h6>
+                                <?php
+                                $eventID=$row['event_ID'];
+                                $qtype="SELECT ticketType_name, COUNT(ticket_ID) AS total, (ticketType_price*COUNT(ticket_ID)) AS income 
+                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' 
+                                      GROUP BY ticketType_name ORDER BY ticketType_name ASC";
+                                $resulttype = $mysqli->query($qtype);
+                                $hasTicket=false;
+                                while($rowtype = $resulttype->fetch_array()) {
+                                    echo "Type: ".$rowtype['ticketType_name'].",&emsp;&emsp;";
+                                    echo "Already sold ".$rowtype['total']." tickets, &emsp;&emsp;";
+                                    echo "You got ".$rowtype['income']." bath. &emsp;&emsp;<br>";
+                                    $hasTicket=true;
+                                }
+                                if($hasTicket==false){echo "Your ticket wasn't sold yet.";}
+
+
+                                ?>
+
+
+                                </p>
+
+
+                            </div>
+                            <form action="organizer_manageEvent.php" method="post">
+<!--                                <input type="submit" name="cancle--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgcancel " value="Cancel"></input>-->
+<!--                                <input type="submit" name="edit--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorg " value="Edit"></input>-->
+                                <input type="submit" name="stat<?php echo $row['event_ID']; ?>" class="nino-btnorgsta " value="Statistic"></input>
+                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                            </form>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+
+                <?php }
+                if($hasEventActive==false){
+                    echo "<h4 style='text-align: center'><br><br>You have not public any events yet.</h4>";
+                }
+
+                ?><hr>
             </div>
         </div>
     </section><!--/#nino-yourPASTevent-->
