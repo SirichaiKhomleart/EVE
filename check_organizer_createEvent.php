@@ -36,13 +36,13 @@ $qSearchEventID = "SELECT event_ID FROM event WHERE event_name='$event_name' AND
 $resultSearch = $mysqli->query($qSearchEventID);
 $rowSearch = $resultSearch->fetch_array();
 $event_ID = $rowSearch['event_ID'];
-echo "<br>event ID after insert: ".$event_ID;
+echo "<br>event ID after insert: " . $event_ID;
 
 $ticketloopcount = true;
 $ticketTypeNo = 1;
 while ($ticketloopcount) {
     if (isset($_POST['ticket_type' . $ticketTypeNo])) {
-        echo "<br>type: ".$_POST['ticket_type' . $ticketTypeNo];
+        echo "<br>type: " . $_POST['ticket_type' . $ticketTypeNo];
 
         $ticketType = $_POST['ticket_type' . $ticketTypeNo];
         $ticketPrice = $_POST['ticket_price' . $ticketTypeNo];
@@ -66,8 +66,53 @@ while ($ticketloopcount) {
         $ticketloopcount = false;
     }
 }
+/////
+///
+/// file upload zone
+$target_dir = "users/ID" . $_SESSION['current_ID']."/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
 
+$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+if ($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+} else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+//if ($_FILES["fileToUpload"]["size"] > 500000) {
+//    echo "Sorry, your file is too large.";
+//    $uploadOk = 0;
+//}
+// Allow certain file formats
+//if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//    && $imageFileType != "gif") {
+//    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//    $uploadOk = 0;
+//}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
 
 
 ?>
+<br>
 <a href="organizer_index.php">index</a>
