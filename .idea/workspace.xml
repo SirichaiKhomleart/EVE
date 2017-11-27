@@ -4,7 +4,6 @@
     <list default="true" id="bc7a5b8c-91d3-4f36-9736-42044d80d59e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/check_organizer_createEvent.php" afterPath="$PROJECT_DIR$/check_organizer_createEvent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizer_createEvent.php" afterPath="$PROJECT_DIR$/organizer_createEvent.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/organizer_createEvent.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3296">
-              <caret line="198" column="73" lean-forward="true" selection-start-line="198" selection-start-column="73" selection-end-line="198" selection-end-column="73" />
+              <caret line="198" column="73" lean-forward="false" selection-start-line="198" selection-start-column="73" selection-end-line="198" selection-end-column="73" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <marker date="1511738818044" expanded="true" signature="2728:2842" ph="SELECT event... eventType" />
@@ -82,12 +81,12 @@
       <file leaf-file-name="check_organizer_createEvent.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/check_organizer_createEvent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-430">
-              <caret line="71" column="53" lean-forward="false" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
+            <state relative-caret-position="940">
+              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="95" selection-end-column="1" />
               <folding>
-                <marker date="1511738923824" expanded="true" signature="530:944" ph="INSERT INTO event... " />
-                <marker date="1511738923824" expanded="true" signature="1140:1233" ph="SELECT event... event" />
-                <marker date="1511738923824" expanded="true" signature="1822:1988" ph="INSERT INTO ticketType... " />
+                <marker date="1511739479672" expanded="true" signature="530:944" ph="INSERT INTO event... " />
+                <marker date="1511739479672" expanded="true" signature="1140:1233" ph="SELECT event... event" />
+                <marker date="1511739479672" expanded="true" signature="1822:1988" ph="INSERT INTO ticketType... " />
               </folding>
             </state>
           </provider>
@@ -258,12 +257,12 @@
       <updated>1511585585713</updated>
       <workItem from="1511585587050" duration="15048000" />
       <workItem from="1511696389885" duration="12316000" />
-      <workItem from="1511713319357" duration="19425000" />
+      <workItem from="1511713319357" duration="19866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46789000" />
+    <option name="totallyTimeSpent" value="47230000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -649,7 +648,7 @@
     <entry file="file://$PROJECT_DIR$/organizer_createEvent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3296">
-          <caret line="198" column="73" lean-forward="true" selection-start-line="198" selection-start-column="73" selection-end-line="198" selection-end-column="73" />
+          <caret line="198" column="73" lean-forward="false" selection-start-line="198" selection-start-column="73" selection-end-line="198" selection-end-column="73" />
           <folding>
             <element signature="n#style#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <marker date="1511738818044" expanded="true" signature="2728:2842" ph="SELECT event... eventType" />
@@ -660,12 +659,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/check_organizer_createEvent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-430">
-          <caret line="71" column="53" lean-forward="false" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
+        <state relative-caret-position="940">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="95" selection-end-column="1" />
           <folding>
-            <marker date="1511738923824" expanded="true" signature="530:944" ph="INSERT INTO event... " />
-            <marker date="1511738923824" expanded="true" signature="1140:1233" ph="SELECT event... event" />
-            <marker date="1511738923824" expanded="true" signature="1822:1988" ph="INSERT INTO ticketType... " />
+            <marker date="1511739479672" expanded="true" signature="530:944" ph="INSERT INTO event... " />
+            <marker date="1511739479672" expanded="true" signature="1140:1233" ph="SELECT event... event" />
+            <marker date="1511739479672" expanded="true" signature="1822:1988" ph="INSERT INTO ticketType... " />
           </folding>
         </state>
       </provider>
