@@ -100,7 +100,7 @@ if (isset($_SESSION['current_type'])){
                             <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
                         </div>
                         <div class="col-md-8">
-                            <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
+                            <h3 class="quotet1" style="color: #00BCD4"><?php echo $row['event_name']; ?></h3>
 
                             <p class="date1">
                                 Public Time : <?php echo $row['event_createTimeStamp']; ?>
@@ -183,7 +183,9 @@ if (isset($_SESSION['current_type'])){
                                 <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
                             </div>
                             <div class="col-md-8">
-                                <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
+                                <h3 class="quotet1" style="color: #2c622c"><?php echo $row['event_name']; ?></h3>
+                                <h4 class="quotet1" style="color: #5eaf14">This event has been submitted to administrator.</h4>
+                                <h6 style="color: #5eaf14">Your event will be review soon!</h6>
 
                                 <p class="date1">
                                     Public Time : <?php echo $row['event_createTimeStamp']; ?>
@@ -194,7 +196,7 @@ if (isset($_SESSION['current_type'])){
                                 <?php
                                 $eventID=$row['event_ID'];
                                 $qtype="SELECT ticketType_name, COUNT(ticket_ID) AS total, (ticketType_price*COUNT(ticket_ID)) AS income 
-                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' 
+                                      FROM ticket NATURAL JOIN ticketType WHERE event_ID='$eventID' AND ticket_status='1'
                                       GROUP BY ticketType_name ORDER BY ticketType_name ASC";
                                 $resulttype = $mysqli->query($qtype);
                                 $hasTicket=false;
@@ -248,7 +250,7 @@ if (isset($_SESSION['current_type'])){
                             <div class="col-md-8">
                                 <h3 class="quotet1" style="color: #8a1f11"><?php echo $row['event_name']; ?></h3>
                                 <h4 class="quotet1" style="color: #be2626">This event has been rejected by administrator!</h4>
-                                <h6 style="color: #be2626">It will be delete automatically after &emsp;&emsp;   <?php echo $row['event_dateEnd']; ?>.</h6>
+                                <h6 style="color: #be2626">Review this event or it will be delete automatically after &emsp;&emsp;   <?php echo $row['event_dateEnd']; ?>.</h6>
 
                                 <p class="date1">
                                     Public Time : <?php echo $row['event_createTimeStamp']; ?>
