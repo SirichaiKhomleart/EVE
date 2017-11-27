@@ -97,10 +97,10 @@ if (!isset($_SESSION['wrongSignup_status']) && $_POST['OrganSignup']!="True") {
              VALUES('$current_ID','1')";
             $result = $mysqli->query($q);
             if (!$result) {
-                echo "<br>INSERT customer failed. Error: " . $mysqli->error;
+                echo "<br>INSERT customer failed. Error: " . $mysqli->error; exit;
             }
-
-
+            $dir= "users/ID" . $_SESSION['current_ID'];
+            mkdir($dir,0700);
             header('Location:login.php'); exit;
         } else {
             echo "<br> Select ID fail";
