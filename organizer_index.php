@@ -76,52 +76,47 @@ if (isset($_SESSION['current_type'])){
                 Here are your currently active events.
             </h2>
             <div class="sectionContent">
-                <div class="row">
 
-                    <!--loop check event from file-->
-                    <?php
-                    $efile = file_get_contents("userevent.txt"); // Returns a string
-                    $eresult = explode("\r\n",$efile);
-                    //                var_dump($eresult);
-                    for($i=0; $i< count($eresult); $i++)
-                    {
-                        $edetail=$eresult[$i];
-                        $edetailsplit = explode("&&&",$edetail);
-//                    echo "<br><br>";
-//                    var_dump($edetailsplit);
-                        $eimgscr=$edetailsplit[0];
-                        $edate=$edetailsplit[1];
-                        $emonth=$edetailsplit[2];
-                        $etitle=$edetailsplit[3];
-                        $edesc=$edetailsplit[4];
-                        ?>
-                        <div class="col-md-4 col-sm-4">
-                            <article>
-                                <div class="articleThumb">
-                                    <a href="detail_login.php"><img src=<?php echo $eimgscr; ?> alt=""></a>
-                                    <div class="date">
-                                        <span class="number"><?php echo $edate; ?></span>
-                                        <span class="text"><?php echo $emonth; ?></span>
-                                    </div>
-                                </div>
-                                <h3 class="articleTitle"><a href="detail_login.php"><?php echo $etitle; ?></a></h3>
-                                <p class="articleDesc">
-                                    <?php echo $edesc; ?>
-                                </p>
-                                <div class="articleMeta">
-                                    <a href="detail_login.php"><i class="mdi mdi-eye nino-icon"></i> 1264</a>
-                                    <a href="detail_login.php"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 69</a>
-                                </div>
-                            </article>
+                <?php
+                $organizerID = $_SESSION['current_ID'];
+                $q = "SELECT * FROM event 
+                      WHERE event_organizerID = '$organizerID' 
+                      AND event_approveStatus = '1'
+                      AND event_dateEND < CURRENT_DATE 
+                      ORDER BY  event_dateStart DESC";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) { ?>
+
+                <div class="box4">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="<?php echo $row['event_iconPicture']; ?>" width="150">
                         </div>
+                        <div class="col-md-8">
+                            <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>
 
-                        <?php
+                            <p class="date1">
+                                Public Time : <?php echo $row['event_createTimeStamp']; ?>
+                                <br> Location : <?php echo $row['event_location']; ?>
+                                <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
+                                &emsp; Time : <?php echo $row['event_timeStart']; ?> to <?php echo $row['event_timeEnd']; ?>
+                                <br> Participated : people
+                            </p>
 
-                    }
-                    ?>
 
-
+                        </div>
+                        <form action="organizer_manageEvent.php" method="post">
+                        <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
+                        <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
+                        <input type="submit" name="stat<?php echo $row['event_ID']; ?>" class="nino-btnorgsta " value="Statistic"></input>
+                        <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                        </form>
+                        <div style="clear:both;"></div>
+                    </div>
                 </div>
+
+                <?php } ?><hr>
             </div>
         </div>
     </section><!--/#nino-yourevent-->

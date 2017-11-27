@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2017 at 06:34 PM
+-- Generation Time: Nov 26, 2017 at 08:01 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -50,7 +50,9 @@ INSERT INTO `account` (`account_ID`, `account_type`, `account_email`, `account_f
 (3, 'Organizer', 'nawaphat@mail.com', 'Nawaphat', 'Khankasikam', 'organ', 20, 'Male', NULL),
 (4, 'Admin', 'nuttapol@mail.com', 'Nuttapol', 'Saiboonruen', 'admin', 20, 'Male', NULL),
 (5, 'Admin', 'pasin@mail.com', 'Pasin', 'Jiratthiticheep', 'admin', 20, 'Male', NULL),
-(6, 'Customer', 'panthakan@mail.com', 'Panthakan', 'Maisopa', 'custom', 20, 'Male', NULL);
+(6, 'Customer', 'panthakan@mail.com', 'Panthakan', 'Maisopa', 'custom', 20, 'Male', NULL),
+(37, 'Customer', 'custom', 'customer', 'test', 'custom', 60, 'Male', NULL),
+(38, 'Organizer', 'organ', 'Organizer', 'test', 'organ', 40, 'Others', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,8 +91,10 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`account_ID`, `customer_status`) VALUES
-(2, 1),
-(6, 1);
+(1, 1),
+(2, 0),
+(6, 1),
+(37, 1);
 
 -- --------------------------------------------------------
 
@@ -124,8 +128,18 @@ CREATE TABLE `event` (
   `event_iconPicture` text,
   `event_posterPicture` text,
   `event_detail` longtext NOT NULL,
+  `event_createTimeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `event_approveStatus` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`event_ID`, `event_name`, `event_organizerID`, `event_typeID`, `event_location`, `event_dateStart`, `event_dateEnd`, `event_timeStart`, `event_timeEnd`, `event_iconPicture`, `event_posterPicture`, `event_detail`, `event_createTimeStamp`, `event_approveStatus`) VALUES
+(1, 'KemonoOnlyEvent', 3, 3, 'Siam Paragon', '2017-11-01', '2017-11-01', '00:00:00', '00:00:00', NULL, NULL, 'wwss', '2017-11-26 18:17:03', 0),
+(2, 'Hackathon 2015', 38, 2, 'Thammasat U', '2015-11-26', '2015-11-26', '15:58:02', '15:58:02', 'images/poster/icone1.jpg', NULL, 'Boring Event', '2017-11-26 18:17:03', 1),
+(3, 'Hackathon 2016', 38, 2, 'Thammasat U', '2016-11-26', '2016-11-26', '18:11:36', '18:11:36', 'images/poster/icone1.jpg', NULL, 'Interesting Event', '2017-11-26 18:17:03', 1);
 
 -- --------------------------------------------------------
 
@@ -212,7 +226,8 @@ CREATE TABLE `organizer` (
 --
 
 INSERT INTO `organizer` (`account_ID`, `organizer_name`, `organizer_address`, `organizer_phone`, `organizer_email`, `organizer_status`) VALUES
-(3, 'Sex Shop by Sun', 'Line Group', '1150', 'sexshopbysun@mail.com', 0);
+(3, 'Sex Shop by Sun', 'Line Group', '1150', 'sexshopbysun@mail.com', 1),
+(38, 'SIIT', 'bangkok', '33', 'siit', 1);
 
 -- --------------------------------------------------------
 
@@ -224,9 +239,17 @@ CREATE TABLE `paymentLog` (
   `payment_ID` int(15) NOT NULL,
   `event_ID` int(15) NOT NULL,
   `payment_money` int(11) NOT NULL,
-  `payment_method` int(11) NOT NULL,
+  `payment_method` text NOT NULL,
   `payment_timeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `paymentLog`
+--
+
+INSERT INTO `paymentLog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES
+(1, 2, 500, 'VISA', '2017-11-26 18:40:49'),
+(2, 3, 1000, 'VISA', '2017-11-26 18:55:41');
 
 -- --------------------------------------------------------
 
@@ -258,6 +281,14 @@ CREATE TABLE `ticket` (
   `ticket_status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateStart`, `ticket_status`) VALUES
+(1, 6, 1, 3, 1, '2017-11-26', 1),
+(2, 2, 2, 3, 2, '2017-11-26', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -272,6 +303,14 @@ CREATE TABLE `ticketType` (
   `ticketType_totalSeats` int(11) NOT NULL,
   `ticketType_approveStatus` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ticketType`
+--
+
+INSERT INTO `ticketType` (`ticketType_ID`, `event_ID`, `ticketType_name`, `ticketType_price`, `ticketType_totalSeats`, `ticketType_approveStatus`) VALUES
+(1, 3, 'Standard', 500, 20, 1),
+(2, 3, 'Premium', 1000, 10, 1);
 
 --
 -- Indexes for dumped tables
@@ -377,7 +416,7 @@ ALTER TABLE `ticketType`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -389,7 +428,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `databaseActivityLog`
@@ -401,7 +440,7 @@ ALTER TABLE `databaseActivityLog`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `eventEditLog`
@@ -413,19 +452,19 @@ ALTER TABLE `eventEditLog`
 -- AUTO_INCREMENT for table `eventType`
 --
 ALTER TABLE `eventType`
-  MODIFY `eventType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `eventType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `paymentLog`
 --
 ALTER TABLE `paymentLog`
-  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `refundLog`
@@ -437,13 +476,13 @@ ALTER TABLE `refundLog`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ticketType`
 --
 ALTER TABLE `ticketType`
-  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
