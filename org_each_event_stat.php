@@ -3,35 +3,27 @@ session_start();
 require_once('helper.php');
 require_once('connect.php');
 $event_ID=$_GET['event'];
-$q = "SELECT COUNT(DISTINCT(ticketType.ticketType_name)) FROM `ticketType`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND event.event_ID='3'";
-$result=$mysqli->query($q);
-if(!$result){
-   echo "Select failed. Error: ".$mysqli->error ;
-}
-$row=$result->fetch_array();
-$numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ninodezign.com, ninodezign@gmail.com">
-    <meta name="copyright" content="ninodezign.com">
+    <meta name="copyright" content="ninodezign.com"> 
     <title>Eve | Event booking</title>
-
+ 
     <!-- start: Css -->
     <link rel="shortcut icon" href="images/poster/v-icon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
+  
   <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
@@ -46,8 +38,8 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
     <link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css"/>
     <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="asset/css/plugins/fullcalendar.min.css"/>
-	  <link href="asset/css/style.css" rel="stylesheet">
-	<!-- end: Css -->
+    <link href="asset/css/style.css" rel="stylesheet">
+  <!-- end: Css -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -75,12 +67,12 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                     </li>
                     <p class="text-center"> Welcome SIIT Organizer</p>
                     <li class="active ripple" onclick="location.href='org_index_stat.php';">
-                      <a class="tree-toggle nav-header" href=""><span class="fa-home fa"></span> Home
+                      <a class="tree-toggle nav-header" href=""><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
                     <li class="active ripple">
-                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees
+                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
@@ -90,13 +82,13 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
-
+                    
                   </ul>
                 </div>
             </div>
           <!-- end: Left Menu -->
 
-
+      
           <!-- start: content -->
             <div id="content">
                 <div class="col-md-12" style="padding:0px 10px;">
@@ -107,7 +99,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                 <div class="panel" style="padding:20px 0px;">
                                   <?php
                                             $q = "SELECT event_name FROM `event` WHERE event_ID=".$event_ID."";
-                                            $result=$mysqli->query($q);
+                                            $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
@@ -115,7 +107,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                             ?>
                                   <h3 class="text-center"><?php echo $row['event_name']; ?></h3>
                                   <p class="text-center">20 October 2017</p>
-                                    <hr align="center" width="50%">
+                                    <hr align="center" width="50%"> 
                                 </div>
                               </div>
                             </div>
@@ -139,7 +131,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                       <div class="panel-body text-center">
                                          <?php
                                             $q = "SELECT COUNT(ticket_ID) FROM `ticket`,`event`WHERE ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
-                                            $result=$mysqli->query($q);
+                                            $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
@@ -165,8 +157,8 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT SUM(payment_money) FROM `paymentLog`,`event` WHERE paymentLog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
-                                            $result=$mysqli->query($q);
+                                            $q = "SELECT SUM(payment_money) FROM `paymentlog`,`event` WHERE paymentlog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
@@ -193,8 +185,8 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT COUNT(refund_ID) FROM `refundLog`,`ticket`,`event` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
-                                            $result=$mysqli->query($q);
+                                            $q = "SELECT COUNT(refund_ID) FROM `refundlog`,`ticket`,`event` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
@@ -207,9 +199,9 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                     </div>
                                 </div>
                             </div>
-
+                            
                         </div>
-
+                        
                     </div>
 
                   <div class="col-md-12 card-wrap padding-0">
@@ -229,7 +221,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                                   <div class="col-md-12 col-sm-4 col-xs-6 text-center">
                                     <?php
                                             $q = "SELECT COUNT(ticket_ID) FROM `ticket`,`event`WHERE ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
-                                            $result=$mysqli->query($q);
+                                            $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
@@ -271,13 +263,14 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                               </div>
                           </div>
 
-
+                          
                         </div>
                     </div>
             <div class="col-md-12">
               <div class="panel">
                 <div class="panel-heading"><h3>Tickets Details</h3></div>
-                 <div class="panel-body">
+                 <div class="panel-body">   
+                               
                   <div class="col-md-12 list-timeline">
                     <div class="col-md-12 list-timeline-section bg-light">
                       <div class="col-md-12 list-timeline-detail">
@@ -333,17 +326,17 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
             </div>
 
                 </div>
-      		  </div>
+            </div>
           <!-- end: content -->
 
-
+      
 
     <!-- start: Javascript -->
     <script src="asset/js/jquery.min.js"></script>
     <script src="asset/js/jquery.ui.min.js"></script>
     <script src="asset/js/bootstrap.min.js"></script>
-
-
+   
+    
     <!-- plugins -->
     <script src="asset/js/plugins/moment.min.js"></script>
     <script src="asset/js/plugins/fullcalendar.min.js"></script>
@@ -413,7 +406,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                 pointHighlightStroke: "rgba(124, 232, 178,1)",
                 <?php
                     $q = "SELECT COUNT(ticket_ID) FROM account,ticket,event WHERE event.event_ID = ".$event_ID." AND ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND account.account_gender='Male'";
-                    $result=$mysqli->query($q);
+                    $result=$mysqli->query($q);                    
                     if(!$result){
                       echo "Select failed. Error: ".$mysqli->error ;
                     }
@@ -430,7 +423,7 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
                 pointHighlightStroke: "rgba(110,160,210,1)",
                 <?php
                     $q = "SELECT COUNT(ticket_ID) FROM account,ticket,event WHERE event.event_ID = ".$event_ID." AND ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND account.account_gender='Female'";
-                    $result=$mysqli->query($q);
+                    $result=$mysqli->query($q);                    
                     if(!$result){
                       echo "Select failed. Error: ".$mysqli->error ;
                     }
@@ -440,28 +433,10 @@ $numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
             }]
         };
 
-
+ 
         var barChartData = {
-                <?php
-                    $q = "SELECT DISTINCT(ticketType.ticketType_name) FROM `ticketType`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND event.event_ID='3' ";
-                    echo $q;
-                    $result=$mysqli->query($q);
-                    if(!$result){
-                       echo "Select failed. Error: ".$mysqli->error ;
-                    }
 
-                ?>
-                labels: [
-                <?php $countw=1; while($row=$result->fetch_array()){
-                    if ($countw==$numtype) {
-                        echo $row['DISTINCT(tickettype.ticketType_name)']  ;
-                    }
-                    else{
-                        echo $row['DISTINCT(tickettype.ticketType_name)'].','  ;
-                    }
-                    $countw++;
-
-                } ?>],
+                labels: ["Normal", "Premium", "Platinum"],
                 datasets: [
                     {
                         label: "My First dataset",
