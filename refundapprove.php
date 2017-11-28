@@ -96,7 +96,12 @@ $refundID=$_GET['refundID'];
     	<div class="verticalCenter fw" >
     		<div class="container">
     			<div class="detail_ticketbox">
-    				
+    				<?php
+                $q = "SELECT * FROM `refundlog`,`ticket`,`event`,`tickettype`,`account` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND refundlog.account_ID=account.account_ID AND refundlog.refund_ID=".$refundID."";
+                $result = $mysqli->query($q);
+                $row = $result->fetch_array() 
+
+                    ?>
     				<div class="box"> 
     					<br>
 						<h4 class="nino-sectionHeading">Refund Details</h4>						
@@ -106,18 +111,18 @@ $refundID=$_GET['refundID'];
 						
 						<div class="row">
 							<div class="col-md-6 ">
-								<h4 class="quotet2">Order Numbers #0000000000</h4><br>
-								<h5 class="date1">Chang Music Connection Presents Waterzonic 2017</h5>
-								<p class="date1">20 October 2017</p><br>
+								<h4 class="quotet2">Refund Numbers #<?php echo $row['refund_ID']; ?></h4><br>
+								<h5 class="date1"><?php echo $row['event_name']; ?></h5>
+								<p class="date1"><?php echo $row['event_dateStart']; ?></p><br>
 								<div class="col-md-3">
 									<h5 class="quotet2">Name   : </h5>
 									<h5 class="date1">E-mail : </h5>
-									<h5 class="date1">Phone  : </h5>
+									
 								</div>
 								<div class="col-md-9">
-									<h5 class="date1">Nuttapol Saiboonruen</h5>
-									<h5 class="date1">Nua@mail.com</h5>
-									<h5 class="date1">+66808188216</h5>
+									<h5 class="date1"><?php echo $row['account_fname']." ".$row['account_lname']; ?></h5>
+									<h5 class="date1"><?php echo $row['account_email']; ?></h5>
+									
 								</div>
 							</div>
 							<div class="col-md-6 ">	
@@ -148,17 +153,18 @@ $refundID=$_GET['refundID'];
 						<div class="paymentbox">
 							<div class="row">
 								<div class="col-md-6">
-									<h5 class="topic6">Chang Music Connection Presents Waterzonic 2017</h5>
-									<p class="quotet2">Normal Ticket</p>
+									<h5 class="topic6"><?php echo $row['event_name']; ?></h5>
+									<p class="quotet2"><?php echo $row['ticketType_name']; ?></p>
 								</div>
 								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
+									<h5 class="topic6 pull-right"><?php echo $row['ticketType_price']; ?> ฿</h5>
 								</div>
 								<div class="col-md-2 ">
 									<h5 class="topic6 pull-right">1</h5>
 								</div>
 								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
+									<h5 class="topic6 pull-right"><?php $totalprice=1*$row['ticketType_price']; 
+                                          echo $totalprice; ?> ฿</h5>
 								</div>
 							</div>
 						</div>
@@ -171,12 +177,12 @@ $refundID=$_GET['refundID'];
 								<h5 class="quotet2">Total</h5><br>
 							</div>
 							<div class="col-md-2">
-								<h5 class="topic6 pull-right">3,500 ฿</h5>
+								<h5 class="topic6 pull-right"><?php echo $totalprice; ?> ฿</h5>
 							</div>
 						</div>
 
 						<hr><br>
-						<p class="quotet2 pull-right">Request :29 October 2017</p>
+						<p class="quotet2 pull-right">Request :<?php echo $row['refund_timeStamp']; ?></p>
 						<br><br>
 						<a href="detail.html" class="nino-btnn">Approve</a>
 						<a href="detail.html" class="nino-btndisap">Disapprove</a>
