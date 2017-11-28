@@ -115,14 +115,24 @@
       <file leaf-file-name="check_admin_approveCreate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/check_admin_approveCreate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-345">
-              <caret line="47" column="1" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+            <state relative-caret-position="2645">
+              <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#h4#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1511858526115" expanded="true" signature="1072:1110" ph="UPDATE event... " />
-                <marker date="1511858526115" expanded="true" signature="1072:1142" ph="UPDATE event... " />
-                <marker date="1511858526115" expanded="true" signature="1357:1427" ph="UPDATE event... " />
+                <marker date="1511862176907" expanded="true" signature="1074:1112" ph="UPDATE event... " />
+                <marker date="1511862176907" expanded="true" signature="1074:1144" ph="UPDATE event... " />
+                <marker date="1511862176907" expanded="true" signature="1363:1433" ph="UPDATE event... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="667">
+              <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,10 +140,10 @@
       <file leaf-file-name="refundinbox.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/refundinbox.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2608">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
+            <state relative-caret-position="440">
+              <caret line="79" column="53" lean-forward="true" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="60" />
               <folding>
-                <marker date="1511861028783" expanded="true" signature="5153:5216" ph="..." />
+                <marker date="1511862376983" expanded="true" signature="2408:2645" ph="SELECT * FRO... refundlog" />
               </folding>
             </state>
           </provider>
@@ -143,7 +153,7 @@
         <entry file="file://$PROJECT_DIR$/refundapprove.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
-              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -167,35 +177,21 @@
       <file leaf-file-name="check_admin_approveEdit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/check_admin_approveEdit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-154">
-              <caret line="129" column="23" lean-forward="false" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
+            <state relative-caret-position="469">
+              <caret line="219" column="20" lean-forward="false" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="72" />
               <folding>
-                <marker date="1511860615035" expanded="true" signature="1017:1071" ph="SELECT * FRO... eventEditLog" />
-                <marker date="1511860615035" expanded="true" signature="1017:1100" ph="SELECT * FRO... eventEditLog" />
-                <marker date="1511860615035" expanded="true" signature="1814:1890" ph="UPDATE event... " />
-                <marker date="1511860615035" expanded="true" signature="2069:2318" ph="UPDATE event... " />
-                <marker date="1511860615035" expanded="true" signature="2069:2696" ph="UPDATE event... " />
-                <marker date="1511860615035" expanded="true" signature="2875:2964" ph="UPDATE ticke... " />
-                <marker date="1511860615035" expanded="true" signature="2875:3001" ph="UPDATE ticke... " />
-                <marker date="1511860615035" expanded="true" signature="3224:3307" ph="SELECT * FRO... eventEditLog" />
-                <marker date="1511860615035" expanded="true" signature="4059:4135" ph="UPDATE event... " />
-                <marker date="1511860615035" expanded="true" signature="4316:4962" ph="UPDATE event... " />
-                <marker date="1511860615035" expanded="true" signature="5155:5281" ph="UPDATE ticke... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="checklogin.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/checklogin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="96" column="37" lean-forward="false" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
-              <folding>
-                <marker date="1511855960435" expanded="true" signature="201:280" ph="SELECT * FRO... account" />
-                <marker date="1511855960435" expanded="true" signature="1431:1538" ph="SELECT * FRO... admin" />
-                <marker date="1511855960435" expanded="true" signature="2145:2260" ph="SELECT * FRO... organizer" />
-                <marker date="1511855960435" expanded="true" signature="3338:3452" ph="SELECT * FRO... customer" />
+                <element signature="n#style#0;n#h4#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1511862176895" expanded="true" signature="1092:1146" ph="SELECT * FRO... eventEditLog" />
+                <marker date="1511862176895" expanded="true" signature="1092:1175" ph="SELECT * FRO... eventEditLog" />
+                <marker date="1511862176895" expanded="true" signature="1913:1989" ph="UPDATE event... " />
+                <marker date="1511862176895" expanded="true" signature="2172:2421" ph="UPDATE event... " />
+                <marker date="1511862176895" expanded="true" signature="2172:2799" ph="UPDATE event... " />
+                <marker date="1511862176895" expanded="true" signature="2982:3071" ph="UPDATE ticke... " />
+                <marker date="1511862176895" expanded="true" signature="2982:3108" ph="UPDATE ticke... " />
+                <marker date="1511862176895" expanded="true" signature="3336:3419" ph="SELECT * FRO... eventEditLog" />
+                <marker date="1511862176895" expanded="true" signature="4171:4247" ph="UPDATE event... " />
+                <marker date="1511862176895" expanded="true" signature="4432:5078" ph="UPDATE event... " />
+                <marker date="1511862176895" expanded="true" signature="5271:5397" ph="UPDATE ticke... " />
               </folding>
             </state>
           </provider>
@@ -218,6 +214,8 @@
       <find>time</find>
       <find>form</find>
       <find>paymentL</find>
+      <find>enjoy</find>
+      <find>index</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,7 +234,6 @@
         <option value="$PROJECT_DIR$/CSS2/signupformorganstyle.css" />
         <option value="$PROJECT_DIR$/signup_organizer.php" />
         <option value="$PROJECT_DIR$/signup.php" />
-        <option value="$PROJECT_DIR$/helper.php" />
         <option value="$PROJECT_DIR$/asset/css/bootstrap.min3.css" />
         <option value="$PROJECT_DIR$/css/template.css" />
         <option value="$PROJECT_DIR$/checksignup.php" />
@@ -255,9 +252,10 @@
         <option value="$PROJECT_DIR$/checklogin.php" />
         <option value="$PROJECT_DIR$/approveCreate.php" />
         <option value="$PROJECT_DIR$/createinbox.php" />
-        <option value="$PROJECT_DIR$/check_admin_approveCreate.php" />
         <option value="$PROJECT_DIR$/editinbox.php" />
         <option value="$PROJECT_DIR$/check_admin_approveEdit.php" />
+        <option value="$PROJECT_DIR$/check_admin_approveCreate.php" />
+        <option value="$PROJECT_DIR$/helper.php" />
         <option value="$PROJECT_DIR$/refundinbox.php" />
         <option value="$PROJECT_DIR$/refundapprove.php" />
       </list>
@@ -373,12 +371,12 @@
       <workItem from="1511585587050" duration="15048000" />
       <workItem from="1511696389885" duration="12316000" />
       <workItem from="1511713319357" duration="21516000" />
-      <workItem from="1511832970172" duration="21463000" />
+      <workItem from="1511832970172" duration="22757000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70343000" />
+    <option name="totallyTimeSpent" value="71637000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -646,14 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="96" column="16" lean-forward="false" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -954,43 +944,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/check_admin_approveEdit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-154">
-          <caret line="129" column="23" lean-forward="false" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
+        <state relative-caret-position="469">
+          <caret line="219" column="20" lean-forward="false" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="72" />
           <folding>
-            <marker date="1511860615035" expanded="true" signature="1017:1071" ph="SELECT * FRO... eventEditLog" />
-            <marker date="1511860615035" expanded="true" signature="1017:1100" ph="SELECT * FRO... eventEditLog" />
-            <marker date="1511860615035" expanded="true" signature="1814:1890" ph="UPDATE event... " />
-            <marker date="1511860615035" expanded="true" signature="2069:2318" ph="UPDATE event... " />
-            <marker date="1511860615035" expanded="true" signature="2069:2696" ph="UPDATE event... " />
-            <marker date="1511860615035" expanded="true" signature="2875:2964" ph="UPDATE ticke... " />
-            <marker date="1511860615035" expanded="true" signature="2875:3001" ph="UPDATE ticke... " />
-            <marker date="1511860615035" expanded="true" signature="3224:3307" ph="SELECT * FRO... eventEditLog" />
-            <marker date="1511860615035" expanded="true" signature="4059:4135" ph="UPDATE event... " />
-            <marker date="1511860615035" expanded="true" signature="4316:4962" ph="UPDATE event... " />
-            <marker date="1511860615035" expanded="true" signature="5155:5281" ph="UPDATE ticke... " />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1511862176895" expanded="true" signature="1092:1146" ph="SELECT * FRO... eventEditLog" />
+            <marker date="1511862176895" expanded="true" signature="1092:1175" ph="SELECT * FRO... eventEditLog" />
+            <marker date="1511862176895" expanded="true" signature="1913:1989" ph="UPDATE event... " />
+            <marker date="1511862176895" expanded="true" signature="2172:2421" ph="UPDATE event... " />
+            <marker date="1511862176895" expanded="true" signature="2172:2799" ph="UPDATE event... " />
+            <marker date="1511862176895" expanded="true" signature="2982:3071" ph="UPDATE ticke... " />
+            <marker date="1511862176895" expanded="true" signature="2982:3108" ph="UPDATE ticke... " />
+            <marker date="1511862176895" expanded="true" signature="3336:3419" ph="SELECT * FRO... eventEditLog" />
+            <marker date="1511862176895" expanded="true" signature="4171:4247" ph="UPDATE event... " />
+            <marker date="1511862176895" expanded="true" signature="4432:5078" ph="UPDATE event... " />
+            <marker date="1511862176895" expanded="true" signature="5271:5397" ph="UPDATE ticke... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/check_admin_approveCreate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="47" column="1" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+        <state relative-caret-position="2645">
+          <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#h4#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1511858526115" expanded="true" signature="1072:1110" ph="UPDATE event... " />
-            <marker date="1511858526115" expanded="true" signature="1072:1142" ph="UPDATE event... " />
-            <marker date="1511858526115" expanded="true" signature="1357:1427" ph="UPDATE event... " />
+            <marker date="1511862176907" expanded="true" signature="1074:1112" ph="UPDATE event... " />
+            <marker date="1511862176907" expanded="true" signature="1074:1144" ph="UPDATE event... " />
+            <marker date="1511862176907" expanded="true" signature="1363:1433" ph="UPDATE event... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/refundinbox.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2608">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
+        <state relative-caret-position="440">
+          <caret line="79" column="53" lean-forward="true" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="60" />
           <folding>
-            <marker date="1511861028783" expanded="true" signature="5153:5216" ph="..." />
+            <marker date="1511862376983" expanded="true" signature="2408:2645" ph="SELECT * FRO... refundlog" />
           </folding>
         </state>
       </provider>
@@ -998,7 +997,7 @@
     <entry file="file://$PROJECT_DIR$/refundapprove.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>

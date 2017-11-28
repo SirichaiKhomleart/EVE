@@ -3,7 +3,7 @@
 session_start();
 require_once('helper.php');
 require_once('connect.php');
-$_GET['eventID'];
+$eventID=$_GET['eventID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
