@@ -78,7 +78,7 @@ require_once('helper.php');
                           <li><a href="dashboard-v2.html">Customers</a></li>
                       </ul>
                     </li>
-                    <li class="ripple">
+                    <li class="active ripple">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-calendar-o"></span> Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>

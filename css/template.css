@@ -371,6 +371,48 @@ img.img-full-width {
 	font-size: 12px;
 	line-height: 100%;
 }
+.nino-btninbox1 {
+	display: inline-block;
+	color: #95e1d3;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox1select {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox2 {
+	display: inline-block;
+	color: #6EA0D2;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	border: 2px solid #6EA0D2;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox2select{
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #6EA0D2 ;
+	border: 2px solid #6EA0D2;
+	font-size: 12px;
+	line-height: 100%;
+}
 .nino-btns {
 	display: inline-block;
 	color: #95e1d3;
@@ -552,6 +594,50 @@ img.img-full-width {
 	text-align: center;
 	background-color: #95e1d3 ;
 	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox1:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox1select:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #95e1d3 ;
+	border: 2px solid #95e1d3;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox2:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #6EA0D2 ;
+	border: 2px solid #6EA0D2;
+	font-size: 12px;
+	line-height: 100%;
+}
+.nino-btninbox2select:hover {
+	display: inline-block;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	text-align: center;
+	background-color: #6EA0D2 ;
+	border: 2px solid #6EA0D2;
 	font-size: 12px;
 	line-height: 100%;
 }
@@ -785,6 +871,7 @@ img.img-full-width {
 #nino-header2 {
 	position: relative;
 	font-family: 'Montserrat', sans-serif;
+	
 	/*background: url(../images/bg-header.jpg) no-repeat center center / cover;*/
 }
 #nino-header2:after {
