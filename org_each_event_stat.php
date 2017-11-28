@@ -3,16 +3,8 @@ session_start();
 require_once('helper.php');
 require_once('connect.php');
 $event_ID=$_GET['event'];
-$q = "SELECT COUNT(DISTINCT(tickettype.ticketType_name)) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID='3'";
-$result=$mysqli->query($q);                    
-if(!$result){
-   echo "Select failed. Error: ".$mysqli->error ;
-}
-$row=$result->fetch_array();
-$numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -442,25 +434,8 @@ $numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
 
  
         var barChartData = {
-                <?php
-                    $q = "SELECT DISTINCT(tickettype.ticketType_name) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID='3' ";
-                    $result=$mysqli->query($q);                    
-                    if(!$result){
-                       echo "Select failed. Error: ".$mysqli->error ;
-                    }
-                    
-                ?>
-                labels: [ 
-                <?php $countw=1 while($row=$result->fetch_array()){ 
-                    if ($countw==$numtype) {
-                        echo $row['DISTINCT(tickettype.ticketType_name)']  ;
-                    }
-                    else{
-                        echo $row['DISTINCT(tickettype.ticketType_name)'].','  ;
-                    }
-                    $countw++;
-
-                } ?>],
+              
+                labels: ["Normal", "Premium", "Platinum"],
                 datasets: [
                     {
                         label: "My First dataset",
