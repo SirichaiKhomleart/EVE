@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc7a5b8c-91d3-4f36-9736-42044d80d59e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/createinbox.php" afterPath="$PROJECT_DIR$/createinbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editinbox.php" afterPath="$PROJECT_DIR$/editinbox.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org_each_event_stat.php" afterPath="$PROJECT_DIR$/org_each_event_stat.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -129,19 +126,24 @@
       <file leaf-file-name="org_each_event_stat.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/org_each_event_stat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
+            <state relative-caret-position="10235">
               <caret line="445" column="41" lean-forward="false" selection-start-line="445" selection-start-column="33" selection-end-line="445" selection-end-column="41" />
               <folding>
-                <marker date="1511855246295" expanded="true" signature="112:307" ph="SELECT COUNT... ticketType" />
-                <marker date="1511855246295" expanded="true" signature="5134:5194" ph="SELECT event... event" />
-                <marker date="1511855246295" expanded="true" signature="7171:7286" ph="SELECT COUNT... ticket" />
-                <marker date="1511855246295" expanded="true" signature="8970:9096" ph="SELECT SUM(p... paymentLog" />
-                <marker date="1511855246295" expanded="true" signature="10833:11002" ph="SELECT COUNT... refundLog" />
-                <marker date="1511855246295" expanded="true" signature="12872:12987" ph="SELECT COUNT... ticket" />
-                <marker date="1511855246295" expanded="true" signature="19663:19680" ph="..." />
-                <marker date="1511855246295" expanded="true" signature="20988:21184" ph="SELECT COUNT... account" />
-                <marker date="1511855246295" expanded="true" signature="21980:22178" ph="SELECT COUNT... account" />
-                <marker date="1511855246295" expanded="true" signature="22669:22857" ph="SELECT DISTI... ticketType" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -309,12 +311,12 @@
       <workItem from="1511585587050" duration="15048000" />
       <workItem from="1511696389885" duration="12316000" />
       <workItem from="1511713319357" duration="21516000" />
-      <workItem from="1511832970172" duration="16622000" />
+      <workItem from="1511832970172" duration="16790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65502000" />
+    <option name="totallyTimeSpent" value="65670000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -891,19 +893,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/org_each_event_stat.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="10235">
           <caret line="445" column="41" lean-forward="false" selection-start-line="445" selection-start-column="33" selection-end-line="445" selection-end-column="41" />
           <folding>
-            <marker date="1511855246295" expanded="true" signature="112:307" ph="SELECT COUNT... ticketType" />
-            <marker date="1511855246295" expanded="true" signature="5134:5194" ph="SELECT event... event" />
-            <marker date="1511855246295" expanded="true" signature="7171:7286" ph="SELECT COUNT... ticket" />
-            <marker date="1511855246295" expanded="true" signature="8970:9096" ph="SELECT SUM(p... paymentLog" />
-            <marker date="1511855246295" expanded="true" signature="10833:11002" ph="SELECT COUNT... refundLog" />
-            <marker date="1511855246295" expanded="true" signature="12872:12987" ph="SELECT COUNT... ticket" />
-            <marker date="1511855246295" expanded="true" signature="19663:19680" ph="..." />
-            <marker date="1511855246295" expanded="true" signature="20988:21184" ph="SELECT COUNT... account" />
-            <marker date="1511855246295" expanded="true" signature="21980:22178" ph="SELECT COUNT... account" />
-            <marker date="1511855246295" expanded="true" signature="22669:22857" ph="SELECT DISTI... ticketType" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
