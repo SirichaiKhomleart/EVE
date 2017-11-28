@@ -270,57 +270,31 @@ $event_ID=$_GET['event'];
               <div class="panel">
                 <div class="panel-heading"><h3>Tickets Details</h3></div>
                  <div class="panel-body">   
-                               
+                  <?php
+                    $q = "SELECT tickettype.ticketType_name,tickettype.ticketType_totalSeats,tickettype.ticketType_price,COUNT(ticket.ticket_ID) FROM `event`,`ticket`,`tickettype` WHERE ticket.ticketType_ID=tickettype.ticketType_ID AND ticket.event_ID=event.event_ID AND event.event_ID='3' GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    while($row=$result->fetch_array()){?>             
                   <div class="col-md-12 list-timeline">
                     <div class="col-md-12 list-timeline-section bg-light">
                       <div class="col-md-12 list-timeline-detail">
                         <h4>
                           <span class="icon-notebook icons list-timeline-icon"></span>
-                          Normal Ticket
-                          <small>2,000 Tickets</small>
+                          <?php echo $row['ticketType_name']?>
+                          <small><?php echo $row['ticketType_totalSeats']?> Tickets</small>
                         </h4>
                         <p>
-                          Ticket Price : 3,500 ฿ <br>
-                          Sold out : 1,224 Tickets <br>
-                          Total Income : 4,284,000 ฿
+                          Ticket Price : <?php echo $row['ticketType_price']?> ฿ <br>
+                          Sold out : <?php echo $row['COUNT(ticket.ticket_ID)']?> Tickets <br>
+                          Total Income : <?php $totalprice=$row['COUNT(ticket.ticket_ID)']*$row['COUNT(ticket.ticket_ID)']; echo $totalprice; ?> ฿
                         </p>
                       </div>
                     </div>
                   </div>
-
-                   <div class="col-md-12 list-timeline">
-                    <div class="col-md-12 list-timeline-section bg-light">
-                      <div class="col-md-12 list-timeline-detail">
-                        <h4>
-                          <span class="icon-notebook icons list-timeline-icon"></span>
-                          Premuim Ticket
-                          <small>2,000 Tickets</small>
-                        </h4>
-                        <p>
-                          Ticket Price : 4,500 ฿ <br>
-                          Sold out : 1,224 Tickets <br>
-                          Total Income : 5ม508,000 ฿
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 list-timeline">
-                    <div class="col-md-12 list-timeline-section bg-light">
-                      <div class="col-md-12 list-timeline-detail">
-                        <h4>
-                          <span class="icon-notebook icons list-timeline-icon"></span>
-                          Platinum Ticket
-                          <small>2,000 Tickets</small>
-                        </h4>
-                        <p>
-                          Ticket Price : 6,500 ฿ <br>
-                          Sold out : 1,224 Tickets <br>
-                          Total Income : 7ม956,000 ฿
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <?php } ?>
+                   
                 </div>
               </div>
             </div>
