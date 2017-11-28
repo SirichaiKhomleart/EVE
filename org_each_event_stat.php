@@ -74,7 +74,7 @@ require_once('helper.php');
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
-                    <li class="ripple">
+                    <li class="active ripple">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-calendar-o"></span> Your Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>
