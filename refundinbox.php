@@ -60,23 +60,32 @@ require_once('connect.php');
 						<h4 class="nino-sectionHeading">Notification</h4>						
 					</div>
 					
+					<?php
+                $q = "SELECT * FROM `refundlog`,`ticket`,`event`,`tickettype`,`account` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND refundlog.account_ID=account.account_ID";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) {
+
+                    ?>
 					<div class="box4">
 						<hr>
 						<div class="row">
 							<div class="col-md-4">
-								<img src="images/poster/icone1.jpg" width="150">
+								<img src="<?php echo $row['event_iconPicture']; ?>" width="150">
 							</div>
 							<div class="col-md-8">
 								<p class="quotet1">Request for refund tickets</p>
-								<p class="date1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1">From : CN120001<br>Premium : 2 tickets<br>NEW!</p><br>
+								<p class="date1"><?php echo $row['event_name']; ?></p><br><br>
+								<p class="date1">From : <?php echo $row['account_fname']." ".$row['account_lname']; ?><br><?php echo $row['ticketType_name']; ?><br>NEW!</p><br>
 								<br><br><br>
 								<a href="detail.html" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
+
 					</div>
-					<div class="box4">
+					<?php } ?>
+<hr>
+					<!-- <div class="box4">
 						<hr>
 						<div class="row">
 							<div class="col-md-4">
@@ -136,9 +145,10 @@ require_once('connect.php');
 							</div>
 							<div style="clear:both;"></div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<br><br>
+
     		</div>
     	</div>
     </section> <!--/#nino-brand-->
