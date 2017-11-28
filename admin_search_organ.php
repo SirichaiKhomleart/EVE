@@ -79,39 +79,44 @@ if (isset($_SESSION['current_type'])){
     <div class="container-fluid mimin-wrapper">
       <!-- start:Left Menu -->
       <div id="left-menu">
-              <div class="sub-left-menu scroll">
-                <ul class="nav nav-list">
-                    <li><div class="left-bg"></div></li>
-                    <li class="time">
-                      <h1 class="animated fadeInLeft">21:00</h1>
-                      <p class="animated fadeInRight">Sat,October 1st 2029</p>
-                    </li>
-                    <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
-                    <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
-                      <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                    </li>
-                    <li class="active ripple">
-                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                      <ul class="nav nav-list tree">
-                          <li ><a href="admin_search_organ.php">Organizers</a></li>
-                          <li ><a href="admin_search_user.php">Customers</a></li>
-                      </ul>
-                    </li>
-                    <li class="active ripple" onclick="location.href='admin_search_event.php';">
-                      <a class="tree-toggle nav-header">
-                        <span class="fa fa-calendar-o"></span> Event
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                      
-                    </li>
-                    
-                  </ul>
-                </div>
-            </div>
+        <div class="sub-left-menu scroll">
+          <ul class="nav nav-list">
+            <li><div class="left-bg"></div></li>
+            <li class="time">
+              <h1 class="animated fadeInLeft">21:00</h1>
+              <p class="animated fadeInRight">Sat,October 1st 2029</p>
+            </li>
+            <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
+            <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
+              <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
+                <span class="fa-angle-right fa right-arrow text-right"></span>
+              </a>
+            </li>
+            <li class="active ripple">
+              <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
+                <span class="fa-angle-right fa right-arrow text-right"></span>
+              </a>
+              <ul class="nav nav-list tree">
+                <li ><a href="admin_search_organ.php">Organizers</a></li>
+                <li ><a href="admin_search_user.php">Customers</a></li>
+              </ul>
+            </li>
+            <li class="active ripple" onclick="location.href='admin_search_event.php';">
+              <a class="tree-toggle nav-header">
+                <span class="fa fa-calendar-o"></span> Event
+              </a>
+              
+            </li>
+            <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
+              <a class="tree-toggle nav-header">
+                <span class="fa fa-calendar-o"></span> Ticket
+              </a>
+              
+            </li>
+            
+          </ul>
+        </div>
+      </div>
       <!-- end: Left Menu -->
       <div id="content">
         <div class="col-md-12">
@@ -132,21 +137,21 @@ if (isset($_SESSION['current_type'])){
             <form action="" method="post">
              <div>
               <div class="col-md-12">
-                <div class="col-md-12"><label class="col-sm-1 control-label text-right">First Name</label>
+                <div class="col-md-12"><label class="col-sm-1 control-label text-right"><strong>First Name</strong></label>
                   <div class="col-sm-5"><input name="fname" type="text" class="form-control border-bottom"></div>
-                  <label class="col-sm-1 control-label text-right">Last Name</label>
+                  <label class="col-sm-1 control-label text-right"><strong>Last Name</strong></label>
                   <div class="col-sm-5"><input name="lname" type="text" class="form-control border-bottom"></div>   
                 </div>
                 <div class="col-md-12">
-                  <label class="col-sm-1 control-label text-right">Organizer Name</label>
+                  <label class="col-sm-1 control-label text-right"><strong>Organizer Name</strong></label>
                   <div class="col-sm-5"><input name="oname" type="text" class="form-control border-bottom"></div>
 
-                  <label class="col-sm-1 control-label text-right">Organizer Email</label>
+                  <label class="col-sm-1 control-label text-right"><strong>Organizer Email</strong></label>
                   <div class="col-sm-5"><input name="email" type="text" class="form-control border-bottom"></div>
 
                 </div>
                 <div class="col-md-12">
-                 <label class="col-sm-1 control-label text-right">Phone Number</label>
+                 <label class="col-sm-1 control-label text-right"><strong>Phone Number</strong></label>
                  <div class="col-sm-3"><input name="phone" type="text" class="form-control border-bottom"></div>
                </div>     
              </div>                       
@@ -162,7 +167,7 @@ if (isset($_SESSION['current_type'])){
   <div class="col-md-12 top-20 padding-0">
     <div class="col-md-12">
       <div class="panel">
-        <div class="panel-heading"><h3>Data Tables</h3></div>
+        <div class="panel-heading"><h3>Organizers Tables</h3></div>
         <div class="panel-body">
           <div class="responsive-table">
             <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">

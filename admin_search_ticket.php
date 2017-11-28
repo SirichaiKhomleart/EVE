@@ -104,7 +104,12 @@ if (isset($_SESSION['current_type'])){
                     <li class="active ripple" onclick="location.href='admin_search_event.php';">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-calendar-o"></span> Event
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      
+                    </li>
+                    <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-calendar-o"></span> Ticket
                       </a>
                       
                     </li>
@@ -121,9 +126,8 @@ if (isset($_SESSION['current_type'])){
              if (isset($_POST['submit'])) {
               $Ename = $_POST['ename'];
               $Oname = $_POST['oname'];
-              $Location = $_POST['location'];
+              $Cusname = $_POST['cusname'];
               $Etype = $_POST['etype'];
-              $Status = $_POST['status'];
               $Day = $_POST['day'];
               $Month = $_POST['month'];
               $Year = $_POST['year'];
@@ -145,8 +149,8 @@ if (isset($_SESSION['current_type'])){
               <div class="col-md-12">
                 <div>
                   <div class="form-group">
-                    <label class="col-sm-1 control-label text-left"><strong>Location</strong></label>
-                    <div class="col-sm-4"><input name="location" type="text" class="form-control border-bottom"></div>
+                    <label class="col-sm-1 control-label text-left"><strong>Customer Name</strong></label>
+                    <div class="col-sm-4"><input name="cusname" type="text" class="form-control border-bottom"></div>
                     <label class="col-sm-1 control-label text-right"><strong>Event Type</strong></label>
                     <div class="col-sm-2">
                       <select class="form-control" name="etype">
@@ -164,15 +168,7 @@ if (isset($_SESSION['current_type'])){
                         }
                         ?>
                       </select>
-                    </div>
-                    <label class="col-sm-1 control-label text-right"><strong>Status</strong></label>
-                    <div class="col-sm-2">
-                      <select class="form-control" name="status">
-                        <option value="2">All</option>
-                        <option value="1">Approve</option>
-                        <option value="0">Disapprove</option>
-                      </select>
-                    </div>
+                    </div>                  
                   </div>
                 </div>                
               </div>
@@ -216,10 +212,8 @@ if (isset($_SESSION['current_type'])){
                     <label class="col-sm-2 control-label text-center">Option Date Search</label>
                     <div class="col-sm-2">
                       <select class="form-control" name="optionsearch">
-                        <option value="0">Start Before</option>
-                        <option value="1">Start After</option>
-                        <option value="2">End Before</option>
-                        <option value="3">End After</option>
+                        <option value="0">Before</option>
+                        <option value="1">After</option>
                       </select>
                     </div>
                   </div>                
@@ -236,22 +230,21 @@ if (isset($_SESSION['current_type'])){
     <div class="col-md-12 top-20 padding-0">
       <div class="col-md-12">
         <div class="panel">
-          <div class="panel-heading"><h3>Event Tables</h3></div>
+          <div class="panel-heading"><h3>Ticket Tables</h3></div>
           <div class="panel-body">
             <div class="responsive-table">
               <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Created Time</th>
-                    <th>Event ID</th>
+                    <th>Payment Time</th>
+                    <th>Payment ID</th>
+                    <th>Ticket ID</th>
+                    <th>Ticket Type</th>
                     <th>Event Name</th>
-                    <th>Organizer Name</th>
                     <th>Event Type</th>
-                    <th>Event Location</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Event Time</th>
-                    <th>Detail</th>
+                    <th>Event Date</th>
+                    <th>Organizer Name</th>
+                    <th>Customer Name</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -267,8 +260,8 @@ if (isset($_SESSION['current_type'])){
                   }else{
                     $soname = "";
                   }
-                  if (!$_POST['location']=='') {
-                    $slo = " AND event_location LIKE '%".$Location."%' ";
+                  if (!$_POST['cusname']=='') {
+                    $slo = " AND (account_fname LIKE '%".$Cusname."%' OR account_lname LIKE '%".$Cusname."%')";
                   }else{
                     $slo = "";
                   }
@@ -276,11 +269,6 @@ if (isset($_SESSION['current_type'])){
                     $setype = " AND eventType_ID='".$Etype."' ";
                   }else{
                     $setype = "";
-                  }
-                  if (!($_POST['status']==2)) {
-                    $sstatus = " AND event_approveStatus='".$Status."' ";
-                  }else{
-                    $sstatus = "";
                   }
                   if (!($_POST['day']==0 OR $_POST['month']==0 OR $_POST['year']=='')) {
                     if(!($_POST['month'] == 1 or $_POST['month'] == 3 or $_POST['month'] == 5 or $_POST['month'] == 7 or $_POST['month'] == 8 or $_POST['month'] == 10 or $_POST['month'] == 12)){
@@ -298,13 +286,9 @@ if (isset($_SESSION['current_type'])){
                       $date = date_create($Year."-".$Month."-".$Day);
                       $datesearch = date_format($date, 'y-m-d');
                       if ($Optionsearch==0) {
-                        $code = " AND event_dateStart<= ";
+                        $code = " AND ticket.event_dateEnd<= ";
                       }elseif ($Optionsearch==1) {
-                        $code = " AND event_dateStart>= ";
-                      }elseif ($Optionsearch==2) {
-                        $code = " AND event_dateEnd<= ";
-                      }elseif ($Optionsearch==3) {
-                        $code = " AND event_dateEnd>= ";
+                        $code = " AND ticket.event_dateEnd>= ";
                       }
                       $sdate = $code."'".$datesearch."' ";
                     }else{
@@ -318,7 +302,7 @@ if (isset($_SESSION['current_type'])){
                   }else{
                     $sdate = "";
                   }
-                  $q = "SELECT * FROM event,eventtype,organizer WHERE event.event_typeID=eventtype.eventType_ID AND event.event_organizerID=organizer.account_ID".$sename.$soname.$slo.$setype.$sstatus.$sdate;
+                  $q = "SELECT * FROM ticket,account,organizer,tickettype,event,paymentlog,eventtype WHERE ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_organizerID=organizer.account_ID AND paymentlog.payment_ID=ticket.payment_ID AND eventtype.eventType_ID=event.event_typeID".$sename.$soname.$slo.$setype.$sdate;
                   $result=$mysqli->query($q);                    
                   if(!$result){
                     echo "Select failed. Error: ".$mysqli->error ;
@@ -328,20 +312,19 @@ if (isset($_SESSION['current_type'])){
                     <?php
                     while($row=$result->fetch_array()){
                       echo "<tr>";
-                      echo "<td>".$row['event_createTimeStamp']."</td>";
-                      echo "<td>".$row['event_ID']."</td>";
+                      echo "<td>".$row['payment_timeStamp']."</td>";
+                      echo "<td>".$row['payment_ID']."</td>";
+                      echo "<td>".$row['ticket_ID']."</td>";
+                      echo "<td>".$row['ticketType_name']."</td>";
                       echo "<td>".$row['event_name']."</td>";
-                      echo "<td>".$row['organizer_name']."</td>";
                       echo "<td>".$row['eventType_name']."</td>";
-                      echo "<td>".$row['event_location']."</td>";
-                      echo "<td>".$row['event_dateStart']."</td>";
                       echo "<td>".$row['event_dateEnd']."</td>";
-                      echo "<td>".$row['event_timeStart']." to ".$row['event_timeEnd']."</td>";
-                      echo "<td>".$row['event_detail']."</td>";
-                      if($row['event_approveStatus']==0){
-                        $statusname = "Disapprove";
-                      }elseif ($row['event_approveStatus']==1) {
-                        $statusname = "Approve";
+                      echo "<td>".$row['organizer_name']."</td>";
+                      echo "<td>".$row['account_fname']." ".$row['account_lname']."</td>";
+                      if($row['ticket_status']==1){
+                        $statusname = "Vaild";
+                      }elseif ($row['ticket_status']==0) {
+                        $statusname = "Invaild";
                       }else{
                         $statusname = "Undefined";
                       }

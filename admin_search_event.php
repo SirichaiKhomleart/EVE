@@ -104,7 +104,12 @@ if (isset($_SESSION['current_type'])){
                     <li class="active ripple" onclick="location.href='admin_search_event.php';">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-calendar-o"></span> Event
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      
+                    </li>
+                    <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-calendar-o"></span> Ticket
                       </a>
                       
                     </li>
