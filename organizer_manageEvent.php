@@ -111,7 +111,7 @@ if($pageAction=="Cancel") {
             <div class="box4">
                 <hr>
                 <div class="row">
-                    <form action="organizer_index.php" method="post">
+                    <form action="check_organizer_manageEvent.php" method="post">
                         <input type="submit" name="BACK" class="nino-btnorgsta " value="Back"></input>
                     </form>
                     <div style="clear:both;"></div>
@@ -262,6 +262,39 @@ if($pageAction=="Cancel") {
                                         <span class="quotet">Total Tickets : </span>
                                     </div>
                                     <div id="dynamicInput">
+
+
+                                        <?php
+                                        $qrepticket="SELECT ticketType_name,ticketType_price,ticketType_totalSeats FROM ticketType
+                                                      WHERE event_ID = '$fromEvent'";
+                                        $resulttic = $mysqli->query($qrepticket);
+                                        while($rowtic = $resulttic->fetch_array()) {
+                                            $ticname=$rowtic['ticketType_name'];
+                                            $ticprice=$rowtic['ticketType_price'];
+                                            $ticseat=$rowtic['ticketType_totalSeats'];
+
+                                            ?>
+                                            <div class="col-md-3 pull-left ">
+                                            </div>
+                                            <div class="col-md-3 pull-left">
+                                                <input class="input3 " type="text" name="tdummyicket_type1" placeholder="<?php echo $ticname; ?>" disabled>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <input class="input3" type="text" name="dummyticket_price1" placeholder="<?php echo $ticprice; ?>" disabled>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <input class='input3' type="text" name="dummyticket_total1" placeholder="<?php echo $ticseat; ?>" disabled>
+                                            </div>
+                                            <br><br>
+
+                                            <?php
+                                        }
+
+                                        ?>
+
+                                        <p><br><br>Due to our policies, we are not allow you to change ticket information after published.</p>
+                                        <p>You still can add more type of tickets.</p>
+
                                         <div class="col-md-3 pull-left ">
                                         </div>
                                         <div class="col-md-3 pull-left">
@@ -273,6 +306,12 @@ if($pageAction=="Cancel") {
                                         <div class="col-md-3 ">
                                             <input class='input3' type="text" name="ticket_total1">
                                         </div>
+
+
+
+
+
+
                                     </div>
 
 
