@@ -148,7 +148,7 @@ if($pageAction=="Cancel") {
             <div class="container">
                 <div class="detail">
                     <div class="box1">
-                        <form action="check_organizer_createEvent.php" method="post" enctype="multipart/form-data">
+                        <form action="check_organizer_manageEvent.php" method="post" enctype="multipart/form-data">
                             <br>
                             <h4 class="nino-sectionHeading">
                                 <span class="nino-subHeading">Something Wrong?</span>
@@ -277,7 +277,7 @@ if($pageAction=="Cancel") {
                                             <div class="col-md-3 pull-left ">
                                             </div>
                                             <div class="col-md-3 pull-left">
-                                                <input class="input3 " type="text" name="tdummyicket_type1" placeholder="<?php echo $ticname; ?>" disabled>
+                                                <input class="input3 " type="text" name="dummyticket_type1" placeholder="<?php echo $ticname; ?>" disabled>
                                             </div>
                                             <div class="col-md-3 ">
                                                 <input class="input3" type="text" name="dummyticket_price1" placeholder="<?php echo $ticprice; ?>" disabled>
@@ -360,8 +360,9 @@ if($pageAction=="Cancel") {
                                 <hr>
                                 <br>
                                 <br>
+                                <input type="hidden" name="eventIDhidden" value="<?php echo $fromEvent; ?>">
                                 <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right"
-                                       value="Send Request"></input>
+                                       value="Send Edit Request"></input>
                                 <div style="clear:both;"></div>
                             </div>
                             <br>

@@ -8,6 +8,7 @@ require_once('connect.php');
 $current_ID = $_SESSION['current_ID'];
 $event_organizer = $_SESSION['current_organizer_name'];
 
+$event_ID=$_POST['eventIDhidden'];
 $event_name = $_POST['event_name'];
 $event_location = $_POST['event_location'];
 $event_typeID = $_POST['event_typeID'];
@@ -40,6 +41,7 @@ if ($check !== false) {
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
+
 }
 //// Check file size
 //if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -66,30 +68,33 @@ if ($uploadOk == 0) {
 
 
 
-$q = "INSERT INTO event(event_name,event_organizerID,event_typeID,event_location,
-                        event_dateStart,event_dateEnd,event_timeStart,event_timeEnd,
-                        event_iconPicture,event_posterPicture,event_detail)
-    VALUES ('$event_name','$current_ID','$event_typeID','$event_location',
+$q = "INSERT INTO eventEditLog(event_ID,edit_name,edit_typeID,edit_location,
+                        edit_dateStart,edit_dateEnd,edit_timeStart,edit_timeEnd,
+                        edit_iconPicture,edit_posterPicture,edit_detail)
+    VALUES ('$event_ID','$event_name','$event_typeID','$event_location',
             '$event_dateStart','$event_dateEnd','$event_timeStart','$event_timeEnd',
             '$event_posterPicture','$event_posterPicture','$event_detail')";
+echo $q;
 $result = $mysqli->query($q);
 if (!$result) {
-    echo "<br>INSERT event failed. Error: " . $mysqli->error;
+    echo "<br>INSERT editevent failed. Error: " . $mysqli->error;
 } else {
     //insert success
-    echo "<br>INSERT event suc";
+    echo "<br>INSERT editevent suc";
 }
 
-$qSearchEventID = "SELECT event_ID FROM event WHERE event_name='$event_name' AND event_organizerID='$current_ID'";
-$resultSearch = $mysqli->query($qSearchEventID);
-$rowSearch = $resultSearch->fetch_array();
-$event_ID = $rowSearch['event_ID'];
-echo "<br>event ID after insert: " . $event_ID;
+//$qSearchEventID = "SELECT event_ID FROM event WHERE event_name='$event_name' AND event_organizerID='$current_ID'";
+//$resultSearch = $mysqli->query($qSearchEventID);
+//$rowSearch = $resultSearch->fetch_array();
+//$event_ID = $rowSearch['event_ID'];
+//echo "<br>event ID after insert: " . $event_ID;
 
 $ticketloopcount = true;
 $ticketTypeNo = 1;
 while ($ticketloopcount) {
-    if (isset($_POST['ticket_type' . $ticketTypeNo])) {
+    echo isset($_POST['ticket_type' . $ticketTypeNo]);
+    echo "<br>isset: ".$_POST['ticket_type'. $ticketTypeNo];
+    if ($_POST['ticket_type' . $ticketTypeNo]!=NULL) {
         echo "<br>type: " . $_POST['ticket_type' . $ticketTypeNo];
 
         $ticketType = $_POST['ticket_type' . $ticketTypeNo];
