@@ -71,7 +71,7 @@ require_once('connect.php');
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
-                    <li class="active ripple">
+                    <!-- <li class="active ripple">
                       <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
@@ -81,7 +81,7 @@ require_once('connect.php');
                         <span class="fa fa-calendar-o"></span> Your Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
-                    </li>
+                    </li> -->
                     
                   </ul>
                 </div>
