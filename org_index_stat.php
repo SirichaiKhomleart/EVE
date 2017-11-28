@@ -138,7 +138,7 @@ require_once('connect.php');
                                       <div class="panel-body text-center">
                                         <?php
                                             
-                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -166,7 +166,7 @@ require_once('connect.php');
                                       <div class="panel-body text-center">
                                         <?php
                                             
-                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." and refundlog.ticket_ID=ticket.ticket_ID and ticket.event_ID=event.event_ID";
+                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." AND refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -232,7 +232,7 @@ require_once('connect.php');
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
                                             
-                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -245,20 +245,20 @@ require_once('connect.php');
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
                                             
-                                            $q = "SELECT SUM(payment_money) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $q = "SELECT SUM(payment_money) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
                                             }
                                             $row=$result->fetch_array();
                                         ?>
-                                      <h2 style="line-height:.4;"><?php echo $row['SUM(payment_money)']; ?></h2>
+                                      <h2 style="line-height:.4;"><?php echo 0+$row['SUM(payment_money)']; ?></h2>
                                       <small>Total Price</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
                                             
-                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." and refundlog.ticket_ID=ticket.ticket_ID and ticket.event_ID=event.event_ID";
+                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." AND refundlog.ticket_ID=ticket.ticket_ID and ticket.event_ID=event.event_ID";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
