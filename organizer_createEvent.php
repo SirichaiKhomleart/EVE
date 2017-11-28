@@ -137,7 +137,7 @@ if (isset($_SESSION['current_type'])) {
                                     <span class="quotet">Time : </span>
                                 </div>
                                 <div class="col-md-3 pull-left">
-                                    <input class="input1" type="text" name="event_timeStrat">
+                                    <input class="input1" type="text" name="event_timeStart">
                                 </div>
                                 <div class="col-md-2 pull-left">
                                     <span class="quoteinput">To : </span>
