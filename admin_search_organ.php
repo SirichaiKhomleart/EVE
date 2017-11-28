@@ -62,7 +62,7 @@ if (isset($_SESSION['current_type'])){
   <!-- end: Css -->
 
   <link rel="shortcut icon" href="asset/img/logomi.png">
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- HTML5 shim AND Respond.js IE8 support of HTML5 elements AND media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -179,31 +179,31 @@ if (isset($_SESSION['current_type'])){
               <?php
               if (isset($_POST['submit'])) {
                 if (!$_POST['fname']=='') {
-                  $sfname = " and account_fname LIKE '%".$Fname."%' ";
+                  $sfname = " AND account_fname LIKE '%".$Fname."%' ";
                 }else{
                   $sfname = "";
                 }
                 if (!$_POST['lname']=='') {
-                  $slname = " and account_lname LIKE '%".$Lname."%' ";
+                  $slname = " AND account_lname LIKE '%".$Lname."%' ";
                 }else{
                   $slname = "";
                 }
                 if (!$_POST['email']=='') {
-                  $semail = " and organizer_email LIKE '%".$Email."%' ";
+                  $semail = " AND organizer_email LIKE '%".$Email."%' ";
                 }else{
                   $semail = "";
                 }
                 if (!$_POST['oname']=='') {
-                  $soname = " and organizer_name LIKE '%".$Oname."%' ";
+                  $soname = " AND organizer_name LIKE '%".$Oname."%' ";
                 }else{
                   $soname = "";
                 }
                 if (!$_POST['phone']=='') {
-                  $sphone = " and organizer_phone= '".$Phone."' ";
+                  $sphone = " AND organizer_phone= '".$Phone."' ";
                 }else{
                   $sphone = "";
                 }                                                                     
-                $q = "SELECT * FROM account,organizer WHERE account_Type = 'Organizer' and account.account_ID=organizer.account_ID".$sfname.$slname.$semail.$soname.$sphone;
+                $q = "SELECT * FROM account,organizer WHERE account_Type = 'Organizer' AND account.account_ID=organizer.account_ID".$sfname.$slname.$semail.$soname.$sphone;
                 $result=$mysqli->query($q);                    
                 if(!$result){
                   echo "Select failed. Error: ".$mysqli->error ;
