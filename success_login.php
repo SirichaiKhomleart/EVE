@@ -120,6 +120,22 @@ if (isset($_SESSION['current_type'])){
 							if(!$result){
 								echo "Select failed. Error: ".$mysqli->error ;
 							}
+							$t1 = $_SESSION['type1'];
+							for ($i=0; $i < $t1 ; $i++) { 
+								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '1', '2017-9-30', '1');";
+								$result=$mysqli->query($q);                    
+								if(!$result){
+									echo "Select failed. Error: ".$mysqli->error ;
+								}
+							}
+							$t2 = $_SESSION['type2'];
+							for ($j=0; $j < $t2 ; $j++) { 
+								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '2', '2017-9-30', '1');";
+								$result=$mysqli->query($q);                    
+								if(!$result){
+									echo "Select failed. Error: ".$mysqli->error ;
+								}
+							}
 							?>
 							<br>
 							<p class="topic4">Payment Successful!!</p>
