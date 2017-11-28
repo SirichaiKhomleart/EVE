@@ -132,7 +132,7 @@ require_once('connect.php');
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
 								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
 								<br>
-								<a href="detail.html" class="nino-btnb">More Detail</a>
+								<a href="detail.html?eventid=<?php echo $eventID; ?>" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>

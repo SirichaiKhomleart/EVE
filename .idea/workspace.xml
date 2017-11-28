@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc7a5b8c-91d3-4f36-9736-42044d80d59e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/check_admin_approveEdit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editinbox.php" afterPath="$PROJECT_DIR$/editinbox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/refundapprove.php" afterPath="$PROJECT_DIR$/refundapprove.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/refundinbox.php" afterPath="$PROJECT_DIR$/refundinbox.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,30 +37,6 @@
                 <marker date="1511840499927" expanded="true" signature="15647:15892" ph="SELECT * FRO... event" />
                 <marker date="1511840499927" expanded="true" signature="17215:17505" ph="SELECT ticke... ticket" />
                 <marker date="1511840499927" expanded="true" signature="19413:19431" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin_index_stat.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Admin_index_stat.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="271" column="89" lean-forward="false" selection-start-line="271" selection-start-column="89" selection-end-line="271" selection-end-column="89" />
-              <folding>
-                <marker date="1511850676331" expanded="true" signature="5781:5814" ph="SELECT COUNT... event" />
-                <marker date="1511850676331" expanded="true" signature="7527:7564" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="9289:9329" ph="SELECT COUNT... paymentLog" />
-                <marker date="1511850676331" expanded="true" signature="11193:11230" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="12036:12103" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="12907:12975" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="14655:14695" ph="SELECT COUNT... paymentLog" />
-                <marker date="1511850676331" expanded="true" signature="15502:15543" ph="SELECT SUM(p... paymentLog" />
-                <marker date="1511850676331" expanded="true" signature="18088:18105" ph="..." />
-                <marker date="1511850676331" expanded="true" signature="19419:19486" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="20285:20350" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="21321:21446" ph="SELECT COUNT... account" />
-                <marker date="1511850676331" expanded="true" signature="22260:22383" ph="SELECT COUNT... account" />
               </folding>
             </state>
           </provider>
@@ -137,7 +112,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check_admin_approveCreate.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="check_admin_approveCreate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/check_admin_approveCreate.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-345">
@@ -148,6 +123,28 @@
                 <marker date="1511858526115" expanded="true" signature="1072:1142" ph="UPDATE event... " />
                 <marker date="1511858526115" expanded="true" signature="1357:1427" ph="UPDATE event... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refundinbox.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/refundinbox.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2608">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
+              <folding>
+                <marker date="1511861028783" expanded="true" signature="5153:5216" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refundapprove.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/refundapprove.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -261,6 +258,8 @@
         <option value="$PROJECT_DIR$/check_admin_approveCreate.php" />
         <option value="$PROJECT_DIR$/editinbox.php" />
         <option value="$PROJECT_DIR$/check_admin_approveEdit.php" />
+        <option value="$PROJECT_DIR$/refundinbox.php" />
+        <option value="$PROJECT_DIR$/refundapprove.php" />
       </list>
     </option>
   </component>
@@ -374,12 +373,12 @@
       <workItem from="1511585587050" duration="15048000" />
       <workItem from="1511696389885" duration="12316000" />
       <workItem from="1511713319357" duration="21516000" />
-      <workItem from="1511832970172" duration="21177000" />
+      <workItem from="1511832970172" duration="21463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70057000" />
+    <option name="totallyTimeSpent" value="70343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -415,29 +414,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/organizer_createEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4554">
-          <caret line="198" column="73" lean-forward="false" selection-start-line="198" selection-start-column="73" selection-end-line="198" selection-end-column="73" />
-          <folding>
-            <marker date="1511841401883" expanded="true" signature="2728:2842" ph="SELECT event... eventType" />
-            <marker date="1511841401883" expanded="true" signature="2728:2845" ph="SELECT event... eventType" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/checksignup_organizer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="61" selection-end-column="25" />
-          <folding>
-            <marker date="1511741207256" expanded="true" signature="942:1190" ph="INSERT INTO account... " />
-            <marker date="1511741207256" expanded="true" signature="1367:1434" ph="SELECT accou... account" />
-            <marker date="1511741207256" expanded="true" signature="1826:2091" ph="INSERT INTO organizer... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/checksignup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2323">
@@ -896,30 +872,15 @@
         <state relative-caret-position="9453">
           <caret line="411" column="0" lean-forward="false" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1511856492315" expanded="true" signature="4731:4791" ph="SELECT event... event" />
-            <marker date="1511856492315" expanded="true" signature="6768:6883" ph="SELECT COUNT... ticket" />
-            <marker date="1511856492315" expanded="true" signature="8567:8693" ph="SELECT SUM(p... paymentlog" />
-            <marker date="1511856492315" expanded="true" signature="10430:10599" ph="SELECT COUNT... refundlog" />
-            <marker date="1511856492315" expanded="true" signature="12469:12584" ph="SELECT COUNT... ticket" />
-            <marker date="1511856492315" expanded="true" signature="15308:15630" ph="SELECT ticke... event" />
-            <marker date="1511856492315" expanded="true" signature="18677:18694" ph="..." />
-            <marker date="1511856492315" expanded="true" signature="20002:20198" ph="SELECT COUNT... account" />
-            <marker date="1511856492315" expanded="true" signature="20994:21192" ph="SELECT COUNT... account" />
+            <marker date="1511860803959" expanded="true" signature="4731:4791" ph="SELECT event... event" />
+            <marker date="1511860803959" expanded="true" signature="6768:6883" ph="SELECT COUNT... ticket" />
+            <marker date="1511860803959" expanded="true" signature="8567:8693" ph="SELECT SUM(p... paymentlog" />
+            <marker date="1511860803959" expanded="true" signature="10430:10599" ph="SELECT COUNT... refundlog" />
+            <marker date="1511860803959" expanded="true" signature="12469:12584" ph="SELECT COUNT... ticket" />
+            <marker date="1511860803959" expanded="true" signature="15308:15630" ph="SELECT ticke... event" />
+            <marker date="1511860803959" expanded="true" signature="18677:18694" ph="..." />
+            <marker date="1511860803959" expanded="true" signature="20002:20198" ph="SELECT COUNT... account" />
+            <marker date="1511860803959" expanded="true" signature="20994:21192" ph="SELECT COUNT... account" />
           </folding>
         </state>
       </provider>
@@ -1021,6 +982,24 @@
             <marker date="1511858526115" expanded="true" signature="1072:1142" ph="UPDATE event... " />
             <marker date="1511858526115" expanded="true" signature="1357:1427" ph="UPDATE event... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/refundinbox.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2608">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
+          <folding>
+            <marker date="1511861028783" expanded="true" signature="5153:5216" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/refundapprove.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
