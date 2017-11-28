@@ -71,7 +71,7 @@ $event_ID=$_GET['event'];
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
-                    <li class="active ripple">
+<!--                     <li class="active ripple">
                       <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
@@ -81,7 +81,7 @@ $event_ID=$_GET['event'];
                         <span class="fa fa-calendar-o"></span> Your Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
-                    </li>
+                    </li> -->
                     
                   </ul>
                 </div>
@@ -249,15 +249,39 @@ $event_ID=$_GET['event'];
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">12,351</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(*) FROM `paymentlog` WHERE event_ID=".$event_ID."";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(*)']; ?></h2>
                                       <small>Total Tickets</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                    <?php
+                                            $q = "SELECT SUM(payment_money) FROM `paymentlog` WHERE event_ID=".$event_ID."";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                      <h2 style="line-height:.4;"><?php echo 0+$row['SUM(payment_money)']; ?> ฿</h2>
                                       <small>Total Price</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(refund_ID) FROM `refundlog`,`ticket`,`event` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(refund_ID)'];?></h2>
                                       <small>Total Refunds</small>
                                   </div>
                               </div>
@@ -271,7 +295,7 @@ $event_ID=$_GET['event'];
                 <div class="panel-heading"><h3>Tickets Details</h3></div>
                  <div class="panel-body">   
                   <?php
-                    $q = "SELECT tickettype.ticketType_name,tickettype.ticketType_totalSeats,tickettype.ticketType_price,COUNT(ticket.ticket_ID) FROM `event`,`ticket`,`tickettype` WHERE ticket.ticketType_ID=tickettype.ticketType_ID AND ticket.event_ID=event.event_ID AND event.event_ID='3' GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $q = "SELECT tickettype.ticketType_name,tickettype.ticketType_totalSeats,tickettype.ticketType_price,COUNT(ticket.ticket_ID) FROM `event`,`ticket`,`tickettype` WHERE ticket.ticketType_ID=tickettype.ticketType_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
                     $result=$mysqli->query($q);                    
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
@@ -288,13 +312,14 @@ $event_ID=$_GET['event'];
                         <p>
                           Ticket Price : <?php echo $row['ticketType_price']?> ฿ <br>
                           Sold out : <?php echo $row['COUNT(ticket.ticket_ID)']?> Tickets <br>
-                          Total Income : <?php $totalprice=$row['COUNT(ticket.ticket_ID)']*$row['COUNT(ticket.ticket_ID)']; echo $totalprice; ?> ฿
+                          Total Income : <?php 
+                                          $totalprice=$row['COUNT(ticket.ticket_ID)']*$row['ticketType_price']; 
+                                          echo $totalprice; ?> ฿
                         </p>
                       </div>
                     </div>
                   </div>
                   <?php } ?>
-                   
                 </div>
               </div>
             </div>
@@ -306,7 +331,7 @@ $event_ID=$_GET['event'];
       
 
     <!-- start: Javascript -->
-    <script src="asset/js/jquery.min.js"></script>
+    <script src="asset/js/jquery.min.js"></script> 
     <script src="asset/js/jquery.ui.min.js"></script>
     <script src="asset/js/bootstrap.min.js"></script>
    
@@ -409,16 +434,41 @@ $event_ID=$_GET['event'];
 
  
         var barChartData = {
+                <?php
+                    $q = "SELECT tickettype.ticketType_name,COUNT(ticket.ticket_ID) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY ticket_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $type_array = array();
+                    while($row=$result->fetch_array()){
+                      $type_array[] = "\"".$row['ticketType_name']."\""; // get the username field and add to the array above with surrounding quotes
+                     }
 
-                labels: ["Normal", "Premium", "Platinum"],
+                  $type_string = implode(",", $type_array); // implode the array to "stick together" all the usernames with a comma inbetween each
+                  ?>   
+                labels: [<?php  echo $type_string; ?>],
                 datasets: [
                     {
                         label: "My First dataset",
                         fillColor: "rgba(124, 232, 178,0.4)",
                         strokeColor: "rgba(220,220,220,0.8)",
                         highlightFill: "rgba(124, 232, 178,0.2)",
-                        highlightStroke: "rgba(124, 232, 178,0.2)",
-                        data: [65, 59, 80]
+                        highlightStroke: "rgba(124, 232, 178,0.2)", 
+                        <?php
+                    $q = "SELECT tickettype.ticketType_name,COUNT(ticket.ticket_ID) FROM `ticket`,`event`,`account`,`tickettype` WHERE ticket.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND account.account_gender='Male' AND event.event_ID=".$event_ID." AND ticket.ticketType_ID=tickettype.ticketType_ID GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $type_array = array();
+                    while($row=$result->fetch_array()){
+                      $type_array[] = $row['COUNT(ticket.ticket_ID)']; // get the username field and add to the array above with surrounding quotes
+                     }
+
+                  $type_string = implode(",", $type_array); // implode the array to "stick together" all the usernames with a comma inbetween each
+                  ?>
+                        data: [<?php echo $type_string; ?>]
                     },
                     {
                         label: "My Second dataset",
@@ -426,7 +476,20 @@ $event_ID=$_GET['event'];
                         strokeColor: "rgba(151,187,205,0.8)",
                         highlightFill: "rgba(110,160,210,0.2)",
                         highlightStroke: "rgba(110,160,210,0.2)",
-                        data: [28, 48, 40]
+                        <?php
+                    $q = "SELECT tickettype.ticketType_name,COUNT(ticket.ticket_ID) FROM `ticket`,`event`,`account`,`tickettype` WHERE ticket.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND account.account_gender='Female' AND event.event_ID=".$event_ID." AND ticket.ticketType_ID=tickettype.ticketType_ID GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $type_array = array();
+                    while($row=$result->fetch_array()){
+                      $type_array[] = $row['COUNT(ticket.ticket_ID)']; // get the username field and add to the array above with surrounding quotes
+                     }
+
+                  $type_string = implode(",", $type_array); // implode the array to "stick together" all the usernames with a comma inbetween each
+                  ?>
+                        data: [<?php echo $type_string; ?>]
                     }
                 ]
             };
