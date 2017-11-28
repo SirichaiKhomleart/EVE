@@ -96,7 +96,15 @@ $event_ID=$_GET['event'];
                             <div class="col-md-12 padding-0">
                               <div class="col-md-12" style="padding:0px 15px;">
                                 <div class="panel" style="padding:20px 0px;">
-                                  <h3 class="text-center">Event Name</h3>
+                                  <?php
+                                            $q = "SELECT event_name FROM `event` WHERE event_ID=".$event_ID." ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                  ?>
+                                  <h3 class="text-center"><?php echo $row['event_name']; ?></h3>
                                   <p class="text-center">20 October 2017</p>
                                     <hr align="center" width="50%"> 
                                 </div>
