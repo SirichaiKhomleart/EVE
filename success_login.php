@@ -1,3 +1,24 @@
+<?php
+session_start();
+require_once('helper.php');
+require_once('connect.php');
+
+//case user not login yet
+if (!isset($_SESSION['current_ID'])){
+	header('Location: homepage.php');
+	exit;
+}
+//case user type isn't Customer
+if (isset($_SESSION['current_type'])){
+	if ($_SESSION['current_type']!="Customer"){
+		header('Location: homepage.php');
+		exit;
+	}
+}else{
+	header('Location: homepage.php');
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +55,6 @@
 		js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.10";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	
 
 	<!-- Header
 		================================================== -->
@@ -59,114 +79,69 @@
 						<div class="nino-menuItem pull-right">
 							<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
 								<ul class="nav navbar-nav">
-									<a href="index.html">Home </a>
-									<a href="login.php">Log in</a>
-								<!-- <li><a href="#nino-services">Service</a></li>
-								<li><a href="#nino-ourTeam">Our Team</a></li>
-								<li><a href="#nino-portfolio">Work</a></li>
-								<li><a href="#nino-latestBlog">Blog</a></li> -->
+									<a href="index_login.html">Home </a>
+									<a href="login.php">Log Out</a>
+
+								</ul>
+							</div><!-- /.navbar-collapse -->
+							<ul class="nino-iconsGroup nav navbar-nav">
+								<!-- <li> --><a href="usermain.php?email=sirichai.khomleart%40gmail.com&password=dragon&signup_submit=LOG+IN"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
+								<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
 							</ul>
-						</div><!-- /.navbar-collapse -->
-						<ul class="nino-iconsGroup nav navbar-nav">
-							<!-- <li> --><a href="usermain.php"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
-							<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
-						</ul>
+						</div>
 					</div>
-				</div><!-- /.container-fluid -->
-			</nav>
-		</div>
-	</header>
-
-
-
-
-
-
+				</nav>
+			</div>
+		</header>
 	<!-- Brand
 		================================================== -->
 		<section id="nino-brand">
 			<div class="verticalCenter fw" >
 				<div class="container">
 					<div class="detail">
-						<img src="images/poster/event2.jpg" width="100%">
-						<div class="box"> 
+						<div class="box">
+							<?php
+							if (isset($_POST['submit'])) {
+								$total = $_SESSION['total'];
+								$method = $_POST['method'];
+								$cardnum = $_POST['cardnum'];
+								$expiry = $_POST['month']."-".$_POST['month']."";
+							}
+							$q = "SELECT paymentlog.payment_ID FROM paymentlog ORDER BY payment_ID DESC LIMIT 0,1";
+							$result=$mysqli->query($q);                    
+							if(!$result){
+								echo "Select failed. Error: ".$mysqli->error ;
+							}
+							while($row=$result->fetch_array()){
+								$bookId = $row['payment_ID']+1;
+							}
+							$q = "INSERT INTO `paymentlog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES (NULL, '2', '".$total."', '".$method."', CURRENT_TIMESTAMP);";
+							$result=$mysqli->query($q);                    
+							if(!$result){
+								echo "Select failed. Error: ".$mysqli->error ;
+							}
+							?>
 							<br>
-							<h4 class="topic">Chang Music Connection Presents Waterzonic 2017</h4>
-							<div>
-								<p class="date">29 September 2017 17:00</p>
-								<div style="clear:both;"></div>
+							<p class="topic4">Payment Successful!!</p>
+							<br>
+							<p class="quote1">Your payment has been successful
+								<br>Thank you for your Purchase
+							</p>
+							<br><br>
+							<div class="box3">
+								<p class="quotet"><?php echo "BOOKING ID : ".$bookId;?>
+									<br>PAYMENT STATUS : SUCCESS
+								</p>
+								<br>
+								<a href="index_login.html" class="nino-btnh">Home</a>
 							</div>
-							<br>
 						</div>
 					</div>
 					<br><br>
-					<div class="detail">
-						<div class="box1">
-							<h4 class="topic1">Chang Music Connection Presents Waterzonic 2017<br> 29 - 30 September 2017</h4>
-							<br><br>
-							<h4 class="topic1">“The Story Of Watertale”<br> Unite, shine and make your way into another universe.</h4>
-						</div>
-						<div class="box1">
-							<img src="images/poster/edetail.jpg" width="100%">
-							<br>
-							<p class="quote1">เริ่มจัดส่งบัตร 1 สิงหาคม เป็นต้นไป / Delivery due in August </p>
-							<p class="quotet">สถานที่จัดงาน</p>
-							<br>
-							<img src="images/poster/edetail2.jpg" width="100%">
-							<h3 class="topic2">เงื่อนไขการเข้าร่วมงาน </h3>
-							<p class="quotet">-การเข้างานอายุ 18 ปีบริบูรณ์เท่านั้น / Only 18+ can entry the event
-								<br>-ทางทีมงานไม่รับผิดชอบกรณีบัตรสูญหาย หรือชำรุด หรือถูกทำลาย / Ticket cannot be replaced if lost, stolen or destroyed.
-								<br>-บัตรซื้อแล้วไม่รับคืนเงินทุกกรณี / Non-refundable / Non- returnable
-							</p>
-							<br><br><br>
-						</div>
-					</div>
+
 				</div>
 			</div>
-		</section> <!--/#nino-brand-->
-
-    <!-- Pay
-    	================================================== -->
-    	<section class="nino-testimonial">
-    		<div class="container">
-    			<form class="form" action="confirm.php" method="post">
-    				<div class="detail">
-    					<div class="box1">
-    						<br>
-    						<h4 class="topic3">Ticket</h4>
-    						<br><br>
-    						<div class="col-md-4">
-    							<h2 class="topic">Normal</h2><br>
-    						</div>
-    						<div class="col-md-8">
-    							<p class="quotef">฿ 3,500 x</p><input class="inputbox" type="number" name="number1" min="0" max="100" step="1" value="0"/>
-    							<div style="clear:both;"></div>
-    						</div>
-    						<div style="clear:both;"></div>
-
-    					</div>
-    					<div class="box1">
-    						<div class="col-md-4">
-    							<h2 class="topic">Premium</h2><br>
-    						</div>
-    						<div class="col-md-8">
-    							<p class="quotef">฿ 6,500 x</p><input class="inputbox" type="number" name="number2" min="0" max="100" step="1" value="0"/>    							
-    							<div style="clear:both;"></div>
-    						</div>
-    						<div style="clear:both;"></div>
-
-    					</div>
-    					<div class="box1">
-    						<input type="submit" name="submit" value="BUY TICKET" class="nino-btnb">
-    					</div>
-    					<br>
-    					<br>
-    					<br>
-    				</div>
-    			</form>
-    		</div>
-    	</section>
-
+		</section> 
 
     <!-- Footer
     	================================================== -->
@@ -253,8 +228,6 @@
     	<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     	<script type="text/javascript" src="js/unslider-min.js"></script>
     	<script type="text/javascript" src="js/template.js"></script>
-
-
 
     </body>
     </html>
