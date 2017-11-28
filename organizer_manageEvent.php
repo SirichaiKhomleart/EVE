@@ -22,13 +22,13 @@ if (isset($_SESSION['current_type'])) {
 $pageAction=NULL;
 
 $fromUser = $_POST['fromUser'];
-echo "<br>user: " . $fromUser;
+//echo "<br>user: " . $fromUser;
 $fromEvent = $_POST['fromEvent'];
-echo "<br>event: " . $fromEvent;
+//echo "<br>event: " . $fromEvent;
 $eventName = $_POST['eventName'];
-echo "<br>eventname: " . $eventName;
+//echo "<br>eventname: " . $eventName;
 $submitAct = $_POST['submitAction'];
-echo "<br>submit: " . $submitAct;
+//echo "<br>submit: " . $submitAct;
 
 if ($submitAct == "Cancel") {
     $qcancle = "UPDATE event SET event_approveStatus = '2' 
@@ -37,13 +37,13 @@ if ($submitAct == "Cancel") {
 
     $resultcancle = $mysqli->query($qcancle);
     if (!$resultcancle) {
-        echo "<br>CANCEL event failed. Error: " . $mysqli->error;
+        //echo "<br>CANCEL event failed. Error: " . $mysqli->error;
     } else {
         //insert success
-        echo "<br>CANCEL event suc";
+        //echo "<br>CANCEL event suc";
     }
 
-    echo "<br>MANAGE EVENT PAGE REACH";
+    //echo "<br>MANAGE EVENT PAGE REACH";
     $pageAction="Cancel";
 
 }elseif ($submitAct == "Statistic"){
@@ -362,7 +362,7 @@ if($pageAction=="Cancel") {
                                 <br>
                                 <input type="hidden" name="eventIDhidden" value="<?php echo $fromEvent; ?>">
                                 <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right"
-                                       value="Send Edit Request"></input>
+                                       value="Send"></input>
                                 <div style="clear:both;"></div>
                             </div>
                             <br>
@@ -489,3 +489,6 @@ if($pageAction=="Cancel") {
 <script src="js/addInput.js" type="text/javascript"></script>
 </body>
 </html>
+<?php
+header('Location: organizer_index.php');
+?>

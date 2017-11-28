@@ -8,7 +8,7 @@ require_once('connect.php');
 $current_ID = $_SESSION['current_ID'];
 $event_organizer = $_SESSION['current_organizer_name'];
 
-$event_ID=$_POST['eventIDhidden'];
+$event_ID = $_POST['eventIDhidden'];
 $event_name = $_POST['event_name'];
 $event_location = $_POST['event_location'];
 $event_typeID = $_POST['event_typeID'];
@@ -21,9 +21,9 @@ $event_detail = $_POST['event_detail'];
 /////
 ///
 /// file upload zone
-$target_dir = "users/ID" . $_SESSION['current_ID']."/";
+$target_dir = "users/ID" . $_SESSION['current_ID'] . "/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$event_posterPicture=$target_file;
+$event_posterPicture = $target_file;
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
@@ -67,7 +67,6 @@ if ($uploadOk == 0) {
 }
 
 
-
 $q = "INSERT INTO eventEditLog(event_ID,edit_name,edit_typeID,edit_location,
                         edit_dateStart,edit_dateEnd,edit_timeStart,edit_timeEnd,
                         edit_iconPicture,edit_posterPicture,edit_detail)
@@ -93,8 +92,8 @@ $ticketloopcount = true;
 $ticketTypeNo = 1;
 while ($ticketloopcount) {
     echo isset($_POST['ticket_type' . $ticketTypeNo]);
-    echo "<br>isset: ".$_POST['ticket_type'. $ticketTypeNo];
-    if ($_POST['ticket_type' . $ticketTypeNo]!=NULL) {
+    echo "<br>isset: " . $_POST['ticket_type' . $ticketTypeNo];
+    if ($_POST['ticket_type' . $ticketTypeNo] != NULL) {
         echo "<br>type: " . $_POST['ticket_type' . $ticketTypeNo];
 
         $ticketType = $_POST['ticket_type' . $ticketTypeNo];
@@ -122,5 +121,10 @@ while ($ticketloopcount) {
 
 
 ?>
-<br>
-<a href="organizer_index.php">index</a>
+    <br>
+    <a href="organizer_index.php">index</a>
+
+<?php
+header('organizer_index.php');
+exit;
+?>

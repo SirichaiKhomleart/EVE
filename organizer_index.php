@@ -92,6 +92,8 @@ if (isset($_SESSION['current_type'])){
 
                     ?>
 
+
+
                 <div class="box4">
 
                     <hr>
@@ -103,6 +105,24 @@ if (isset($_SESSION['current_type'])){
                             <h3 class="quotet1" style="color: #00BCD4"><?php echo $row['event_name']; ?></h3>
 
                             <p class="date1">
+
+                                <?php
+                                $editbeingreview=false;
+                                $ideve=$row['event_ID'];
+
+                                $qcheckedit = "SELECT * FROM eventEditLog 
+                                      WHERE event_ID = '$ideve' 
+                                      ORDER BY  edit_timeStamp DESC";
+                                $resultcheckedit = $mysqli->query($qcheckedit);
+                                $rowcheckedit = $resultcheckedit->fetch_array();
+                                if((isset($rowcheckedit))&&($rowcheckedit['edit_approveStatus']==NULL)){
+                                    $editbeingreview=true;
+                                    echo "<h6 style='color: #c0a16b'>The edited information is being review...</h6>";
+                                }
+                                ?>
+
+
+
                                 Public Time : <?php echo $row['event_createTimeStamp']; ?>
                                 <br> Location : <?php echo $row['event_location']; ?>
                                 <br>Date : <?php echo $row['event_dateStart']; ?> to <?php echo $row['event_dateEnd']; ?>
@@ -222,7 +242,7 @@ if (isset($_SESSION['current_type'])){
                             </div>
                             <form action="organizer_manageEvent.php" method="post">
                                 <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
-                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
+<!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
 <!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
                                 <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                                 <?php $eventName=$row['event_name']; ?>
@@ -258,7 +278,7 @@ if (isset($_SESSION['current_type'])){
                             <div class="col-md-8">
                                 <h3 class="quotet1" style="color: #8a1f11"><?php echo $row['event_name']; ?></h3>
                                 <h4 class="quotet1" style="color: #be2626">This event has been rejected by administrator!</h4>
-                                <h6 style="color: #be2626">Review this event or it will be delete automatically after &emsp;&emsp;   <?php echo $row['event_dateEnd']; ?>.</h6>
+                                <h6 style="color: #be2626">This will be delete automatically after &emsp;&emsp;   <?php echo $row['event_dateEnd']; ?>.</h6>
 
                                 <p class="date1">
                                     Public Time : <?php echo $row['event_createTimeStamp']; ?>
@@ -291,7 +311,7 @@ if (isset($_SESSION['current_type'])){
                             </div>
                             <form action="organizer_manageEvent.php" method="post">
                                 <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
-                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
+<!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
 <!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
                                 <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                                 <?php $eventName=$row['event_name']; ?>

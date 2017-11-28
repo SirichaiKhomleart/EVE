@@ -71,7 +71,11 @@ require_once ('connect.php');
 					</div>
                     <?php
                     $hasevent=false;
-                    $qfind = "SELECT * FROM event, eventEditLog, organizer  WHERE event.event_ID=eventEditLog.event_ID AND event.event_organizerID=organizer.account_ID AND edit_approveStatus IS NULL ORDER BY event_dateEnd ASC";
+                    $qfind = "SELECT * FROM event, eventEditLog, organizer  WHERE event.event_ID=eventEditLog.event_ID 
+                              AND event.event_organizerID=organizer.account_ID 
+                              AND edit_approveStatus IS NULL 
+                              AND event.event_dateEnd >= CURRENT_DATE 
+                              ORDER BY event_dateEnd ASC";
                     $result = $mysqli->query($qfind);
                     if (!$result) {
                         echo "Select failed. Error: " . $mysqli->error;
