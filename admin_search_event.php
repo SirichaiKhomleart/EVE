@@ -62,7 +62,7 @@ if (isset($_SESSION['current_type'])){
   <!-- end: Css -->
 
   <link rel="shortcut icon" href="asset/img/logomi.png">
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- HTML5 shim AND Respond.js IE8 support of HTML5 elements AND media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -117,11 +117,15 @@ if (isset($_SESSION['current_type'])){
             <div class="panel-heading">
              <?php
              if (isset($_POST['submit'])) {
-              $Fname = $_POST['fname'];
-              $Lname = $_POST['lname'];
-              $Email = $_POST['email'];
+              $Ename = $_POST['ename'];
               $Oname = $_POST['oname'];
-              $Phone = $_POST['phone'];                           
+              $Location = $_POST['location'];
+              $Etype = $_POST['etype'];
+              $Status = $_POST['status'];
+              $Day = $_POST['day'];
+              $Month = $_POST['month'];
+              $Year = $_POST['year'];
+              $Optionsearch = $_POST['optionsearch'];
             }
             ?>
             <h4>Searching Filter</h4>
@@ -143,7 +147,8 @@ if (isset($_SESSION['current_type'])){
                     <div class="col-sm-4"><input name="location" type="text" class="form-control border-bottom"></div>
                     <label class="col-sm-1 control-label text-right"><strong>Event Type</strong></label>
                     <div class="col-sm-2">
-                      <select class="form-control">
+                      <select class="form-control" name="etype">
+                        <option value="-1">All</option>
                         <?php
                         $q = "SELECT eventtype_name FROM eventtype";
                         $result=$mysqli->query($q);                    
@@ -160,10 +165,10 @@ if (isset($_SESSION['current_type'])){
                     </div>
                     <label class="col-sm-1 control-label text-right"><strong>Status</strong></label>
                     <div class="col-sm-2">
-                      <select class="form-control">
-                        <option value="0">Approve</option>
-                        <option value="1">Disapprove</option>
+                      <select class="form-control" name="status">
                         <option value="2">All</option>
+                        <option value="1">Approve</option>
+                        <option value="0">Disapprove</option>
                       </select>
                     </div>
                   </div>
@@ -208,7 +213,7 @@ if (isset($_SESSION['current_type'])){
                     </div>
                     <label class="col-sm-2 control-label text-center">Option Date Search</label>
                     <div class="col-sm-2">
-                      <select class="form-control" name="month">
+                      <select class="form-control" name="optionsearch">
                         <option value="0">Start Before</option>
                         <option value="1">Start After</option>
                         <option value="2">End Before</option>
@@ -235,7 +240,7 @@ if (isset($_SESSION['current_type'])){
               <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>TimeStamp</th>
+                    <th>Created Time</th>
                     <th>Event ID</th>
                     <th>Event Name</th>
                     <th>Organizer Name</th>
@@ -243,38 +248,75 @@ if (isset($_SESSION['current_type'])){
                     <th>Event Location</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Event Time</th>
                     <th>Detail</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <?php
                 if (isset($_POST['submit'])) {
-                  if (!$_POST['fname']=='') {
-                    $sfname = " and account_fname LIKE '%".$Fname."%' ";
+                  if (!$_POST['ename']=='') {
+                    $sename = " AND event_name LIKE '%".$Ename."%' ";
                   }else{
-                    $sfname = "";
-                  }
-                  if (!$_POST['lname']=='') {
-                    $slname = " and account_lname LIKE '%".$Lname."%' ";
-                  }else{
-                    $slname = "";
-                  }
-                  if (!$_POST['email']=='') {
-                    $semail = " and organizer_email LIKE '%".$Email."%' ";
-                  }else{
-                    $semail = "";
+                    $sename = "";
                   }
                   if (!$_POST['oname']=='') {
-                    $soname = " and organizer_name LIKE '%".$Oname."%' ";
+                    $soname = " AND organizer_name LIKE '%".$Oname."%' ";
                   }else{
                     $soname = "";
                   }
-                  if (!$_POST['phone']=='') {
-                    $sphone = " and organizer_phone= '".$Phone."' ";
+                  if (!$_POST['location']=='') {
+                    $slo = " AND event_location LIKE '%".$Location."%' ";
                   }else{
-                    $sphone = "";
-                  }                                                                     
-                  $q = "SELECT * FROM account,organizer WHERE account_Type = 'Organizer' and account.account_ID=organizer.account_ID".$sfname.$slname.$semail.$soname.$sphone;
+                    $slo = "";
+                  }
+                  if (!($_POST['etype']==(-1))) {
+                    $setype = " AND eventType_ID='".$Etype."' ";
+                  }else{
+                    $setype = "";
+                  }
+                  if (!($_POST['status']==2)) {
+                    $sstatus = " AND event_approveStatus='".$Status."' ";
+                  }else{
+                    $sstatus = "";
+                  }
+                  if (!($_POST['day']==0 OR $_POST['month']==0 OR $_POST['year']=='')) {
+                    if(!($_POST['month'] == 1 or $_POST['month'] == 3 or $_POST['month'] == 5 or $_POST['month'] == 7 or $_POST['month'] == 8 or $_POST['month'] == 10 or $_POST['month'] == 12)){
+                      if($_POST['month'] == 2 and $_POST['day'] > 29){
+                        $correctdate = false;
+                      }else{
+                        if($_POST['day'] > 30){
+                          $correctdate = false;
+                        }else{
+                          $correctdate = true;
+                        }
+                      }
+                    }
+                    if ($correctdate) {
+                      $date = date_create($Year."-".$Month."-".$Day);
+                      $datesearch = date_format($date, 'y-m-d');
+                      if ($Optionsearch==0) {
+                        $code = " AND event_dateStart<= ";
+                      }elseif ($Optionsearch==1) {
+                        $code = " AND event_dateStart>= ";
+                      }elseif ($Optionsearch==2) {
+                        $code = " AND event_dateEnd<= ";
+                      }elseif ($Optionsearch==3) {
+                        $code = " AND event_dateEnd>= ";
+                      }
+                      $sdate = $code."'".$datesearch."' ";
+                    }else{
+                      echo "<font color=".'#FF0000'."><strong>Date Search Parameters Error! Day not match with Month.</strong></font>";
+                      $sdate = "";
+                    }
+                  }
+                  elseif(!($_POST['day']==0 AND $_POST['month']==0 AND $_POST['year']=='')){
+                    echo "<font color=".'#FF0000'."><strong>Date Search Parameters Error! Please, Fill all parameters(Day, Month, and Year) if you want to search.</strong></font>";
+                    $sdate = "";
+                  }else{
+                    $sdate = "";
+                  }
+                  $q = "SELECT * FROM event,eventtype,organizer WHERE event.event_typeID=eventtype.eventType_ID AND event.event_organizerID=organizer.account_ID".$sename.$soname.$slo.$setype.$sstatus.$sdate;
                   $result=$mysqli->query($q);                    
                   if(!$result){
                     echo "Select failed. Error: ".$mysqli->error ;
@@ -284,14 +326,24 @@ if (isset($_SESSION['current_type'])){
                     <?php
                     while($row=$result->fetch_array()){
                       echo "<tr>";
-                      echo "<td>".$row['account_ID']."</td>";
-                      echo "<td>".$row['account_fname']."</td>";
-                      echo "<td>".$row['account_lname']."</td>";
+                      echo "<td>".$row['event_createTimeStamp']."</td>";
+                      echo "<td>".$row['event_ID']."</td>";
+                      echo "<td>".$row['event_name']."</td>";
                       echo "<td>".$row['organizer_name']."</td>";
-                      echo "<td>".$row['organizer_address']."</td>";
-                      echo "<td>".$row['organizer_email']."</td>";
-                      echo "<td>".$row['organizer_phone']."</td>";
-                      echo "<td>".$row['organizer_status']."</td>";
+                      echo "<td>".$row['eventType_name']."</td>";
+                      echo "<td>".$row['event_location']."</td>";
+                      echo "<td>".$row['event_dateStart']."</td>";
+                      echo "<td>".$row['event_dateEnd']."</td>";
+                      echo "<td>".$row['event_timeStart']." to ".$row['event_timeEnd']."</td>";
+                      echo "<td>".$row['event_detail']."</td>";
+                      if($row['event_approveStatus']==0){
+                        $statusname = "Disapprove";
+                      }elseif ($row['event_approveStatus']==1) {
+                        $statusname = "Approve";
+                      }else{
+                        $statusname = "Undefined";
+                      }
+                      echo "<td>".$statusname."</td>";
                       echo "</tr>";
                     }}?>
                   </tbody>

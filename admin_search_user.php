@@ -62,7 +62,7 @@ if (isset($_SESSION['current_type'])){
   <!-- end: Css -->
 
   <link rel="shortcut icon" href="asset/img/logomi.png">
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- HTML5 shim AND Respond.js IE8 support of HTML5 elements AND media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -210,32 +210,32 @@ if (isset($_SESSION['current_type'])){
             <?php
             if (isset($_POST['submit'])) {
               if (!$_POST['fname']=='') {
-                $sfname = " and account_fname LIKE '%".$Fname."%' ";
+                $sfname = " AND account_fname LIKE '%".$Fname."%' ";
               }else{
                 $sfname = "";
               }
               if (!$_POST['lname']=='') {
-                $slname = " and account_lname LIKE '%".$Lname."%' ";
+                $slname = " AND account_lname LIKE '%".$Lname."%' ";
               }else{
                 $slname = "";
               }
               if (!$_POST['email']=='') {
-                $semail = " and account_email LIKE '%".$Email."%' ";
+                $semail = " AND account_email LIKE '%".$Email."%' ";
               }else{
                 $semail = "";
               }
               if ($Gender==1) {
-                $sgender = " and account_gender= 'Female'";
+                $sgender = " AND account_gender= 'Female'";
               }elseif($Gender==2){
-                $sgender = " and account_gender= 'Male'";
+                $sgender = " AND account_gender= 'Male'";
               }elseif($Gender==3){
-                $sgender = " and account_gender= 'Others'";
+                $sgender = " AND account_gender= 'Others'";
               }else{
                 $sgender = "";
               }
               if(is_numeric($Minage)){
                 if(isset($_POST['minage'])){
-                  $sminage = " and account_age>= '".$Minage."'";
+                  $sminage = " AND account_age>= '".$Minage."'";
                 }else{
                   $sminage = "";
                 }
@@ -244,14 +244,14 @@ if (isset($_SESSION['current_type'])){
               }
               if(is_numeric($Maxage)){
                 if(isset($_POST['maxage'])){
-                  $smaxage = " and account_age<= '".$Maxage."'";
+                  $smaxage = " AND account_age<= '".$Maxage."'";
                 }else{
                   $smaxage = "";
                 }
               }else{
                 $smaxage = "";
               }                                                                                 
-              $q = "SELECT * FROM account,customer WHERE account_Type = 'customer' and account.account_ID=customer.account_ID".$sfname.$slname.$semail.$sminage.$smaxage.$sgender;
+              $q = "SELECT * FROM account,customer WHERE account_Type = 'customer' AND account.account_ID=customer.account_ID".$sfname.$slname.$semail.$sminage.$smaxage.$sgender;
               $result=$mysqli->query($q);                    
               if(!$result){
                 echo "Select failed. Error: ".$mysqli->error ;
