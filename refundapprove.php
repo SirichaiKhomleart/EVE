@@ -1,3 +1,10 @@
+
+<?php
+session_start();
+require_once('helper.php');
+require_once('connect.php');
+$refundID=$_GET['refundID'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +32,8 @@
 	
 </head>
 
+
 <body data-target="#nino-navbar" data-spy="scroll">
-<div id="fb-root"></div>
 <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -37,50 +44,8 @@
 	<!-- Header
     ================================================== -->
 	<header id="nino-header2">
-		<div id="nino-header2Inner">		
-
-
-
-			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="homepage.html">Eve</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="nino-menuItem pull-right">
-						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-							<ul class="nav navbar-nav">
-								<a href="index.html">Home </a>
-								<a href="login.php">Log in</a>
-								<!-- <li><a href="#nino-services">Service</a></li>
-								<li><a href="#nino-ourTeam">Our Team</a></li>
-								<li><a href="#nino-portfolio">Work</a></li>
-								<li><a href="#nino-latestBlog">Blog</a></li> -->
-							</ul>
-						</div><!-- /.navbar-collapse -->
-						<ul class="nino-iconsGroup nav navbar-nav">
-							<!-- <li> --><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
-							<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
-						</ul>
-					</div>
-				</div><!-- /.container-fluid -->
-			</nav>
-
-
-
-
-
-
-			</section> -->
-		</div>
-	</header><!--/#header-->
+    <?php header_zone(); ?>
+  </header><!--/#header-->
 
 
 	<!-- Brand
@@ -89,28 +54,33 @@
     	<div class="verticalCenter fw" >
     		<div class="container">
     			<div class="detail_ticketbox">
-    				
+    				<?php
+                $q = "SELECT * FROM `refundlog`,`ticket`,`event`,`tickettype`,`account` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND refundlog.account_ID=account.account_ID AND refundlog.refund_ID=".$refundID."";
+                $result = $mysqli->query($q);
+                $row = $result->fetch_array() 
+
+                    ?>
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Your Tickets</h4>						
+						<h4 class="nino-sectionHeading">Refund Details</h4>						
 					</div>
 					
 					<div class="ticketbox">
 						
 						<div class="row">
 							<div class="col-md-6 ">
-								<h4 class="quotet2">Order Numbers #0000000000</h4><br>
-								<h5 class="date1">Chang Music Connection Presents Waterzonic 2017</h5>
-								<p class="date1">20 October 2017</p><br>
+								<h4 class="quotet2">Refund Numbers #<?php echo $row['refund_ID']; ?></h4><br>
+								<h5 class="date1"><?php echo $row['event_name']; ?></h5>
+								<p class="date1"><?php echo $row['event_dateStart']; ?></p><br>
 								<div class="col-md-3">
 									<h5 class="quotet2">Name   : </h5>
 									<h5 class="date1">E-mail : </h5>
-									<h5 class="date1">Phone  : </h5>
+									
 								</div>
 								<div class="col-md-9">
-									<h5 class="date1">Nuttapol Saiboonruen</h5>
-									<h5 class="date1">Nua@mail.com</h5>
-									<h5 class="date1">+66808188216</h5>
+									<h5 class="date1"><?php echo $row['account_fname']." ".$row['account_lname']; ?></h5>
+									<h5 class="date1"><?php echo $row['account_email']; ?></h5>
+									
 								</div>
 							</div>
 							<div class="col-md-6 ">	
@@ -141,17 +111,18 @@
 						<div class="paymentbox">
 							<div class="row">
 								<div class="col-md-6">
-									<h5 class="topic6">Chang Music Connection Presents Waterzonic 2017</h5>
-									<p class="quotet2">Normal Ticket</p>
+									<h5 class="topic6"><?php echo $row['event_name']; ?></h5>
+									<p class="quotet2"><?php echo $row['ticketType_name']; ?></p>
 								</div>
 								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
+									<h5 class="topic6 pull-right"><?php echo $row['ticketType_price']; ?> ฿</h5>
 								</div>
 								<div class="col-md-2 ">
 									<h5 class="topic6 pull-right">1</h5>
 								</div>
 								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
+									<h5 class="topic6 pull-right"><?php $totalprice=1*$row['ticketType_price']; 
+                                          echo $totalprice; ?> ฿</h5>
 								</div>
 							</div>
 						</div>
@@ -164,12 +135,12 @@
 								<h5 class="quotet2">Total</h5><br>
 							</div>
 							<div class="col-md-2">
-								<h5 class="topic6 pull-right">3,500 ฿</h5>
+								<h5 class="topic6 pull-right"><?php echo $totalprice; ?> ฿</h5>
 							</div>
 						</div>
 
 						<hr><br>
-						<p class="quotet2 pull-right">Request :29 October 2017</p>
+						<p class="quotet2 pull-right">Request :<?php echo $row['refund_timeStamp']; ?></p>
 						<br><br>
 						<a href="detail.html" class="nino-btnn">Approve</a>
 						<a href="detail.html" class="nino-btndisap">Disapprove</a>

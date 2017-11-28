@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once('helper.php');
+require_once('connect.php');
+$curID=&$_SESSION['current_ID'];
+//case user not login yet
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,50 +45,8 @@
 	<!-- Header
     ================================================== -->
 	<header id="nino-header2">
-		<div id="nino-header2Inner">		
-
-
-
-			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="homepage.html">Eve</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="nino-menuItem pull-right">
-						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-							<ul class="nav navbar-nav">
-								<a href="index.html">Home </a>
-								<a href="login.php">Log in</a>
-								<!-- <li><a href="#nino-services">Service</a></li>
-								<li><a href="#nino-ourTeam">Our Team</a></li>
-								<li><a href="#nino-portfolio">Work</a></li>
-								<li><a href="#nino-latestBlog">Blog</a></li> -->
-							</ul>
-						</div><!-- /.navbar-collapse -->
-						<ul class="nino-iconsGroup nav navbar-nav">
-							<!-- <li> --><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
-							<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
-						</ul>
-					</div>
-				</div><!-- /.container-fluid -->
-			</nav>
-
-
-
-
-
-
-			</section> -->
-		</div>
-	</header><!--/#header-->
+    <?php header_zone(); ?>
+  </header><!--/#header-->
 
 
 	<!-- Brand
@@ -95,23 +61,32 @@
 						<h4 class="nino-sectionHeading">Notification</h4>						
 					</div>
 					
+					<?php
+                $q = "SELECT * FROM `refundLog`,`ticket`,`event`,`ticketType`,`account` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND refundLog.account_ID=account.account_ID AND account.account_ID='$curID'";
+                $result = $mysqli->query($q);
+                while($row = $result->fetch_array()) {
+
+                    ?>
 					<div class="box4">
 						<hr>
 						<div class="row">
 							<div class="col-md-4">
-								<img src="images/poster/icone1.jpg" width="150">
+								<img src="<?php echo $row['event_iconPicture']; ?>" width="150">
 							</div>
 							<div class="col-md-8">
 								<p class="quotet1">Request for refund tickets</p>
-								<p class="date1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1">From : CN120001<br>Premium : 2 tickets<br>NEW!</p><br>
+								<p class="date1"><?php echo $row['event_name']; ?></p><br><br>
+								<p class="date1">From : <?php echo $row['account_fname']." ".$row['account_lname']; ?><br><?php echo $row['ticketType_name']; ?><br>NEW!</p><br>
 								<br><br><br>
-								<a href="detail.html" class="nino-btnb">Approve</a>
+								<a href="refundapprove.php?refundID=<?php echo $row['refund_ID']; ?>" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
+
 					</div>
-					<div class="box4">
+					<?php } ?>
+					<hr>
+					<!-- <div class="box4">
 						<hr>
 						<div class="row">
 							<div class="col-md-4">
@@ -122,7 +97,7 @@
 								<p class="date1">Chang Music Connection Presents Waterzonic 2017</p>								
 								<p class="date1">From : CN120017<br>Normal : 1 ticket<br>NEW!</p><br>
 								<br><br><br>
-								<a href="detail.html" class="nino-btnb">Approve</a>
+								<a href="detail.html" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
@@ -137,7 +112,7 @@
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
 								<p class="date1"><br>From : 31/10/2017<br>Organize : Change<br>NEW!</p><br>
 								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
+								<a href="detail.html" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
@@ -152,7 +127,7 @@
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
 								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
 								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
+								<a href="detail.html" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
@@ -167,13 +142,14 @@
 								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
 								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
 								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
+								<a href="detail.html?eventid=<?php echo $eventID; ?>" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<br><br>
+
     		</div>
     	</div>
     </section> <!--/#nino-brand-->

@@ -22,13 +22,13 @@ if (isset($_SESSION['current_type'])) {
 $pageAction=NULL;
 
 $fromUser = $_POST['fromUser'];
-echo "<br>user: " . $fromUser;
+//echo "<br>user: " . $fromUser;
 $fromEvent = $_POST['fromEvent'];
-echo "<br>event: " . $fromEvent;
+//echo "<br>event: " . $fromEvent;
 $eventName = $_POST['eventName'];
-echo "<br>eventname: " . $eventName;
+//echo "<br>eventname: " . $eventName;
 $submitAct = $_POST['submitAction'];
-echo "<br>submit: " . $submitAct;
+//echo "<br>submit: " . $submitAct;
 
 if ($submitAct == "Cancel") {
     $qcancle = "UPDATE event SET event_approveStatus = '2' 
@@ -37,13 +37,13 @@ if ($submitAct == "Cancel") {
 
     $resultcancle = $mysqli->query($qcancle);
     if (!$resultcancle) {
-        echo "<br>CANCEL event failed. Error: " . $mysqli->error;
+        //echo "<br>CANCEL event failed. Error: " . $mysqli->error;
     } else {
         //insert success
-        echo "<br>CANCEL event suc";
+        //echo "<br>CANCEL event suc";
     }
 
-    echo "<br>MANAGE EVENT PAGE REACH";
+    //echo "<br>MANAGE EVENT PAGE REACH";
     $pageAction="Cancel";
 
 }elseif ($submitAct == "Statistic"){
@@ -111,7 +111,7 @@ if($pageAction=="Cancel") {
             <div class="box4">
                 <hr>
                 <div class="row">
-                    <form action="organizer_index.php" method="post">
+                    <form action="check_organizer_manageEvent.php" method="post">
                         <input type="submit" name="BACK" class="nino-btnorgsta " value="Back"></input>
                     </form>
                     <div style="clear:both;"></div>
@@ -148,7 +148,7 @@ if($pageAction=="Cancel") {
             <div class="container">
                 <div class="detail">
                     <div class="box1">
-                        <form action="check_organizer_createEvent.php" method="post" enctype="multipart/form-data">
+                        <form action="check_organizer_manageEvent.php" method="post" enctype="multipart/form-data">
                             <br>
                             <h4 class="nino-sectionHeading">
                                 <span class="nino-subHeading">Something Wrong?</span>
@@ -262,6 +262,39 @@ if($pageAction=="Cancel") {
                                         <span class="quotet">Total Tickets : </span>
                                     </div>
                                     <div id="dynamicInput">
+
+
+                                        <?php
+                                        $qrepticket="SELECT ticketType_name,ticketType_price,ticketType_totalSeats FROM ticketType
+                                                      WHERE event_ID = '$fromEvent'";
+                                        $resulttic = $mysqli->query($qrepticket);
+                                        while($rowtic = $resulttic->fetch_array()) {
+                                            $ticname=$rowtic['ticketType_name'];
+                                            $ticprice=$rowtic['ticketType_price'];
+                                            $ticseat=$rowtic['ticketType_totalSeats'];
+
+                                            ?>
+                                            <div class="col-md-3 pull-left ">
+                                            </div>
+                                            <div class="col-md-3 pull-left">
+                                                <input class="input3 " type="text" name="dummyticket_type1" placeholder="<?php echo $ticname; ?>" disabled>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <input class="input3" type="text" name="dummyticket_price1" placeholder="<?php echo $ticprice; ?>" disabled>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <input class='input3' type="text" name="dummyticket_total1" placeholder="<?php echo $ticseat; ?>" disabled>
+                                            </div>
+                                            <br><br>
+
+                                            <?php
+                                        }
+
+                                        ?>
+
+                                        <p><br><br>Due to our policies, we are not allow you to change ticket information after published.</p>
+                                        <p>You still can add more type of tickets.</p>
+
                                         <div class="col-md-3 pull-left ">
                                         </div>
                                         <div class="col-md-3 pull-left">
@@ -273,6 +306,12 @@ if($pageAction=="Cancel") {
                                         <div class="col-md-3 ">
                                             <input class='input3' type="text" name="ticket_total1">
                                         </div>
+
+
+
+
+
+
                                     </div>
 
 
@@ -321,8 +360,9 @@ if($pageAction=="Cancel") {
                                 <hr>
                                 <br>
                                 <br>
+                                <input type="hidden" name="eventIDhidden" value="<?php echo $fromEvent; ?>">
                                 <input type="submit" href=".nino-testimonial" class="nino-btnb pull-right"
-                                       value="Send Request"></input>
+                                       value="Send"></input>
                                 <div style="clear:both;"></div>
                             </div>
                             <br>
@@ -449,3 +489,6 @@ if($pageAction=="Cancel") {
 <script src="js/addInput.js" type="text/javascript"></script>
 </body>
 </html>
+<?php
+header('Location: organizer_index.php');
+?>
