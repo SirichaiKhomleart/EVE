@@ -3,7 +3,7 @@
 session_start();
 require_once('helper.php');
 require_once('connect.php');
-$eventID=$_GET['eventID'];
+$refundID=$_GET['refund_ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@ $eventID=$_GET['eventID'];
     				
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Your Tickets</h4>						
+						<h4 class="nino-sectionHeading">Refund Details</h4>						
 					</div>
 					
 					<div class="ticketbox">
