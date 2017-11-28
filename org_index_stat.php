@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once('helper.php');
+require_once('connect.php');
+//case user not login yet
 
 ?>
 
@@ -63,7 +65,7 @@ require_once('helper.php');
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
-                    <p class="text-center"> Welcome SIIT Organizer</p>
+                    <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
                     <li class="active ripple" onclick="location.href='org_index_stat.php';">
                       <a class="tree-toggle nav-header" href="org_index_stat.php"><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
@@ -106,7 +108,16 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            
+                                            $q = "SELECT COUNT(event_ID) from event WHERE event_organizerID = ".$_SESSION['current_ID'];
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                        <h1><?php echo $row['COUNT(event_ID)']; ?></h1>
                                         <p>Events</p>
                                         <hr/>
                                       </div>
@@ -125,7 +136,16 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            
+                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                        ?>
+                                        <h1><?php echo $row['COUNT(*)']; ?></h1>
                                         <p>Payments</p>
                                         <hr/>
                                       </div>
@@ -144,7 +164,16 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            
+                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." and refundlog.ticket_ID=ticket.ticket_ID and ticket.event_ID=event.event_ID";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                        ?>
+                                        <h1><?php echo $row['COUNT(*)']; ?></h1>
                                         <p>Refunds</p>
                                         <hr/>
                                       </div>
@@ -171,7 +200,15 @@ require_once('helper.php');
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-12 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">12,345,684</h2>
+                                    <?php
+                                        $q = "SELECT COUNT(ticket_ID) FROM account,ticket,event WHERE event_organizerID = ".$_SESSION['current_ID']." AND ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID ";
+                                        $result=$mysqli->query($q);                    
+                                        if(!$result){
+                                          echo "Select failed. Error: ".$mysqli->error ;
+                                        }
+                                        $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(ticket_ID)']; ?></h2>
                                       <small>Total Customers</small>
                                   </div>
                               </div>
@@ -193,15 +230,42 @@ require_once('helper.php');
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">12,351</h2>
+                                    <?php
+                                            
+                                            $q = "SELECT COUNT(*) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                        ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(*)']; ?></h2>
                                       <small>Total Payments</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                    <?php
+                                            
+                                            $q = "SELECT SUM(payment_money) FROM event,paymentlog where event_organizerID = ".$_SESSION['current_ID']." and paymentlog.event_ID=event.event_ID ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                        ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['SUM(payment_money)']; ?></h2>
                                       <small>Total Price</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                    <?php
+                                            
+                                            $q = "SELECT COUNT(*) FROM ticket,refundlog,event where event_organizerID = ".$_SESSION['current_ID']." and refundlog.ticket_ID=ticket.ticket_ID and ticket.event_ID=event.event_ID";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                        ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(*)']; ?></h2>
                                       <small>Total Refunds</small>
                                   </div>
                               </div>
@@ -291,7 +355,15 @@ require_once('helper.php');
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(124, 232, 178,1)",
-                 data: [18,9,5,7,4.5,4,8,4.5,6,5.6,7.5]
+                <?php
+                    $q = "SELECT COUNT(ticket_ID) FROM account,ticket,event WHERE event_organizerID = ".$_SESSION['current_ID']." AND ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND account.account_gender='Male'";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                      echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $row=$result->fetch_array();
+                    ?>
+                 data: [0,0,0,0,0,0,<?php echo $row['COUNT(ticket_ID)']; ?>,<?php echo $row['COUNT(ticket_ID)']; ?>]
             }, {
                 label: "My Second dataset",
                 fillColor: "rgba(110,160,210,0.5)",
@@ -300,7 +372,15 @@ require_once('helper.php');
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(110,160,210,1)",
-                data: [4,7,5,7,4.5,2,5,4.5,6,5.6,7.5]
+                <?php
+                    $q = "SELECT COUNT(ticket_ID) FROM account,ticket,event WHERE event_organizerID = ".$_SESSION['current_ID']." AND ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND account.account_gender='Female'";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                      echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $row=$result->fetch_array();
+                    ?>
+                 data: [0,0,0,0,0,0,<?php echo $row['COUNT(ticket_ID)']; ?>,<?php echo $row['COUNT(ticket_ID)']; ?>]
             }]
         };
 
@@ -314,7 +394,15 @@ require_once('helper.php');
                         strokeColor: "rgba(220,220,220,0.8)",
                         highlightFill: "rgba(124, 232, 178,0.2)",
                         highlightStroke: "rgba(124, 232, 178,0.2)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
+                        <?php
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Female' AND event.event_organizerID=".$_SESSION['current_ID']."";
+                          $result=$mysqli->query($q);                    
+                          if(!$result){
+                            echo "Select failed. Error: ".$mysqli->error ;
+                          }
+                          $row=$result->fetch_array();
+                        ?>
+                        data: [0, 0, 0, 0, 0, 0, <?php echo $row['COUNT(DISTINCT(payment_ID))']; ?>]
                     },
                     {
                         label: "My Second dataset",
@@ -322,7 +410,15 @@ require_once('helper.php');
                         strokeColor: "rgba(151,187,205,0.8)",
                         highlightFill: "rgba(110,160,210,0.2)",
                         highlightStroke: "rgba(110,160,210,0.2)",
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        <?php
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Male' AND event.event_organizerID=".$_SESSION['current_ID']."";
+                          $result=$mysqli->query($q);                    
+                          if(!$result){
+                            echo "Select failed. Error: ".$mysqli->error ;
+                          }
+                          $row=$result->fetch_array();
+                        ?>
+                        data: [0, 0, 0, 0, 0, 0, <?php echo $row['COUNT(DISTINCT(payment_ID))']; ?>]
                     }
                 ]
             };
