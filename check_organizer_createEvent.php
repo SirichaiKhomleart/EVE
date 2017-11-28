@@ -89,7 +89,7 @@ echo "<br>event ID after insert: " . $event_ID;
 $ticketloopcount = true;
 $ticketTypeNo = 1;
 while ($ticketloopcount) {
-    if (isset($_POST['ticket_type' . $ticketTypeNo])) {
+    if  ($_POST['ticket_type' . $ticketTypeNo]!=NULL) {
         echo "<br>type: " . $_POST['ticket_type' . $ticketTypeNo];
 
         $ticketType = $_POST['ticket_type' . $ticketTypeNo];

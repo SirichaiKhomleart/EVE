@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('helper.php');
+require_once ('connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +56,7 @@ require_once('helper.php');
     				
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Edit Event Request</h4>						
+						<h4 class="nino-sectionHeading">Event Request</h4>
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-md-offset-4">
@@ -68,82 +69,46 @@ require_once('helper.php');
 							</div>
 						</div>
 					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone1.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								
-								<p class="date1"><br>From : 31/10/2017 18:00 PM<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone2.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017 18:00 PM<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone3.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change<br>NEW!</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone4.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
-					<div class="box4">
-						<hr>
-						<div class="row">
-							<div class="col-md-4">
-								<img src="images/poster/icone5.jpg" width="150">
-							</div>
-							<div class="col-md-8">
-								<p class="quotet1">Chang Music Connection Presents Waterzonic 2017</p>
-								<p class="date1"><br>From : 31/10/2017<br>Organize : Change</p><br>
-								<br>
-								<a href="detail.html" class="nino-btnb">See More</a>
-							</div>
-							<div style="clear:both;"></div>
-						</div>
-					</div>
+                    <?php
+                    $qfind = "SELECT * FROM event, eventEditLog, organizer  WHERE event.event_ID=eventEditLog.event_ID AND event.event_organizerID=organizer.account_ID AND edit_approveStatus IS NULL ORDER BY event_dateEnd DESC";
+                    $result = $mysqli->query($qfind);
+                    if (!$result) {
+                        echo "Select failed. Error: " . $mysqli->error;
+                    } else {
+                        while ($row = $result->fetch_array()) {
+                            ?>
+                            <div class="box4">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src=<?php echo $row['event_iconPicture'];?> width="150" height="150">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="quotet1"><?php echo $row['event_name']; ?></p>
+                                        <h5 style="color: #c2185b">This event edited on <?php echo $row['edit_timeStamp'];?>.</h5>
+                                        <p class="date1"><br>Location : <?php echo $row['event_location']; ?><br>Organizer : <?php echo $row['organizer_name']; ?>
+                                            <br>Date: <?php echo $row['event_dateStart']; ?>  to  <?php echo $row['event_dateEnd']; ?></p><br>
+                                        <br><br><br><br><br>
+                                        <form action="approveCreate.php" method="post">
+                                            <input class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
+                                            <input class="nino-btnorg" value="Approve"> </input> &emsp;
+                                            <input class="nino-btnorgsta" value="More Detail"> </input>
+                                            <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
+                                        </form>
+                                    </div>
+                                    <div style="clear:both;"></div>
+
+                                </div>
+                            </div>
+
+
+                            <?php
+
+
+                        }
+                    }
+                    ?>
+                    <hr>
 				</div>
 				<br><br>
     		</div>

@@ -168,7 +168,7 @@ require_once('connect.php');
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT COUNT(payment_ID) from paymentlog ";
+                                            $q = "SELECT COUNT(payment_ID) from paymentLog ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -257,7 +257,7 @@ require_once('connect.php');
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-6 col-sm-4 col-xs-6 text-center">
                                     <?php
-                                            $q = "SELECT COUNT(payment_ID) from paymentlog ";
+                                            $q = "SELECT COUNT(payment_ID) from paymentLog ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -269,7 +269,7 @@ require_once('connect.php');
                                   </div>
                                   <div class="col-md-6 col-sm-4 col-xs-6 text-center">
                                     <?php
-                                            $q = "SELECT SUM(payment_money) from paymentlog ";
+                                            $q = "SELECT SUM(payment_money) from paymentLog ";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
