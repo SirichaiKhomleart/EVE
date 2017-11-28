@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once('helper.php');
+require_once('connect.php');
+//case user not login yet
 
 ?>
 
@@ -63,7 +65,7 @@ require_once('helper.php');
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
-                    <p class="text-center"> Welcome MyAdmin</p>
+                    <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
                     <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
                       <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
@@ -111,7 +113,15 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            $q = "SELECT COUNT(event_ID) from event ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                        <h1><?php echo $row['COUNT(event_ID)']; ?></h1>
                                         <p>Events create</p>
                                         <hr/>
                                       </div>
@@ -130,7 +140,15 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            $q = "SELECT COUNT(account_ID) from account ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                        <h1><?php echo $row['COUNT(account_ID)']; ?></h1>
                                         <p>User active</p>
                                         <hr/>
                                       </div>
@@ -149,7 +167,15 @@ require_once('helper.php');
                                         </div>
                                       </div>
                                       <div class="panel-body text-center">
-                                        <h1>51181,320</h1>
+                                        <?php
+                                            $q = "SELECT COUNT(payment_ID) from paymentlog ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                            ?>
+                                        <h1><?php echo $row['COUNT(payment_ID)']; ?></h1>
                                         <p>Payment</p>
                                         <hr/>
                                       </div>
@@ -176,15 +202,39 @@ require_once('helper.php');
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">12,345,684</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(account_ID) from account ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(account_ID)']; ?></h2>
                                       <small>Total Account</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">684,515</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(account_ID) from account WHERE account_type='Customer'";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(account_ID)']; ?></h2>
                                       <small>Total Users</small>
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                                      <h2 style="line-height:.4;">24,286</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(account_ID) from account WHERE account_type='Organizer'";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(account_ID)']; ?></h2>
                                       <small>Total Organizer</small>
                                   </div>
                               </div>
@@ -206,11 +256,27 @@ require_once('helper.php');
                               </div>
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-6 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">12,351</h2>
+                                    <?php
+                                            $q = "SELECT COUNT(payment_ID) from paymentlog ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['COUNT(payment_ID)']; ?></h2>
                                       <small>Total Payments</small>
                                   </div>
                                   <div class="col-md-6 col-sm-4 col-xs-6 text-center">
-                                      <h2 style="line-height:.4;">1,333,484</h2>
+                                    <?php
+                                            $q = "SELECT SUM(payment_money) from paymentlog ";
+                                            $result=$mysqli->query($q);                    
+                                            if(!$result){
+                                                echo "Select failed. Error: ".$mysqli->error ;
+                                            }
+                                            $row=$result->fetch_array();
+                                    ?>
+                                      <h2 style="line-height:.4;"><?php echo $row['SUM(payment_money)']; ?> ฿</h2>
                                       <small>Total Price</small>
                                   </div>
                                   
@@ -292,7 +358,7 @@ require_once('helper.php');
             return Math.round(Math.random() * 100);
         };
         var lineChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["May ", "June", "July", "August", "September", "October", "November"],
             datasets: [{
                 label: "My First dataset",
                 fillColor: "rgba(124, 232, 178,0.4)",
@@ -301,7 +367,15 @@ require_once('helper.php');
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(124, 232, 178,1)",
-                 data: [18,9,5,7,4.5,4,8,4.5,6,5.6,7.5]
+                <?php
+                    $q = "SELECT COUNT(account_ID) from account WHERE account_gender='Female' ";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                      echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $row=$result->fetch_array();
+                    ?>
+                 data: [0,0,0,0,0,0,<?php echo $row['COUNT(account_ID)']; ?>,<?php echo $row['COUNT(account_ID)']; ?>]
             }, {
                 label: "My Second dataset",
                 fillColor: "rgba(110,160,210,0.5)",
@@ -310,13 +384,22 @@ require_once('helper.php');
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(110,160,210,1)",
-                data: [4,7,5,7,4.5,2,5,4.5,6,5.6,7.5]
+                <?php
+                    $q = "SELECT COUNT(account_ID) from account WHERE account_gender='Male' ";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                      echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                    $row=$result->fetch_array();
+                    ?>
+                data: [0,0,0,0,0,0,<?php echo $row['COUNT(account_ID)']; ?>,<?php echo $row['COUNT(account_ID)']; ?>]
             }]
         };
+        
 
  
         var barChartData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["May ", "June", "July", "August", "September", "October", "November"],
                 datasets: [
                     {
                         label: "My First dataset",
@@ -324,7 +407,16 @@ require_once('helper.php');
                         strokeColor: "rgba(220,220,220,0.8)",
                         highlightFill: "rgba(124, 232, 178,0.2)",
                         highlightStroke: "rgba(124, 232, 178,0.2)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
+                        <?php
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket where ticket.account_ID=account.account_ID and account_gender='Female'";
+                          $result=$mysqli->query($q);                    
+                          if(!$result){
+                            echo "Select failed. Error: ".$mysqli->error ;
+                          }
+                          $row=$result->fetch_array();
+                        ?>
+
+                        data: [0, 0, 0, 0,0, 0, <?php echo $row['COUNT(DISTINCT(payment_ID))']; ?>]
                     },
                     {
                         label: "My Second dataset",
@@ -332,7 +424,15 @@ require_once('helper.php');
                         strokeColor: "rgba(151,187,205,0.8)",
                         highlightFill: "rgba(110,160,210,0.2)",
                         highlightStroke: "rgba(110,160,210,0.2)",
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        <?php
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket where ticket.account_ID=account.account_ID and account_gender='Male'";
+                          $result=$mysqli->query($q);                    
+                          if(!$result){
+                            echo "Select failed. Error: ".$mysqli->error ;
+                          }
+                          $row=$result->fetch_array();
+                        ?>
+                        data: [0, 0, 0, 0, 0, 0, <?php echo $row['COUNT(DISTINCT(payment_ID))']; ?>]
                     }
                 ]
             };

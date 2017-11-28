@@ -3,6 +3,9 @@ session_start();
 require_once('helper.php');
 require_once('connect.php');
 
+
+
+
 //case user not login yet
 if (!isset($_SESSION['current_ID'])){
     header('Location: homepage.php');
@@ -15,6 +18,9 @@ if (isset($_SESSION['current_type'])){
 }else{
     header('Location: homepage.php');
 }
+
+
+header('Location: Admin_index_stat.php');
 
 //Only Customer type can go through this zone
 /*echo "<br>".$_SESSION['current_login_status'];

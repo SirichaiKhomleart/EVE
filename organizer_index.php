@@ -136,7 +136,10 @@ if (isset($_SESSION['current_type'])){
                         <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
                         <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>
                         <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
+                            <?php $eventName=$row['event_name']; ?>
                         <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
+                        <input type="hidden" name="eventName" value="<?php echo $eventName; ?>">
+
                         </form>
                         <div style="clear:both;"></div>
                     </div>
@@ -218,10 +221,14 @@ if (isset($_SESSION['current_type'])){
 
                             </div>
                             <form action="organizer_manageEvent.php" method="post">
-                                <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
-                                <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
-<!--                                <input type="submit" name="stat--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgsta " value="Statistic"></input>-->
-                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                                <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
+                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
+<!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
+                                <?php $eventName=$row['event_name']; ?>
+                                <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
+                                <input type="hidden" name="eventName" value="<?php echo $eventName; ?>">
+
                             </form>
                             <div style="clear:both;"></div>
                         </div>
@@ -283,10 +290,14 @@ if (isset($_SESSION['current_type'])){
 
                             </div>
                             <form action="organizer_manageEvent.php" method="post">
-                                <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
-                                <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
-                                <!--                                <input type="submit" name="stat--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgsta " value="Statistic"></input>-->
-                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                                <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
+                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
+<!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
+                                <?php $eventName=$row['event_name']; ?>
+                                <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
+                                <input type="hidden" name="eventName" value="<?php echo $eventName; ?>">
+
                             </form>
                             <div style="clear:both;"></div>
                         </div>
@@ -370,10 +381,14 @@ if (isset($_SESSION['current_type'])){
 
                             </div>
                             <form action="organizer_manageEvent.php" method="post">
-<!--                                <input type="submit" name="cancle--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorgcancel " value="Cancel"></input>-->
-<!--                                <input type="submit" name="edit--><?php //echo $row['event_ID']; ?><!--" class="nino-btnorg " value="Edit"></input>-->
-                                <input type="submit" name="stat<?php echo $row['event_ID']; ?>" class="nino-btnorgsta " value="Statistic"></input>
-                                <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+<!--                                <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>-->
+<!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
+                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>
+                                <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
+                                <?php $eventName=$row['event_name']; ?>
+                                <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
+                                <input type="hidden" name="eventName" value="<?php echo $eventName; ?>">
+
                             </form>
                             <div style="clear:both;"></div>
                         </div>
