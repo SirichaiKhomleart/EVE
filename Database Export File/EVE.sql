@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2017 at 08:01 PM
+-- Generation Time: Nov 28, 2017 at 03:43 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -37,22 +37,25 @@ CREATE TABLE `account` (
   `account_password` varchar(20) NOT NULL,
   `account_age` int(3) NOT NULL,
   `account_gender` varchar(20) NOT NULL DEFAULT 'Others',
-  `account_profilePicture` text
+  `account_profilePicture` text,
+  `account_createTimeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`account_ID`, `account_type`, `account_email`, `account_fname`, `account_lname`, `account_password`, `account_age`, `account_gender`, `account_profilePicture`) VALUES
-(1, 'Admin', 'sirichai@mail.com', 'Sirichai', 'Khomleart', 'admin', 20, 'Male', NULL),
-(2, 'Customer', 'nonwarit@mail.com', 'Nonwarit', 'Suwanmolee', 'custom', 20, 'Male', NULL),
-(3, 'Organizer', 'nawaphat@mail.com', 'Nawaphat', 'Khankasikam', 'organ', 20, 'Male', NULL),
-(4, 'Admin', 'nuttapol@mail.com', 'Nuttapol', 'Saiboonruen', 'admin', 20, 'Male', NULL),
-(5, 'Admin', 'pasin@mail.com', 'Pasin', 'Jiratthiticheep', 'admin', 20, 'Male', NULL),
-(6, 'Customer', 'panthakan@mail.com', 'Panthakan', 'Maisopa', 'custom', 20, 'Male', NULL),
-(37, 'Customer', 'custom', 'customer', 'test', 'custom', 60, 'Male', NULL),
-(38, 'Organizer', 'organ', 'Organizer', 'test', 'organ', 40, 'Others', NULL);
+INSERT INTO `account` (`account_ID`, `account_type`, `account_email`, `account_fname`, `account_lname`, `account_password`, `account_age`, `account_gender`, `account_profilePicture`, `account_createTimeStamp`) VALUES
+(1, 'Admin', 'sirichai@mail.com', 'Sirichai', 'Khomleart', 'admin', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(2, 'Customer', 'nonwarit@mail.com', 'Nonwarit', 'Suwanmolee', 'custom', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(3, 'Organizer', 'nawaphat@mail.com', 'Nawaphat', 'Khankasikam', 'organ', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(4, 'Admin', 'nuttapol@mail.com', 'Nuttapol', 'Saiboonruen', 'admin', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(5, 'Admin', 'pasin@mail.com', 'Pasin', 'Jiratthiticheep', 'admin', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(6, 'Customer', 'panthakan@mail.com', 'Panthakan', 'Maisopa', 'custom', 20, 'Male', NULL, '2017-11-26 22:27:47'),
+(37, 'Customer', 'custom', 'customer', 'test', 'custom', 60, 'Male', NULL, '2017-11-26 22:27:47'),
+(38, 'Organizer', 'organ', 'Organizer', 'test', 'organ', 40, 'Others', NULL, '2017-11-26 22:27:47'),
+(39, 'Organizer', 'test', '', '', 'test', 0, 'Male', NULL, '2017-11-27 00:07:17'),
+(40, 'Customer', 'customertest', '', '', '', 0, 'Male', NULL, '2017-11-28 01:24:00');
 
 -- --------------------------------------------------------
 
@@ -94,7 +97,8 @@ INSERT INTO `customer` (`account_ID`, `customer_status`) VALUES
 (1, 1),
 (2, 0),
 (6, 1),
-(37, 1);
+(37, 1),
+(40, 1);
 
 -- --------------------------------------------------------
 
@@ -125,7 +129,7 @@ CREATE TABLE `event` (
   `event_dateEnd` date NOT NULL,
   `event_timeStart` time NOT NULL,
   `event_timeEnd` time NOT NULL,
-  `event_iconPicture` text,
+  `event_iconPicture` varchar(1000) DEFAULT 'images/poster/noImage.jpg',
   `event_posterPicture` text,
   `event_detail` longtext NOT NULL,
   `event_createTimeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -137,9 +141,20 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`event_ID`, `event_name`, `event_organizerID`, `event_typeID`, `event_location`, `event_dateStart`, `event_dateEnd`, `event_timeStart`, `event_timeEnd`, `event_iconPicture`, `event_posterPicture`, `event_detail`, `event_createTimeStamp`, `event_approveStatus`) VALUES
-(1, 'KemonoOnlyEvent', 3, 3, 'Siam Paragon', '2017-11-01', '2017-11-01', '00:00:00', '00:00:00', NULL, NULL, 'wwss', '2017-11-26 18:17:03', 0),
+(1, 'KemonoOnlyEvent', 3, 3, 'Siam Paragon', '2017-11-01', '2017-11-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', NULL, 'wwss', '2017-11-26 18:17:03', 1),
 (2, 'Hackathon 2015', 38, 2, 'Thammasat U', '2015-11-26', '2015-11-26', '15:58:02', '15:58:02', 'images/poster/icone1.jpg', NULL, 'Boring Event', '2017-11-26 18:17:03', 1),
-(3, 'Hackathon 2016', 38, 2, 'Thammasat U', '2016-11-26', '2016-11-26', '18:11:36', '18:11:36', 'images/poster/icone1.jpg', NULL, 'Interesting Event', '2017-11-26 18:17:03', 1);
+(3, 'Hackathon 2016', 38, 2, 'Thammasat U', '2016-11-26', '2016-11-26', '18:11:36', '18:11:36', 'images/poster/icone1.jpg', NULL, 'Interesting Event', '2017-11-26 18:17:03', 1),
+(4, 'Hackathon 2018', 38, 3, 'Bangkadi Campus', '2018-11-30', '2018-12-12', '20:12:14', '20:12:14', 'images/poster/icone1.jpg', NULL, 'I don\'t know. Coming Soon', '2017-11-26 20:12:14', 0),
+(5, 'Hackathon 2017', 38, 3, 'Rangsit', '2017-11-26', '2017-11-30', '20:21:21', '20:21:21', 'images/poster/noImage.jpg', NULL, '', '2017-11-26 20:21:21', 1),
+(6, 'testEvent', 38, 0, 'Bangkok', '2016-11-26', '2018-11-26', '00:00:00', '20:12:14', 'images/poster/noImage.jpg', 'test', 'boring', '2017-11-26 22:00:34', NULL),
+(28, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/1510478699944.jpg', '', '2017-11-27 00:22:40', NULL),
+(29, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:22:57', NULL),
+(30, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:23:30', NULL),
+(31, 'rr', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'users/ID38/Dragons_fur_adult.png', 'users/ID38/users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:25:16', NULL),
+(32, 'rr', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:25:38', NULL),
+(33, 'trydragon', 38, 0, 'www', '0000-00-00', '2019-01-01', '00:00:00', '00:00:00', 'users/ID38/Dragons_fur_adult.png', 'users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:28:18', 2),
+(34, 'long', 38, 0, '', '0000-00-00', '2010-01-10', '00:00:00', '00:00:00', 'users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', 'users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:29:29', 1),
+(35, '', 38, 0, '', '0000-00-00', '0000-00-00', '00:00:00', '00:00:00', 'users/ID38/', 'users/ID38/', '', '2017-11-28 01:58:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -165,6 +180,13 @@ CREATE TABLE `eventEditLog` (
   `edit_informMessage` text NOT NULL,
   `edit_timeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eventEditLog`
+--
+
+INSERT INTO `eventEditLog` (`edit_ID`, `event_ID`, `edit_name`, `edit_typeID`, `edit_location`, `edit_dateStart`, `edit_dateEnd`, `edit_timeStart`, `edit_timeEnd`, `edit_iconPicture`, `edit_posterPicture`, `edit_detail`, `edit_ticketChange`, `edit_approveStatus`, `edit_informMessage`, `edit_timeStamp`) VALUES
+(1, 5, 'Hackathon 2017 Return', 3, 'erererer', '2017-12-12', '2018-01-01', '02:43:03', '02:43:03', NULL, NULL, 'eeeee', 0, NULL, '', '2017-11-28 02:43:03');
 
 -- --------------------------------------------------------
 
@@ -227,7 +249,8 @@ CREATE TABLE `organizer` (
 
 INSERT INTO `organizer` (`account_ID`, `organizer_name`, `organizer_address`, `organizer_phone`, `organizer_email`, `organizer_status`) VALUES
 (3, 'Sex Shop by Sun', 'Line Group', '1150', 'sexshopbysun@mail.com', 1),
-(38, 'SIIT', 'bangkok', '33', 'siit', 1);
+(38, 'SIIT', 'bangkok', '33', 'siit', 1),
+(39, 'test', '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -248,8 +271,9 @@ CREATE TABLE `paymentLog` (
 --
 
 INSERT INTO `paymentLog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES
-(1, 2, 500, 'VISA', '2017-11-26 18:40:49'),
-(2, 3, 1000, 'VISA', '2017-11-26 18:55:41');
+(1, 3, 500, 'VISA', '2017-11-26 18:40:49'),
+(2, 3, 1000, 'VISA', '2017-11-26 18:55:41'),
+(3, 3, 2000, 'VISA', '2017-11-26 19:12:59');
 
 -- --------------------------------------------------------
 
@@ -277,7 +301,7 @@ CREATE TABLE `ticket` (
   `payment_ID` int(15) NOT NULL,
   `event_ID` int(15) NOT NULL,
   `ticketType_ID` int(15) NOT NULL,
-  `event_dateStart` date NOT NULL,
+  `event_dateEnd` date NOT NULL,
   `ticket_status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -285,9 +309,13 @@ CREATE TABLE `ticket` (
 -- Dumping data for table `ticket`
 --
 
-INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateStart`, `ticket_status`) VALUES
+INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES
 (1, 6, 1, 3, 1, '2017-11-26', 1),
-(2, 2, 2, 3, 2, '2017-11-26', 1);
+(2, 2, 2, 3, 2, '2017-11-26', 1),
+(3, 2, 3, 3, 2, '0000-00-00', 1),
+(4, 2, 3, 3, 2, '0000-00-00', 1),
+(5, 6, 1, 5, 18, '0000-00-00', 1),
+(6, 6, 1, 5, 18, '2018-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -310,7 +338,19 @@ CREATE TABLE `ticketType` (
 
 INSERT INTO `ticketType` (`ticketType_ID`, `event_ID`, `ticketType_name`, `ticketType_price`, `ticketType_totalSeats`, `ticketType_approveStatus`) VALUES
 (1, 3, 'Standard', 500, 20, 1),
-(2, 3, 'Premium', 1000, 10, 1);
+(2, 3, 'Premium', 1000, 10, 1),
+(17, 28, '', 0, 0, NULL),
+(18, 28, '', 0, 0, NULL),
+(19, 28, '', 0, 0, NULL),
+(20, 31, '', 0, 0, NULL),
+(21, 31, '', 0, 0, NULL),
+(22, 33, '', 0, 0, NULL),
+(23, 34, '', 0, 0, NULL),
+(24, 35, '', 0, 0, NULL),
+(25, 35, '', 0, 0, NULL),
+(26, 35, '', 0, 0, NULL),
+(27, 35, '', 0, 0, NULL),
+(28, 35, '', 0, 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -416,7 +456,7 @@ ALTER TABLE `ticketType`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -428,7 +468,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `databaseActivityLog`
@@ -440,13 +480,13 @@ ALTER TABLE `databaseActivityLog`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `eventEditLog`
 --
 ALTER TABLE `eventEditLog`
-  MODIFY `edit_ID` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `edit_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `eventType`
@@ -458,13 +498,13 @@ ALTER TABLE `eventType`
 -- AUTO_INCREMENT for table `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `paymentLog`
 --
 ALTER TABLE `paymentLog`
-  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `refundLog`
@@ -476,13 +516,13 @@ ALTER TABLE `refundLog`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ticketType`
 --
 ALTER TABLE `ticketType`
-  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
