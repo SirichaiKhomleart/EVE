@@ -3,7 +3,7 @@
 session_start();
 require_once('helper.php');
 require_once('connect.php');
-$refundID=$_GET['refund_ID'];
+$refundID=$_GET['refundID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

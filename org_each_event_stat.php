@@ -157,7 +157,7 @@ $event_ID=$_GET['event'];
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT SUM(payment_money) FROM `paymentlog`,`event` WHERE paymentlog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $q = "SELECT SUM(payment_money) FROM `paymentLog`,`event` WHERE paymentLog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -185,7 +185,7 @@ $event_ID=$_GET['event'];
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT COUNT(refund_ID) FROM `refundlog`,`ticket`,`event` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $q = "SELECT COUNT(refund_ID) FROM `refundLog`,`ticket`,`event` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -250,7 +250,7 @@ $event_ID=$_GET['event'];
                               <div class="col-md-12" style="padding-top:20px;">
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
-                                            $q = "SELECT COUNT(*) FROM `paymentlog` WHERE event_ID=".$event_ID."";
+                                            $q = "SELECT COUNT(*) FROM `paymentLog` WHERE event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -262,7 +262,7 @@ $event_ID=$_GET['event'];
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
-                                            $q = "SELECT SUM(payment_money) FROM `paymentlog` WHERE event_ID=".$event_ID."";
+                                            $q = "SELECT SUM(payment_money) FROM `paymentLog` WHERE event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -274,7 +274,7 @@ $event_ID=$_GET['event'];
                                   </div>
                                   <div class="col-md-4 col-sm-4 col-xs-6 text-center">
                                     <?php
-                                            $q = "SELECT COUNT(refund_ID) FROM `refundlog`,`ticket`,`event` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $q = "SELECT COUNT(refund_ID) FROM `refundLog`,`ticket`,`event` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -295,7 +295,7 @@ $event_ID=$_GET['event'];
                 <div class="panel-heading"><h3>Tickets Details</h3></div>
                  <div class="panel-body">   
                   <?php
-                    $q = "SELECT tickettype.ticketType_name,tickettype.ticketType_totalSeats,tickettype.ticketType_price,COUNT(ticket.ticket_ID) FROM `event`,`ticket`,`tickettype` WHERE ticket.ticketType_ID=tickettype.ticketType_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $q = "SELECT ticketType.ticketType_name,ticketType.ticketType_totalSeats,ticketType.ticketType_price,COUNT(ticket.ticket_ID) FROM `event`,`ticket`,`ticketType` WHERE ticket.ticketType_ID=ticketType.ticketType_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY ticketType.ticketType_ID";
                     $result=$mysqli->query($q);                    
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
@@ -435,7 +435,7 @@ $event_ID=$_GET['event'];
  
         var barChartData = {
                 <?php
-                    $q = "SELECT tickettype.ticketType_name,COUNT(ticket.ticket_ID) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY ticket_ID";
+                    $q = "SELECT ticketType.ticketType_name,COUNT(ticket.ticket_ID) FROM `ticketType`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND event.event_ID=".$event_ID." GROUP BY ticketType_name ORDER BY ticket_ID";
                     $result=$mysqli->query($q);                    
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
@@ -477,7 +477,7 @@ $event_ID=$_GET['event'];
                         highlightFill: "rgba(110,160,210,0.2)",
                         highlightStroke: "rgba(110,160,210,0.2)",
                         <?php
-                    $q = "SELECT tickettype.ticketType_name,COUNT(ticket.ticket_ID) FROM `ticket`,`event`,`account`,`tickettype` WHERE ticket.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND account.account_gender='Female' AND event.event_ID=".$event_ID." AND ticket.ticketType_ID=tickettype.ticketType_ID GROUP BY ticketType_name ORDER BY tickettype.ticketType_ID";
+                    $q = "SELECT ticketType.ticketType_name,COUNT(ticket.ticket_ID) FROM `ticket`,`event`,`account`,`ticketType` WHERE ticket.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND account.account_gender='Female' AND event.event_ID=".$event_ID." AND ticket.ticketType_ID=ticketType.ticketType_ID GROUP BY ticketType_name ORDER BY ticketType.ticketType_ID";
                     $result=$mysqli->query($q);                    
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
