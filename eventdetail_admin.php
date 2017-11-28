@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once('helper.php');
+require_once('connect.php');
+$event_ID=$_GET['eventID'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

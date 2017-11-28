@@ -93,12 +93,14 @@ require_once('connect.php');
                                     <p class="date1"><br>Location : <?php echo $row['event_location']; ?><br>Organizer : <?php echo $row['organizer_name']; ?>
                                         <br>Date: <?php echo $row['event_dateStart']; ?>  to  <?php echo $row['event_dateEnd']; ?></p><br>
                                     <br><br><br><br><br>
+
                                     <form action="check_admin_approveCreate.php" method="post">
                                         <input type="submit" name="appcrtact" class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
                                         <input type="submit" name="appcrtact" class="nino-btnorg" value="Approve"> </input> &emsp;
-                                        <input type="submit" name="detail" class="nino-btnorgsta" value="More Detail"> </input>
+                                        <a href="eventdetail_admin.php?eventID=<?php echo $row['event_ID'];?>" class="nino-btnorgsta">More<br>Detail</a>
                                         <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
                                         <input type="hidden" name="eventNamesend" value="<?php echo $row['event_name'];?>">
+                                    </form>
                                     </form>
                                 </div>
                                 <div style="clear:both;"></div>

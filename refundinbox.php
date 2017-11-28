@@ -2,6 +2,7 @@
 session_start();
 require_once('helper.php');
 require_once('connect.php');
+$curID=&$_SESSION['current_ID'];
 //case user not login yet
 
 ?>
@@ -61,7 +62,7 @@ require_once('connect.php');
 					</div>
 					
 					<?php
-                $q = "SELECT * FROM `refundLog`,`ticket`,`event`,`ticketType`,`account` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND refundLog.account_ID=account.account_ID";
+                $q = "SELECT * FROM `refundLog`,`ticket`,`event`,`ticketType`,`account` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND refundLog.account_ID=account.account_ID AND account.account_ID='$curID'";
                 $result = $mysqli->query($q);
                 while($row = $result->fetch_array()) {
 
