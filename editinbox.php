@@ -96,6 +96,7 @@ require_once ('connect.php');
                                             <input type="submit" name="appeditact" class="nino-btnorg" value="Approve"> </input> &emsp;
                                             <input type="submit" name="detail" class="nino-btnorgsta" value="More Detail"> </input>
                                             <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
+                                            <input type="hidden" name="eventNamesend" value="<?php echo $row['event_name'];?>">
                                         </form>
                                     </div>
                                     <div style="clear:both;"></div>
