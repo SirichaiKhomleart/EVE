@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('helper.php');
+$event_ID=$_GET['event'];
 
 ?>
 
