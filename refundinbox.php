@@ -61,7 +61,7 @@ require_once('connect.php');
 					</div>
 					
 					<?php
-                $q = "SELECT * FROM `refundlog`,`ticket`,`event`,`tickettype`,`account` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND refundlog.account_ID=account.account_ID";
+                $q = "SELECT * FROM `refundLog`,`ticket`,`event`,`ticketType`,`account` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND refundLog.account_ID=account.account_ID";
                 $result = $mysqli->query($q);
                 while($row = $result->fetch_array()) {
 
