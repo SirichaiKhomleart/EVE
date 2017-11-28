@@ -32,8 +32,8 @@ $refundID=$_GET['refundID'];
 	
 </head>
 
+
 <body data-target="#nino-navbar" data-spy="scroll">
-<div id="fb-root"></div>
 <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -44,50 +44,8 @@ $refundID=$_GET['refundID'];
 	<!-- Header
     ================================================== -->
 	<header id="nino-header2">
-		<div id="nino-header2Inner">		
-
-
-
-			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="homepage.html">Eve</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="nino-menuItem pull-right">
-						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-							<ul class="nav navbar-nav">
-								<a href="index.html">Home </a>
-								<a href="login.php">Log in</a>
-								<!-- <li><a href="#nino-services">Service</a></li>
-								<li><a href="#nino-ourTeam">Our Team</a></li>
-								<li><a href="#nino-portfolio">Work</a></li>
-								<li><a href="#nino-latestBlog">Blog</a></li> -->
-							</ul>
-						</div><!-- /.navbar-collapse -->
-						<ul class="nino-iconsGroup nav navbar-nav">
-							<!-- <li> --><a href="#"><i class="mdi mdi-cart-outline nino-icon"></i></a><!-- </li> -->
-							<!-- <a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a> -->
-						</ul>
-					</div>
-				</div><!-- /.container-fluid -->
-			</nav>
-
-
-
-
-
-
-			</section> -->
-		</div>
-	</header><!--/#header-->
+    <?php header_zone(); ?>
+  </header><!--/#header-->
 
 
 	<!-- Brand
