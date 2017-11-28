@@ -76,11 +76,11 @@ require_once('connect.php');
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                       <ul class="nav nav-list tree">
-                          <li><a href="dashboard-v1.html">Organizers</a></li>
-                          <li><a href="dashboard-v2.html">Customers</a></li>
+                          <li ><a href="admin_search_organ.php">Organizers</a></li>
+                          <li ><a href="admin_search_user.php">Customers</a></li>
                       </ul>
                     </li>
-                    <li class="active ripple">
+                    <li class="active ripple" onclick="location.href='admin_search_event.php';">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-calendar-o"></span> Event
                         <span class="fa-angle-right fa right-arrow text-right"></span>

@@ -29,7 +29,7 @@ function print_menus(){
         }elseif ($_SESSION['current_type']=="Admin"){
             echo '<a href="homepage.php">Home</a>';
             echo '<a href="admin_index.php">Admin System</a>';
-            echo '<a href="admin_noti.php">Notification</a>';
+            echo '<a href="createinbox.php">Notification</a>';
             echo '<a href="logout.php">Log Out</a>';
         }
 
