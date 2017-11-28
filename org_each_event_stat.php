@@ -3,13 +3,13 @@ session_start();
 require_once('helper.php');
 require_once('connect.php');
 $event_ID=$_GET['event'];
-$q = "SELECT COUNT(DISTINCT(tickettype.ticketType_name)) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID='3'";
+$q = "SELECT COUNT(DISTINCT(ticketType.ticketType_name)) FROM `ticketType`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND event.event_ID='3'";
 $result=$mysqli->query($q);                    
 if(!$result){
    echo "Select failed. Error: ".$mysqli->error ;
 }
 $row=$result->fetch_array();
-$numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
+$numtype=$row['COUNT(DISTINCT(ticketType.ticketType_name))']
 ?>
 
 
@@ -165,7 +165,7 @@ $numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT SUM(payment_money) FROM `paymentlog`,`event` WHERE paymentlog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $q = "SELECT SUM(payment_money) FROM `paymentLog`,`event` WHERE paymentLog.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -193,7 +193,7 @@ $numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
                                       </div>
                                       <div class="panel-body text-center">
                                         <?php
-                                            $q = "SELECT COUNT(refund_ID) FROM `refundlog`,`ticket`,`event` WHERE refundlog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
+                                            $q = "SELECT COUNT(refund_ID) FROM `refundLog`,`ticket`,`event` WHERE refundLog.ticket_ID=ticket.ticket_ID AND ticket.event_ID=event.event_ID AND event.event_ID=".$event_ID."";
                                             $result=$mysqli->query($q);                    
                                             if(!$result){
                                                 echo "Select failed. Error: ".$mysqli->error ;
@@ -443,15 +443,16 @@ $numtype=$row['COUNT(DISTINCT(tickettype.ticketType_name))']
  
         var barChartData = {
                 <?php
-                    $q = "SELECT DISTINCT(tickettype.ticketType_name) FROM `tickettype`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_ID='3' ";
-                    $result=$mysqli->query($q);                    
+                    $q = "SELECT DISTINCT(ticketType.ticketType_name) FROM `ticketType`,`ticket`,`event` WHERE ticket.event_ID=event.event_ID AND ticket.ticketType_ID=ticketType.ticketType_ID AND event.event_ID='3' ";
+                    echo $q;
+                    $result=$mysqli->query($q);
                     if(!$result){
                        echo "Select failed. Error: ".$mysqli->error ;
                     }
                     
                 ?>
                 labels: [ 
-                <?php $countw=1 while($row=$result->fetch_array()){ 
+                <?php $countw=1; while($row=$result->fetch_array()){
                     if ($countw==$numtype) {
                         echo $row['DISTINCT(tickettype.ticketType_name)']  ;
                     }
