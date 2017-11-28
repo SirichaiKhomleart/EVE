@@ -77,7 +77,7 @@ require_once('connect.php');
 								<p class="date1"><?php echo $row['event_name']; ?></p><br><br>
 								<p class="date1">From : <?php echo $row['account_fname']." ".$row['account_lname']; ?><br><?php echo $row['ticketType_name']; ?><br>NEW!</p><br>
 								<br><br><br>
-								<a href="detail.html" class="nino-btnb">More Detail</a>
+								<a href="detail.html?eventID=<?php echo $row['event_ID']; ?>" class="nino-btnb">More Detail</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
