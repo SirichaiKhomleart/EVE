@@ -34,31 +34,31 @@ require_once('connect.php');
 $eventID = $_POST['eventIDsend'];
 $eventName = $_POST['eventNamesend'];
 $button = $_POST['appcrtact'];
-echo "<br>eventID id : " . $eventID;
+//echo "<br>eventID id : " . $eventID;
 
 if ($button == "Approve") {
     $q = "UPDATE event SET event_approveStatus = '1' WHERE event_ID = '$eventID'";
     $result = $mysqli->query($q);
     if (!$result) {
-        echo "<br>Set 1 failed. Error: " . $mysqli->error;
+        //echo "<br>Set 1 failed. Error: " . $mysqli->error;
     } else {
-        echo "<br>Set 1 succ.";
+        //echo "<br>Set 1 succ.";
 
     }
 } elseif ($button == "Disapprove") {
     $q = "UPDATE event SET event_approveStatus = '0' WHERE event_ID = '$eventID'";
     $result = $mysqli->query($q);
     if (!$result) {
-        echo "<br>Set 0 failed. Error: " . $mysqli->error;
+        //echo "<br>Set 0 failed. Error: " . $mysqli->error;
     } else {
-        echo "<br>Set 0 succ.";
+        //echo "<br>Set 0 succ.";
 
     }
 } else {
-    echo "<br>do nothing with approve";
+    //echo "<br>do nothing with approve";
 }
 
-echo "<br><a href='organizer_index.php'>index</a>";
+//echo "<br><a href='organizer_index.php'>index</a>";
 
 if ($button == "Approve") {
 
@@ -112,7 +112,9 @@ if ($button == "Approve") {
             <br><br>
             <h4 style='text-align: center; color: #79091b;'> Now this event will never show up
                 <br><br>on our website and no customers can see it.
-                <br><br>Fill out the reason why you disapproved this event.</h4><br>
+                <br><br>
+<!--                Fill out the reason why you disapproved this event.-->
+            </h4><br>
             <br>
 
             <div class="box4">
