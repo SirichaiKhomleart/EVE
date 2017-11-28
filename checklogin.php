@@ -53,6 +53,7 @@ if($row)
             $_SESSION['current_staff_position']=$row['staff_position'];
 
             echo "<br><a href='admin_index.php'>Administrator Index</a>";
+            header('Location:admin_index.php');exit;
 
         }
     }
@@ -76,6 +77,7 @@ if($row)
             $_SESSION['current_organizer_status']=$row['organizer_status'];
 
             echo "<br><a href='organizer_index.php'>Organizer Index</a>";
+            header('Location:organizer_index.php');exit;
 
 
         }
@@ -92,6 +94,7 @@ if($row)
             $_SESSION['current_customer_status']=$row['customer_status'];
 
             echo "<br><a href='customer_index.php'>Customer Index</a>";
+            header('Location:customer_index.php');exit;
         }
     }
 

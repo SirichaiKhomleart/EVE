@@ -72,12 +72,14 @@ require_once('connect.php');
 
 
                 <?php
+                $hasevent=false;
                 $qfind = "SELECT * FROM event JOIN organizer  WHERE event.event_organizerID=organizer.account_ID AND event_approveStatus IS NULL ORDER BY event_dateEnd ASC";
                 $result = $mysqli->query($qfind);
                 if (!$result) {
                     echo "Select failed. Error: " . $mysqli->error;
                 } else {
                     while ($row = $result->fetch_array()) {
+                        $hasevent=true;
                         ?>
                         <div class="box4">
                             <hr>
@@ -91,11 +93,12 @@ require_once('connect.php');
                                     <p class="date1"><br>Location : <?php echo $row['event_location']; ?><br>Organizer : <?php echo $row['organizer_name']; ?>
                                         <br>Date: <?php echo $row['event_dateStart']; ?>  to  <?php echo $row['event_dateEnd']; ?></p><br>
                                     <br><br><br><br><br>
-                                    <form action="approveCreate.php" method="post">
-                                        <input class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
-                                        <input class="nino-btnorg" value="Approve"> </input> &emsp;
-                                        <input class="nino-btnorgsta" value="More Detail"> </input>
+                                    <form action="check_admin_approveCreate.php" method="post">
+                                        <input type="submit" name="appcrtact" class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
+                                        <input type="submit" name="appcrtact" class="nino-btnorg" value="Approve"> </input> &emsp;
+                                        <input type="submit" name="detail" class="nino-btnorgsta" value="More Detail"> </input>
                                         <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
+                                        <input type="hidden" name="eventNamesend" value="<?php echo $row['event_name'];?>">
                                     </form>
                                 </div>
                                 <div style="clear:both;"></div>
@@ -108,6 +111,10 @@ require_once('connect.php');
 
 
                     }
+                }
+                if ($hasevent==false){
+                    echo"<br><br><br><h4>There are no more waiting event in queue.</h4>";
+
                 }
                 ?>
                 <hr>
