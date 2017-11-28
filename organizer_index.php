@@ -97,7 +97,7 @@ if (isset($_SESSION['current_type'])){
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                            <img src="<?php echo $row['event_iconPicture']; ?>" width="250" height="250">
                         </div>
                         <div class="col-md-8">
                             <h3 class="quotet1" style="color: #00BCD4"><?php echo $row['event_name']; ?></h3>
@@ -132,10 +132,11 @@ if (isset($_SESSION['current_type'])){
 
                         </div>
                         <form action="organizer_manageEvent.php" method="post">
-                        <input type="submit" name="cancle<?php echo $row['event_ID']; ?>" class="nino-btnorgcancel " value="Cancel"></input>
-                        <input type="submit" name="edit<?php echo $row['event_ID']; ?>" class="nino-btnorg " value="Edit"></input>
-                        <input type="submit" name="stat<?php echo $row['event_ID']; ?>" class="nino-btnorgsta " value="Statistic"></input>
-                        <input type="hidden" name="from" value="<?php echo $_SESSION['currnt_ID']; ?>">
+                        <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
+                        <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
+                        <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>
+                        <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
+                        <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
                         </form>
                         <div style="clear:both;"></div>
                     </div>
@@ -180,7 +181,7 @@ if (isset($_SESSION['current_type'])){
                         <hr>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250" height="250">
                             </div>
                             <div class="col-md-8">
                                 <h3 class="quotet1" style="color: #2c622c"><?php echo $row['event_name']; ?></h3>
@@ -245,7 +246,7 @@ if (isset($_SESSION['current_type'])){
                         <hr>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250" height="250">
                             </div>
                             <div class="col-md-8">
                                 <h3 class="quotet1" style="color: #8a1f11"><?php echo $row['event_name']; ?></h3>
@@ -334,7 +335,7 @@ if (isset($_SESSION['current_type'])){
                         <hr>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250">
+                                <img src="<?php echo $row['event_iconPicture']; ?>" width="250" height="250">
                             </div>
                             <div class="col-md-8">
                                 <h3 class="quotet1"><?php echo $row['event_name']; ?></h3>

@@ -66,7 +66,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
             <span class="nino-subHeading">Welcome Back!</span>
             <?php echo $_SESSION['current_name'];?>
 
-            <?php if($_SESSION['current_customer_status']==0){
+            <?php if ($_SESSION['current_customer_status'] == 0){
                 echo    "<br><br><br><br> <font color='#dc143c'> This account already deactivated.</font><br>";
 
             ?>
@@ -95,7 +95,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
 
                     <!--loop check event from file-->
                     <?php
-                    $q = "SELECT tickettype.ticketType_name,ticket.event_dateStart,tickettype.ticketType_price,event_name,event_iconPicture,event.event_location from ticket,event,tickettype where ticket.event_ID=event.event_ID and account_ID=".$_SESSION['current_ID']." and ticket.event_dateStart>=CURRENT_DATE and ticket.ticketType_ID=tickettype.ticketType_ID";
+                    $q = "SELECT ticketType.ticketType_name,ticket.event_dateEnd,ticketType.ticketType_price,event_name,event_iconPicture,event.event_location from ticket,event,ticketType where ticket.event_ID=event.event_ID and account_ID=".$_SESSION['current_ID']." and ticket.event_dateEnd>=CURRENT_DATE and ticket.ticketType_ID=ticketType.ticketType_ID";
                     $result=$mysqli->query($q);                    
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
@@ -107,7 +107,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                                     <img src=<?php echo $row['event_iconPicture']?> width="100%">
                                 </div>
                                 <?php
-                                $date = date_create($row['event_dateStart']);
+                                $date = date_create($row['event_dateEnd']);
                                 $datename = date_format($date, 'l jS F Y');
                                 ?>
                                 <div class="col-md-6 " >
@@ -115,6 +115,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                                     <p class="quotet2"><?php echo "Ticket price: ".$row['ticketType_price']?></p>
                                     <h5 class="date1"><?php echo $row['event_name']?></h5>
                                     <p class="date1"><?php echo $datename ?><br><img src="images/ico/loca.png" width="15px"> <?php echo $row['event_location']?></p>
+
                                     <a href="detail.html" class="nino-btnn">More Details</a>
                                 </div>
                                 <div class="col-md-3 " >
