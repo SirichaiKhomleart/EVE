@@ -15,11 +15,11 @@ function print_menus(){
             }
         }elseif ($_SESSION['current_type']=="Organizer"){
             if ($_SESSION['current_organizer_status']==0){
-                //echo '<a href="homepage.php">Home</a>';
+                echo '<a href="homepage.php">Home</a>';
                 echo '<a href="organizer_index.php">My Account</a>';
                 echo '<a href="logout.php">Log Out</a>';
             }else{
-                //echo '<a href="homepage.php">Home</a>';
+                echo '<a href="homepage.php">Home</a>';
                 echo '<a href="organizer_createEvent.php">Create Event</a>';
                 echo '<a href="organizer_index.php">My Events</a>';
                 echo '<a href="org_index_stat.php">Statistic</a>';
@@ -27,7 +27,7 @@ function print_menus(){
                 echo '<a href="logout.php">Log Out</a>';
             }
         }elseif ($_SESSION['current_type']=="Admin"){
-            //echo '<a href="homepage.php">Home</a>';
+            echo '<a href="homepage.php">Home</a>';
             echo '<a href="admin_index.php">Admin System</a>';
             echo '<a href="createinbox.php">Notification</a>';
             echo '<a href="logout.php">Log Out</a>';
