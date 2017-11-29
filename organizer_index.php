@@ -109,6 +109,7 @@ if (isset($_SESSION['current_type'])){
                                 <?php
                                 $editbeingreview=false;
                                 $ideve=$row['event_ID'];
+                                $compareMODE="off";
 
                                 $qcheckedit = "SELECT * FROM eventEditLog 
                                       WHERE event_ID = '$ideve' 
@@ -118,6 +119,7 @@ if (isset($_SESSION['current_type'])){
                                 if((isset($rowcheckedit))&&($rowcheckedit['edit_approveStatus']==NULL)){
                                     $editbeingreview=true;
                                     echo "<h6 style='color: #c0a16b'>The edited information is being review...</h6>";
+                                    $compareMODE="on";
                                 }
                                 ?>
 
@@ -155,6 +157,7 @@ if (isset($_SESSION['current_type'])){
                         <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
                         <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>
                         <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>
+                        <a href="event_seeDetail.php?eventID=<?php echo $ideve;?>&&compareMode=<?php echo $compareMODE; ?>" class="nino-btnorgsta" >More<br>Detail</a>
                         <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                             <?php $eventName=$row['event_name']; ?>
                         <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
@@ -244,6 +247,7 @@ if (isset($_SESSION['current_type'])){
                                 <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
 <!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
 <!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <a href="event_seeDetail.php?eventID=<?php echo $eventID;?>&&compareMode=off" class="nino-btnorgsta" >More<br>Detail</a>
                                 <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                                 <?php $eventName=$row['event_name']; ?>
                                 <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
@@ -313,6 +317,7 @@ if (isset($_SESSION['current_type'])){
                                 <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>
 <!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
 <!--                                <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>-->
+                                <a href="event_seeDetail.php?eventID=<?php echo $eventID;?>&&compareMode=off" class="nino-btnorgsta" >More<br>Detail</a>
                                 <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                                 <?php $eventName=$row['event_name']; ?>
                                 <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">
@@ -404,6 +409,7 @@ if (isset($_SESSION['current_type'])){
 <!--                                <input type="submit" name="submitAction" class="nino-btnorgcancel " value="Cancel"></input>-->
 <!--                                <input type="submit" name="submitAction" class="nino-btnorg " value="Edit"></input>-->
                                 <input type="submit" name="submitAction" class="nino-btnorgsta " value="Statistic"></input>
+                                <a href="event_seeDetail.php?eventID=<?php echo $eventID;?>&&compareMode=off" class="nino-btnorgsta" >More<br>Detail</a>
                                 <input type="hidden" name="fromUser" value="<?php echo $_SESSION['current_ID']; ?>">
                                 <?php $eventName=$row['event_name']; ?>
                                 <input type="hidden" name="fromEvent" value="<?php echo $eventID; ?>">

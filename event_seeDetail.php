@@ -44,7 +44,7 @@ $compareMode = $_GET['compareMode'];
 $q = "SELECT * FROM event, organizer, eventType
       WHERE event.event_ID = '$eventID' 
       
-      AND event.event_dateEND >= CURRENT_DATE
+      
       AND event.event_organizerID=organizer.account_ID
       AND organizer.organizer_status='1'
       AND event.event_typeID=eventType.eventType_ID";
