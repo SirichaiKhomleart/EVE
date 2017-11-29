@@ -161,7 +161,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.<?php  ?>">
+                <a href="detail.php">
                     <img src="images/poster/smallevent3.jpg"  />
                     <div class="overlay">
                         <div class="content">
