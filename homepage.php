@@ -67,25 +67,25 @@ require_once ('helper.php');
                         <img src="images/poster/event1.jpg" height="330" />
                     </h2>
 
-                    <a href="detail.html" class="nino-btn">more details</a>
+                    <a href="detail.php" class="nino-btn">more details</a>
                 </div>
                 <div class="item">
                     <h2 class="nino-sectionHeading">
                         <img src="images/poster/event2.jpg" height="330"/>
                     </h2>
-                    <a href="detail.html" class="nino-btn">more details</a>
+                    <a href="detail.php" class="nino-btn">more details</a>
                 </div>
                 <div class="item">
                     <h2 class="nino-sectionHeading">
                         <img src="images/poster/event3.png" height="330"/>
                     </h2>
-                    <a href="detail.html" class="nino-btn">more details</a>
+                    <a href="detail.php" class="nino-btn">more details</a>
                 </div>
                 <div class="item">
                     <h2 class="nino-sectionHeading">
                         <img src="images/poster/event4.jpg" height="330"/>
                     </h2>
-                    <a href="detail.html" class="nino-btn">more details</a>
+                    <a href="detail.php" class="nino-btn">more details</a>
                 </div>
             </div>
 
@@ -137,7 +137,7 @@ require_once ('helper.php');
     <div class="sectionContent">
         <ul class="nino-portfolioItems">
             <li class="item">
-                <a href="detail.html" >
+                <a href="detail.php" >
                     <img src="images/poster/sbanner1.jpg"  />
                     <div class="overlay">
                         <div class="content">
@@ -149,7 +149,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/sbanner2.jpg"  />
                     <div class="overlay">
                         <div class="content">
@@ -161,7 +161,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/smallevent3.jpg"  />
                     <div class="overlay">
                         <div class="content">
@@ -173,7 +173,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/sbanner4.png" />
                     <div class="overlay">
                         <div class="content">
@@ -185,7 +185,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/sbanner6.jpg" />
                     <div class="overlay">
                         <div class="content">
@@ -197,7 +197,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/sbanner3.jpg" />
                     <div class="overlay">
                         <div class="content">
@@ -209,7 +209,7 @@ require_once ('helper.php');
                 </a>
             </li>
             <li class="item">
-                <a href="detail.html">
+                <a href="detail.php">
                     <img src="images/poster/sbanner7.jpg" />
                     <div class="overlay">
                         <div class="content">
@@ -386,7 +386,7 @@ require_once ('helper.php');
                 <div class="col-md-4 col-sm-4">
                     <article>
                         <div class="item">
-                            <a class="overlay" href="detail.html">
+                            <a class="overlay" href="detail.php">
 									<span class="content">
 										<i class="mdi mdi-account-multiple nino-icon"></i>
 										More details
@@ -411,7 +411,7 @@ require_once ('helper.php');
                 <div class="col-md-4 col-sm-4">
                     <article>
                         <div class="item">
-                            <a class="overlay" href="detail.html">
+                            <a class="overlay" href="detail.php">
 									<span class="content">
 										<i class="mdi mdi-account-multiple nino-icon"></i>
 										More details
@@ -435,7 +435,7 @@ require_once ('helper.php');
                 <div class="col-md-4 col-sm-4">
                     <article>
                         <div class="item">
-                            <a class="overlay" href="detail.html">
+                            <a class="overlay" href="detail.php">
 									<span class="content">
 										<i class="mdi mdi-account-multiple nino-icon"></i>
 										More details
