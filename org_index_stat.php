@@ -395,7 +395,7 @@ require_once('connect.php');
                         highlightFill: "rgba(124, 232, 178,0.2)",
                         highlightStroke: "rgba(124, 232, 178,0.2)",
                         <?php
-                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Female' AND event.event_organizerID=".$_SESSION['current_ID']."";
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Female' AND event.event_organizerID=".$_SESSION['current_ID']." AND event.event_ID=ticket.event_ID";
                           $result=$mysqli->query($q);                    
                           if(!$result){
                             echo "Select failed. Error: ".$mysqli->error ;
@@ -411,7 +411,7 @@ require_once('connect.php');
                         highlightFill: "rgba(110,160,210,0.2)",
                         highlightStroke: "rgba(110,160,210,0.2)",
                         <?php
-                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Male' AND event.event_organizerID=".$_SESSION['current_ID']."";
+                          $q = "SELECT COUNT(DISTINCT(payment_ID)) FROM account,ticket,event WHERE ticket.account_ID=account.account_ID AND account_gender='Male' AND event.event_organizerID=".$_SESSION['current_ID']." AND event.event_ID=ticket.event_ID";
                           $result=$mysqli->query($q);                    
                           if(!$result){
                             echo "Select failed. Error: ".$mysqli->error ;
