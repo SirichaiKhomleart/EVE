@@ -2,6 +2,7 @@
 session_start();
 require_once('helper.php');
 require_once ('connect.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +83,7 @@ require_once ('connect.php');
                     } else {
                         while ($row = $result->fetch_array()) {
                             $hasevent=true;
+                            $eveid=$row['event_ID'];
                             ?>
                             <div class="box4">
                                 <hr>
@@ -98,7 +100,7 @@ require_once ('connect.php');
                                         <form action="check_admin_approveEdit.php" method="post">
                                             <input type="submit" name="appeditact" class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
                                             <input type="submit" name="appeditact" class="nino-btnorg" value="Approve"> </input> &emsp;
-                                            <input type="submit" name="detail" class="nino-btnorgsta" value="More Detail"> </input>
+                                            <a href="event_seeDetail.php?eventID=<?php echo $eveid;?>&&compareMode=on" class="nino-btnorgsta" >More<br>Detail</a>
                                             <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
                                             <input type="hidden" name="eventNamesend" value="<?php echo $row['event_name'];?>">
                                         </form>
