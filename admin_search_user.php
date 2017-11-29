@@ -283,9 +283,9 @@ if (isset($_SESSION['current_type'])){
                     echo "<td>Inactive</td>";
                   }
                   if ($cstatus==1) {
-                    echo "<td><a href='delinfo.php?userid=".$accountid."'>Set to Inactive</a></td>";
+                    echo "<td><a href='delinfo_customer.php?userid=".$accountid."'>Set to Inactive</a></td>";
                   } else {
-                    echo "<td><a href='upinfo.php?userid=".$accountid."'>Set to Active</a></td>";
+                    echo "<td><a href='upinfo_customer.php?userid=".$accountid."'>Set to Active</a></td>";
                   }                  
                   echo "</tr>";
                 }
