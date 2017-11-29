@@ -181,6 +181,7 @@ if (isset($_SESSION['current_type'])){
                   <th>Organizer Email</th>
                   <th>Phone number</th>
                   <th>Status</th>
+                  <th>Setting Account Status</th>
                 </tr>
               </thead>
               <?php
@@ -220,6 +221,8 @@ if (isset($_SESSION['current_type'])){
                   <?php
                   while($row=$result->fetch_array()){
                     echo "<tr>";
+                    $accountid = $row['account_ID'];
+                    $ostatus = $row['organizer_status'];
                     echo "<td>".$row['account_ID']."</td>";
                     echo "<td>".$row['account_fname']."</td>";
                     echo "<td>".$row['account_lname']."</td>";
@@ -227,7 +230,16 @@ if (isset($_SESSION['current_type'])){
                     echo "<td>".$row['organizer_address']."</td>";
                     echo "<td>".$row['organizer_email']."</td>";
                     echo "<td>".$row['organizer_phone']."</td>";
-                    echo "<td>".$row['organizer_status']."</td>";
+                    if ($ostatus==1) {
+                      echo "<td>Active</td>";
+                    } else {
+                      echo "<td>Inactive</td>";
+                    }
+                    if ($ostatus==1) {
+                      echo "<td><a href='delinfo_organ.php?userid=".$accountid."'>Set to Inactive</a></td>";
+                    } else {
+                      echo "<td><a href='upinfo_organ.php?userid=".$accountid."'>Set to Active</a></td>";
+                    }             
                     echo "</tr>";
                   }}?>
                 </tbody>
