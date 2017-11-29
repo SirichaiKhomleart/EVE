@@ -280,7 +280,7 @@ require_once ('helper.php');
                                 If they're gonna spend half an hour to do something,
                                 they want some entertainment and a sense of achievement.
                                 <br>Explore here!</p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Entertainment" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
@@ -293,7 +293,7 @@ require_once ('helper.php');
                                 You may have the greatest bunch of individual stars in the world,
                                 but if they don't play together, the club won't be worth a dime.
                                 <br>Finding the right place for yourself?</p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Sports" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@ require_once ('helper.php');
                             <h4 class="nino-serviceTitle">Technology</h4>
                             <p>The digital world is changing the roles communities play in our lives, as well as the roles we play within them. How can us, humans, and artificial things live together?
                                 <br>Find out answer here!</p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Technology" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
@@ -317,7 +317,7 @@ require_once ('helper.php');
                                 In order to have a truly epic vacation, you need to get out there and experience as many new things as possible.
                                 This includes not just seeing and doing but also eating, learning and experiencing.
                                 <br> Join our trip now!</p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Travel" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
@@ -325,13 +325,13 @@ require_once ('helper.php');
                     <div layout="row">
                         <i class="mdi mdi-desktop-mac nino-icon fsr"></i>
                         <div>
-                            <h4 class="nino-serviceTitle">WorkShop</h4>
+                            <h4 class="nino-serviceTitle">Workshop</h4>
                             <p>There are so many reasons why you should attend workshop.
                                 You have a lot to offer and maybe you’ll learn something new,
                                 laughter and relationship are immensely good for everyone’s health and well being.
                                 You’ll meet new friends in the colleagues you pass in the halls every day. And a lot more...
                                 <br>Why are you still holding back? </p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Workshop" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
@@ -345,7 +345,7 @@ require_once ('helper.php');
                                 The arts can remind us of what is truly important in life, who we really are, and what our purpose is.
                                 That is the reason why we cannot live in the world without the art.
                                 <br>Exploring the art of you here!</p>
-                            <a href="cata.html" class="nino-btns">See all events</a>
+                            <a href="search_login.php?keyword=Atrs" class="nino-btns">See all events</a>
                         </div>
                     </div>
                 </div>
