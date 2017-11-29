@@ -55,7 +55,7 @@ require_once('connect.php');
     				
     				<div class="box"> 
     					<br>
-						<h4 class="nino-sectionHeading">Your Tickets</h4>						
+						<h4 class="nino-sectionHeading">Your Payments</h4>						
 					</div>
                  <?php
                     $q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID";
@@ -63,7 +63,8 @@ require_once('connect.php');
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
                     }
-                while($row=$result->fetch_array()){?>
+                while($row=$result->fetch_array()){
+                	$payid=$row['payment_ID'];?>
 
 
 					<div class="ticketbox">
@@ -97,14 +98,27 @@ require_once('connect.php');
                     if(!$result){
                         echo "Select failed. Error: ".$mysqli->error ;
                     }
-                while($row=$result->fetch_array()){?>
-								<h4 class="quotet2">Your Ticket</h4><br>
-								<h5 class="date1"><?php echo $row['ticketType_name']; ?></h5>
-								<h5 class="date1">1 Ticket</h5>
+                    $scount=0;
+                			$pcount=0;
+                	while($row=$result->fetch_array()){
+                			if ($row['ticketType_name']=='Standard') {
+                				$scount=$scount+1;
+                			}
+                			else{
+                				$pcount=$pcount+1;
+                			}
+                		}
 
+                		?>
+
+								<h4 class="quotet2">Your Ticket</h4><br>
+								<h5 class="date1">Standard</h5>
+								<h5 class="date1"><?php echo $scount; ?> Ticket</h5>
+								<h5 class="date1">Premium</h5>
+								<h5 class="date1"><?php echo $pcount; ?> Ticket</h5>
 
 								<br><br><br>								
-								<a href="detail.html" class="nino-btnn">See The Ticket</a>
+								<<a href="paymenthistory.php?payID=<?php echo $payid;?>&&compareMode=off" class="nino-btnn">More details</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
