@@ -490,5 +490,7 @@ if($pageAction=="Cancel") {
 </body>
 </html>
 <?php
+
 header('Location: organizer_index.php');
+
 ?>

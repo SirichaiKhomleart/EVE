@@ -45,6 +45,16 @@ if ($button == "Approve") {
         //echo "<br>Set 1 succ.";
 
     }
+    $q = "UPDATE ticketType SET ticketType_approveStatus = '1' 
+          WHERE event_ID = '$eventID'
+          AND ticketType_approveStatus IS NULL";
+    $result = $mysqli->query($q);
+    if (!$result) {
+        //echo "<br>Set 1 failed. Error: " . $mysqli->error;
+    } else {
+        //echo "<br>Set 1 succ.";
+
+    }
 } elseif ($button == "Disapprove") {
     $q = "UPDATE event SET event_approveStatus = '0' WHERE event_ID = '$eventID'";
     $result = $mysqli->query($q);

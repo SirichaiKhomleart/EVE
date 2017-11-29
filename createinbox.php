@@ -82,6 +82,7 @@ require_once('connect.php');
                     echo "Select failed. Error: " . $mysqli->error;
                 } else {
                     while ($row = $result->fetch_array()) {
+                        $eveid=$row['event_ID'];
                         $hasevent=true;
                         ?>
                         <div class="box4">
@@ -100,7 +101,7 @@ require_once('connect.php');
                                     <form action="check_admin_approveCreate.php" method="post">
                                         <input type="submit" name="appcrtact" class="nino-btnorgcancel" value="Disapprove"> </input> &emsp;
                                         <input type="submit" name="appcrtact" class="nino-btnorg" value="Approve"> </input> &emsp;
-                                        <a href="eventdetail_admin.php?eventID=<?php echo $row['event_ID'];?>" class="nino-btnorgsta">More<br>Detail</a>
+                                        <a href="event_seeDetail.php?eventID=<?php echo $eveid;?>&&compareMode=off" class="nino-btnorgsta" >More<br>Detail</a>
                                         <input type="hidden" name="eventIDsend" value="<?php echo $row['event_ID'];?>">
                                         <input type="hidden" name="eventNamesend" value="<?php echo $row['event_name'];?>">
                                     </form>

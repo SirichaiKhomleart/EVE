@@ -125,6 +125,8 @@ while ($ticketloopcount) {
     <a href="organizer_index.php">index</a>
 
 <?php
-header('organizer_index.php');
+
+header('Location:organizer_index.php');
 exit;
+
 ?>
