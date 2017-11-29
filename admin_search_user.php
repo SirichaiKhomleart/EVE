@@ -212,6 +212,7 @@ if (isset($_SESSION['current_type'])){
                 <th>Age</th>
                 <th>Gender</th>
                 <th>Status</th>
+                <th>Setting Account Status</th>
               </tr>
             </thead>
             <?php
@@ -268,22 +269,34 @@ if (isset($_SESSION['current_type'])){
                 <?php
                 while($row=$result->fetch_array()){
                   echo "<tr>";
-                  echo "<td>".$row['account_ID']."</td>";
+                  $accountid = $row['account_ID'];
+                  $cstatus = $row['customer_status'];
+                  echo "<td>".$accountid."</td>";
                   echo "<td>".$row['account_fname']."</td>";
                   echo "<td>".$row['account_lname']."</td>";
                   echo "<td>".$row['account_email']."</td>";
                   echo "<td>".$row['account_age']."</td>";
                   echo "<td>".$row['account_gender']."</td>";
-                  echo "<td>".$row['customer_status']."</td>";
+                  if ($cstatus==1) {
+                    echo "<td>Active</td>";
+                  } else {
+                    echo "<td>Inactive</td>";
+                  }
+                  if ($cstatus==1) {
+                    echo "<td><a href='delinfo.php?userid=".$accountid."'>Set to Inactive</a></td>";
+                  } else {
+                    echo "<td><a href='upinfo.php?userid=".$accountid."'>Set to Active</a></td>";
+                  }                  
                   echo "</tr>";
-                }}?>
-              </tbody>
-            </table>
-          </div>
+                }
+              }?>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>  
-  </div>
+    </div>
+  </div>  
+</div>
 </div>
 </div>
 <!-- end: content -->
