@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bc7a5b8c-91d3-4f36-9736-42044d80d59e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/helper.php" afterPath="$PROJECT_DIR$/helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_search_event.php" afterPath="$PROJECT_DIR$/admin_search_event.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_search_ticket.php" afterPath="$PROJECT_DIR$/admin_search_ticket.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,20 +80,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check_organizer_manageEvent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/check_organizer_manageEvent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1749">
-              <caret line="128" column="17" lean-forward="false" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="17" />
-              <folding>
-                <marker date="1511915297969" expanded="true" signature="2047:2504" ph="INSERT INTO event... " />
-                <marker date="1511915297969" expanded="true" signature="2719:2812" ph="SELECT event... event" />
-                <marker date="1511915297969" expanded="true" signature="3529:3695" ph="INSERT INTO ticketType... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="event_seeDetail.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/event_seeDetail.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -115,21 +102,6 @@
                 <marker date="1511916735201" expanded="true" signature="6100:6425" ph="SELECT * FRO... event" />
                 <marker date="1511916735201" expanded="false" signature="7796:7807" ph="..." />
                 <marker date="1511916735201" expanded="true" signature="8422:8485" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="success_login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/success_login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <marker date="1511917605349" expanded="true" signature="2780:2859" ph="SELECT payme... paymentLog" />
-                <marker date="1511917605349" expanded="true" signature="3107:3281" ph="INSERT INTO `paymentLog`... " />
-                <marker date="1511917605349" expanded="true" signature="3510:3724" ph="INSERT INTO `ticket`... " />
-                <marker date="1511917605349" expanded="true" signature="3966:4180" ph="INSERT INTO `ticket`... " />
               </folding>
             </state>
           </provider>
@@ -310,7 +282,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helper.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="helper.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="667">
@@ -320,12 +292,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/detail.php">
+      <file leaf-file-name="admin_search_organ.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_search_organ.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1078">
-              <caret line="73" column="110" lean-forward="false" selection-start-line="73" selection-start-column="110" selection-end-line="73" selection-end-column="110" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
+              <folding>
+                <marker date="1511922964753" expanded="true" signature="9464:9572" ph="SELECT * FRO... account" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_search_event.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin_search_event.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="325" column="95" lean-forward="false" selection-start-line="325" selection-start-column="95" selection-end-line="325" selection-end-column="95" />
+              <folding>
+                <marker date="1511924007397" expanded="true" signature="7672:7708" ph="SELECT event... eventType" />
+                <marker date="1511924007397" expanded="true" signature="15779:15915" ph="SELECT * FRO... event" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_search_ticket.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_search_ticket.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="304" column="332" lean-forward="false" selection-start-line="304" selection-start-column="332" selection-end-line="304" selection-end-column="332" />
+              <folding>
+                <marker date="1511923961225" expanded="true" signature="7632:7668" ph="SELECT event... eventType" />
+                <marker date="1511923961225" expanded="true" signature="14774:15117" ph="SELECT * FRO... ticket" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -402,6 +402,8 @@
         <option value="$PROJECT_DIR$/search_login.php" />
         <option value="$PROJECT_DIR$/org_index_stat.php" />
         <option value="$PROJECT_DIR$/helper.php" />
+        <option value="$PROJECT_DIR$/admin_search_ticket.php" />
+        <option value="$PROJECT_DIR$/admin_search_event.php" />
       </list>
     </option>
   </component>
@@ -516,12 +518,12 @@
       <workItem from="1511696389885" duration="12316000" />
       <workItem from="1511713319357" duration="21516000" />
       <workItem from="1511832970172" duration="27500000" />
-      <workItem from="1511909041601" duration="11283000" />
+      <workItem from="1511909041601" duration="11716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87663000" />
+    <option name="totallyTimeSpent" value="88096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -557,30 +559,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/signup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1978">
-          <caret line="86" column="67" lean-forward="false" selection-start-line="86" selection-start-column="67" selection-end-line="86" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/checksignup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="85" lean-forward="false" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-          <folding>
-            <marker date="1511741178260" expanded="true" signature="436:506" ph="SELECT accou... account" />
-            <marker date="1511741178260" expanded="true" signature="1926:2173" ph="INSERT INTO account... " />
-            <marker date="1511741178260" expanded="true" signature="2045:2173" ph="INSERT INTO USERGROUP... " />
-            <marker date="1511741178260" expanded="true" signature="2372:2439" ph="SELECT accou... account" />
-            <marker date="1511741178260" expanded="true" signature="2923:2992" ph="INSERT INTO customer... " />
-            <marker date="1511741178260" expanded="true" signature="2923:2994" ph="INSERT INTO customer... " />
-            <marker date="1511741178260" expanded="true" signature="2923:3011" ph="INSERT INTO customer... " />
-            <marker date="1511741178260" expanded="true" signature="2934:2992" ph="SELECT accou... account" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php" />
     <entry file="file://$PROJECT_DIR$/logout.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -765,16 +743,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/approveCreate.php" />
     <entry file="file://$PROJECT_DIR$/asset/check_admin_approveCreate.php" />
-    <entry file="file://$PROJECT_DIR$/admin_search_organ.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <marker date="1511922964753" expanded="true" signature="9464:9572" ph="SELECT * FRO... account" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/check_admin_approveEdit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
@@ -1321,6 +1289,38 @@
         <state relative-caret-position="667">
           <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_search_organ.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
+          <folding>
+            <marker date="1511922964753" expanded="true" signature="9464:9572" ph="SELECT * FRO... account" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_search_ticket.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="304" column="332" lean-forward="false" selection-start-line="304" selection-start-column="332" selection-end-line="304" selection-end-column="332" />
+          <folding>
+            <marker date="1511923961225" expanded="true" signature="7632:7668" ph="SELECT event... eventType" />
+            <marker date="1511923961225" expanded="true" signature="14774:15117" ph="SELECT * FRO... ticket" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_search_event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="325" column="95" lean-forward="false" selection-start-line="325" selection-start-column="95" selection-end-line="325" selection-end-column="95" />
+          <folding>
+            <marker date="1511924007397" expanded="true" signature="7672:7708" ph="SELECT event... eventType" />
+            <marker date="1511924007397" expanded="true" signature="15779:15915" ph="SELECT * FRO... event" />
+          </folding>
         </state>
       </provider>
     </entry>
