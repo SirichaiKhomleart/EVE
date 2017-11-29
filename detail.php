@@ -62,7 +62,7 @@
 							<br>
 							<h4 class="topic">Chang Music Connection Presents Waterzonic 2017</h4>
 							<div>
-								<p class="date">29 September 2017 17:00</p>
+								<p class="date">29 Dec 2017 17:00</p>
 								<div style="clear:both;"></div>
 							</div>
 							<br>
@@ -71,7 +71,7 @@
 					<br><br>
 					<div class="detail">
 						<div class="box1">
-							<h4 class="topic1">Chang Music Connection Presents Waterzonic 2017<br> 29 - 30 September 2017</h4>
+							<h4 class="topic1">Chang Music Connection Presents Waterzonic 2017<br> 29 - 30 Dec 2017</h4>
 							<br><br>
 							<h4 class="topic1">“The Story Of Watertale”<br> Unite, shine and make your way into another universe.</h4>
 						</div>

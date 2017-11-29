@@ -58,9 +58,9 @@ if (isset($_SESSION['current_type'])){
 
 	<!-- Header
 		================================================== -->
-		<header id="nino-header2">
-    <?php header_zone(); ?>
-</header>
+    <header id="nino-header2">
+        <?php header_zone(); ?>
+    </header><!--/#header-->
 	<!-- Brand
 		================================================== -->
 		<section id="nino-brand">
@@ -75,7 +75,7 @@ if (isset($_SESSION['current_type'])){
 								$cardnum = $_POST['cardnum'];
 								$expiry = $_POST['month']."-".$_POST['month']."";
 							}
-							$q = "SELECT paymentlog.payment_ID FROM paymentlog ORDER BY payment_ID DESC LIMIT 0,1";
+							$q = "SELECT paymentLog.payment_ID FROM paymentLog ORDER BY payment_ID DESC LIMIT 0,1";
 							$result=$mysqli->query($q);                    
 							if(!$result){
 								echo "Select failed. Error: ".$mysqli->error ;
@@ -83,14 +83,14 @@ if (isset($_SESSION['current_type'])){
 							while($row=$result->fetch_array()){
 								$bookId = $row['payment_ID']+1;
 							}
-							$q = "INSERT INTO `paymentlog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES (NULL, '2', '".$total."', '".$method."', CURRENT_TIMESTAMP);";
+							$q = "INSERT INTO `paymentLog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES (NULL, '2', '".$total."', '".$method."', CURRENT_TIMESTAMP);";
 							$result=$mysqli->query($q);                    
 							if(!$result){
 								echo "Select failed. Error: ".$mysqli->error ;
 							}
 							$t1 = $_SESSION['type1'];
 							for ($i=0; $i < $t1 ; $i++) { 
-								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '1', '2017-9-30', '1');";
+								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '1', '2017-12-30', '1');";
 								$result=$mysqli->query($q);                    
 								if(!$result){
 									echo "Select failed. Error: ".$mysqli->error ;
@@ -98,7 +98,7 @@ if (isset($_SESSION['current_type'])){
 							}
 							$t2 = $_SESSION['type2'];
 							for ($j=0; $j < $t2 ; $j++) { 
-								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '2', '2017-9-30', '1');";
+								$q = "INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES (NULL, '".$_SESSION['current_ID']."', '".$bookId."', '2', '2', '2017-12-30', '1');";
 								$result=$mysqli->query($q);                    
 								if(!$result){
 									echo "Select failed. Error: ".$mysqli->error ;
