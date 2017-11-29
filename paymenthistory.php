@@ -61,7 +61,7 @@ $pay_ID=$_GET['payID'];
 
 						<div class="ticketbox">
 							<?php
-							$q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentlog.payment_ID=".$pay_ID."";
+							$q = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentLog.payment_ID=".$pay_ID."";
 							$result=$mysqli->query($q);                    
 							if(!$result){
 								echo "Select failed. Error: ".$mysqli->error ;
@@ -94,7 +94,7 @@ $pay_ID=$_GET['payID'];
 								</div>
 								<div class="col-md-3 " >
 									<?php
-									$q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event`,`tickettype` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND tickettype.ticketType_ID=ticket.ticketType_ID ORDER BY tickettype.ticketType_name";
+									$q = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND ticketType.ticketType_ID=ticket.ticketType_ID ORDER BY ticketType.ticketType_name";
 									$result=$mysqli->query($q);                    
 									if(!$result){
 										echo "Select failed. Error: ".$mysqli->error ;
@@ -143,7 +143,7 @@ $pay_ID=$_GET['payID'];
 							<div class="paymentbox">
 
 								<?php
-									$q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event`,`tickettype` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND tickettype.ticketType_ID=ticket.ticketType_ID ORDER BY tickettype.ticketType_name";
+									$q = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND ticketType.ticketType_ID=ticket.ticketType_ID ORDER BY ticketType.ticketType_name";
 									$result=$mysqli->query($q);                    
 									if(!$result){
 										echo "Select failed. Error: ".$mysqli->error ;
@@ -170,7 +170,7 @@ $pay_ID=$_GET['payID'];
 										</div>
 										<div class="col-md-2 ">
 											<?php
-											$q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event`,`tickettype` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentlog.payment_ID=".$pay_ID." AND tickettype.ticketType_name='Standard'";
+											$q = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentLog.payment_ID=".$pay_ID." AND ticketType.ticketType_name='Standard'";
 											$result=$mysqli->query($q); 
 											                 
 											if(!$result){
@@ -197,7 +197,7 @@ $pay_ID=$_GET['payID'];
 											</div>
 											<div class="col-md-2 ">
 												<?php
-												$q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event`,`tickettype` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentlog.payment_ID=".$pay_ID." AND tickettype.ticketType_name='Premium'";
+												$q = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND paymentLog.payment_ID=".$pay_ID." AND ticketType.ticketType_name='Premium'";
 												$result=$mysqli->query($q);                    
 												if(!$result){
 													echo "Select failed. Error: ".$mysqli->error ;

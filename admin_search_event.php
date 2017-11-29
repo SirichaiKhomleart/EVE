@@ -157,7 +157,7 @@ if (isset($_SESSION['current_type'])){
                       <select class="form-control" name="etype">
                         <option value="-1">All</option>
                         <?php
-                        $q = "SELECT eventtype_name FROM eventtype";
+                        $q = "SELECT eventType_name FROM eventType";
                         $result=$mysqli->query($q);                    
                         if(!$result){
                           echo "Select failed. Error: ".$mysqli->error ;
@@ -323,7 +323,7 @@ if (isset($_SESSION['current_type'])){
                   }else{
                     $sdate = "";
                   }
-                  $q = "SELECT * FROM event,eventtype,organizer WHERE event.event_typeID=eventtype.eventType_ID AND event.event_organizerID=organizer.account_ID".$sename.$soname.$slo.$setype.$sstatus.$sdate;
+                  $q = "SELECT * FROM event,eventType,organizer WHERE event.event_typeID=eventType.eventType_ID AND event.event_organizerID=organizer.account_ID".$sename.$soname.$slo.$setype.$sstatus.$sdate;
                   $result=$mysqli->query($q);                    
                   if(!$result){
                     echo "Select failed. Error: ".$mysqli->error ;
