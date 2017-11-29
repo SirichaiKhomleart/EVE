@@ -95,7 +95,14 @@ require_once('connect.php');
                             </div>
                             <div class="col-md-3 ">
                                 <?php
-                                $q1 = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` WHERE ticket.payment_ID=paymentLog.payment_ID AND account.account_ID=" . $_SESSION['current_ID'] . " AND paymentLog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND ticketType.ticketType_ID=ticket.ticketType_ID ORDER BY ticketType.ticketType_name";
+                                $q1 = "SELECT * FROM `ticket`,`paymentLog`,`account`,`event`,`ticketType` 
+                                        WHERE ticket.payment_ID=paymentLog.payment_ID 
+                                        AND account.account_ID=" . $_SESSION['current_ID'] . " 
+                                        AND paymentLog.event_ID=event.event_ID 
+                                        AND ticket.account_ID=account.account_ID 
+                                        AND ticketType.ticketType_ID=ticket.ticketType_ID 
+                                        AND paymentLog.payment_ID='$payid'
+                                        ORDER BY ticketType.ticketType_name";
                                 $result1 = $mysqli->query($q1);
                                 if (!$result1) {
                                     echo "Select failed. Error: " . $mysqli->error;
