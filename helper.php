@@ -23,7 +23,7 @@ function print_menus(){
                 echo '<a href="organizer_createEvent.php">Create Event</a>';
                 echo '<a href="organizer_index.php">My Events</a>';
                 echo '<a href="org_index_stat.php">Statistic</a>';
-                echo '<a href="refundinbox.php">Notification</a>';
+                //echo '<a href="refundinbox.php">Notification</a>';
                 echo '<a href="logout.php">Log Out</a>';
             }
         }elseif ($_SESSION['current_type']=="Admin"){

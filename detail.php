@@ -57,12 +57,19 @@
 			<div class="verticalCenter fw" >
 				<div class="container">
 					<div class="detail">
-						<img src="images/poster/event2.jpg" width="100%">
+<!--						<img src="images/poster/event2.jpg" width="100%">-->
 						<div class="box"> 
 							<br>
-							<h4 class="topic">Hackathon</h4>
+							<h4 class="topic">HACKATHON 2017</h4>
 							<div>
-								<p class="date">29 Dec 2017 17:00</p>
+
+								<p class="date">
+                                    <br>Organizer :   SIIT
+                                    <br>
+                                    <br>Contact
+                                    <br>Address :   Bangkadi Campus
+                                    <br>Phone :   0811234567
+                                    <br>Mail :   siit@mail.tu.ac.th</p>
 								<div style="clear:both;"></div>
 							</div>
 							<br>
@@ -71,21 +78,20 @@
 					<br><br>
 					<div class="detail">
 						<div class="box1">
-							<h4 class="topic1">Hackathon SIIT<br> 29 - 30 Dec 2017</h4>
+							<h3 class="topic1"><br><br>HACKATHON 2017<br>2017-11-26  TO  2017-11-30</h3>
 							<br><br>
-							<h4 class="topic1">“The Story Of Watertale”<br> Unite, shine and make your way into another universe.</h4>
+							<h3 class="topic1">LOCATION : THAMMASAT U
+                                <br>TIME : 20:21:21  TO  20:21:21</h3>
 						</div>
 						<div class="box1">
-							<img src="images/poster/edetail.jpg" width="100%">
+							<img src="images/user/hackathonold.png" width="100%">
 							<br>
-							<p class="quote1">เริ่มจัดส่งบัตร 1 สิงหาคม เป็นต้นไป / Delivery due in August </p>
-							<p class="quotet">สถานที่จัดงาน</p>
+<!--							<p class="quote1">เริ่มจัดส่งบัตร 1 สิงหาคม เป็นต้นไป / Delivery due in August </p>-->
+<!--							<p class="quotet">สถานที่จัดงาน</p>-->
 							<br>
-							<img src="images/poster/edetail2.jpg" width="100%">
-							<h3 class="topic2">เงื่อนไขการเข้าร่วมงาน </h3>
-							<p class="quotet">-การเข้างานอายุ 18 ปีบริบูรณ์เท่านั้น / Only 18+ can entry the event
-								<br>-ทางทีมงานไม่รับผิดชอบกรณีบัตรสูญหาย หรือชำรุด หรือถูกทำลาย / Ticket cannot be replaced if lost, stolen or destroyed.
-								<br>-บัตรซื้อแล้วไม่รับคืนเงินทุกกรณี / Non-refundable / Non- returnable
+<!--							<img src="images/poster/edetail2.jpg" width="100%">-->
+<!--							<h3 class="topic2">Coming Soon </h3>-->
+							<p class="quotet" style="text-align: center">Coming Soon
 							</p>
 							<br><br><br>
 						</div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 require_once('helper.php');
 require_once('connect.php');
 $eventID = $_GET['eventID'];

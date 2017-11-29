@@ -1,21 +1,23 @@
 <?php
 session_start();
-require_once ('helper.php');
+require_once ('connect.php');
+require_once('helper.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php html_headcode(); ?>
+    <?php html_headcode(); ?>
 </head>
 
 <body data-target="#nino-navbar" data-spy="scroll">
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.10";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
@@ -27,12 +29,12 @@ require_once ('helper.php');
     <div id="nino-headerInner">
 
 
-
         <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nino-navbar-collapse">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#nino-navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -54,17 +56,13 @@ require_once ('helper.php');
         </nav>
 
 
-
-
-
-
         <section id="nino-slider" class="carousel slide container" data-ride="carousel">
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <h2 class="nino-sectionHeading">
-                        <img src="images/poster/event1.jpg" height="330" />
+                        <img src="images/user/hackathonold.png" height="330"/>
                     </h2>
 
                     <a href="detail.php" class="nino-btn">more details</a>
@@ -137,8 +135,8 @@ require_once ('helper.php');
     <div class="sectionContent">
         <ul class="nino-portfolioItems">
             <li class="item">
-                <a href="detail.php" >
-                    <img src="images/poster/sbanner1.jpg"  />
+                <a href="detail.php">
+                    <img src="images/poster/sbanner1.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-crown nino-icon"></i>
@@ -150,7 +148,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/sbanner2.jpg"  />
+                    <img src="images/poster/sbanner2.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-cube-outline nino-icon"></i>
@@ -162,7 +160,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/smallevent3.jpg"  />
+                    <img src="images/poster/smallevent3.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-desktop-mac nino-icon"></i>
@@ -174,7 +172,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/sbanner4.png" />
+                    <img src="images/poster/sbanner4.png"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-flower nino-icon"></i>
@@ -186,7 +184,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/sbanner6.jpg" />
+                    <img src="images/poster/sbanner6.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-gamepad-variant nino-icon"></i>
@@ -198,7 +196,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/sbanner3.jpg" />
+                    <img src="images/poster/sbanner3.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-gnome nino-icon"></i>
@@ -210,7 +208,7 @@ require_once ('helper.php');
             </li>
             <li class="item">
                 <a href="detail.php">
-                    <img src="images/poster/sbanner7.jpg" />
+                    <img src="images/poster/sbanner7.jpg"/>
                     <div class="overlay">
                         <div class="content">
                             <i class="mdi mdi-guitar-electric nino-icon"></i>
@@ -231,30 +229,104 @@ require_once ('helper.php');
 <!-- Counting
 ================================================== -->
 <section id="nino-counting">
+
+    <?php
+    $enterNo="0";
+    $q1 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='1' AND event_dateEnd >= CURRENT_DATE ";
+    $result1 = $mysqli->query($q1);
+    if (!$result1) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row1 = $result1->fetch_array();
+        $enterNo = $row1['total'];
+    }
+    ?>
+
+    <?php
+    $spoNo="0";
+    $q2 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='2' AND event_dateEnd >= CURRENT_DATE ";
+    $result2 = $mysqli->query($q2);
+    if (!$result2) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row2 = $result2->fetch_array();
+        $spoNo = $row2['total'];
+    }
+    ?>
+
+    <?php
+    $techNo="0";
+    $q3 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='3' AND event_dateEnd >= CURRENT_DATE ";
+    $result3 = $mysqli->query($q3);
+    if (!$result3) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row3 = $result3->fetch_array();
+        $techNo = $row3['total'];
+    }
+    ?>
+
+    <?php
+    $traNo="0";
+    $q4 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='4' AND event_dateEnd >= CURRENT_DATE ";
+    $result4 = $mysqli->query($q4);
+    if (!$result4) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row4 = $result4->fetch_array();
+        $traNo = $row4['total'];
+    }
+    ?>
+
+    <?php
+    $worNo="0";
+    $q5 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='5' AND event_dateEnd >= CURRENT_DATE ";
+    $result5 = $mysqli->query($q5);
+    if (!$result5) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row5 = $result5->fetch_array();
+        $worNo = $row5['total'];
+    }
+    ?>
+
+    <?php
+    $artNo="0";
+    $q6 = "SELECT count(event_ID) as total FROM event WHERE event_typeID='6' AND event_dateEnd >= CURRENT_DATE ";
+    $result6 = $mysqli->query($q6);
+    if (!$result6) {
+        echo "Select failed. Error: " . $mysqli->error;
+    }else {
+        $row6 = $result6->fetch_array();
+        $artNo = $row4['total'];
+    }
+    ?>
+
+
     <div class="container">
         <div layout="row" class="verticalStretch">
             <div class="item">
-                <div class="number">42</div>
+                <div class="number"><?php echo $enterNo; ?></div>
                 <div class="text">Entertainment</div>
             </div>
             <div class="item">
-                <div class="number">123</div>
+                <div class="number"><?php echo $spoNo; ?></div>
                 <div class="text">Sports</div>
             </div>
             <div class="item">
-                <div class="number">15</div>
+                <div class="number"><?php echo $techNo; ?></div>
                 <div class="text">Technology</div>
             </div>
             <div class="item">
-                <div class="number">99</div>
+                <div class="number"><?php echo $traNo; ?></div>
                 <div class="text">Travel</div>
             </div>
             <div class="item">
-                <div class="number">24</div>
+                <div class="number"><?php echo $worNo; ?></div>
                 <div class="text">WorkShop</div>
             </div>
             <div class="item">
-                <div class="number">24</div>
+                <div class="number"><?php echo $artNo; ?></div>
                 <div class="text">Arts</div>
             </div>
         </div>
@@ -302,7 +374,8 @@ require_once ('helper.php');
                         <i class="mdi mdi-bookmark-plus-outline nino-icon fsr"></i>
                         <div>
                             <h4 class="nino-serviceTitle">Technology</h4>
-                            <p>The digital world is changing the roles communities play in our lives, as well as the roles we play within them. How can us, humans, and artificial things live together?
+                            <p>The digital world is changing the roles communities play in our lives, as well as the
+                                roles we play within them. How can us, humans, and artificial things live together?
                                 <br>Find out answer here!</p>
                             <a href="search_login.php?keyword=Technology" class="nino-btns">See all events</a>
                         </div>
@@ -314,7 +387,8 @@ require_once ('helper.php');
                         <div>
                             <h4 class="nino-serviceTitle">Travel</h4>
                             <p>Traveling without any new experiences is not real traveling, it is commuting.
-                                In order to have a truly epic vacation, you need to get out there and experience as many new things as possible.
+                                In order to have a truly epic vacation, you need to get out there and experience as many
+                                new things as possible.
                                 This includes not just seeing and doing but also eating, learning and experiencing.
                                 <br> Join our trip now!</p>
                             <a href="search_login.php?keyword=Travel" class="nino-btns">See all events</a>
@@ -329,7 +403,8 @@ require_once ('helper.php');
                             <p>There are so many reasons why you should attend workshop.
                                 You have a lot to offer and maybe you’ll learn something new,
                                 laughter and relationship are immensely good for everyone’s health and well being.
-                                You’ll meet new friends in the colleagues you pass in the halls every day. And a lot more...
+                                You’ll meet new friends in the colleagues you pass in the halls every day. And a lot
+                                more...
                                 <br>Why are you still holding back? </p>
                             <a href="search_login.php?keyword=Workshop" class="nino-btns">See all events</a>
                         </div>
@@ -342,7 +417,8 @@ require_once ('helper.php');
                             <h4 class="nino-serviceTitle">Arts</h4>
                             <p>Imagine a world without art, music, poetry, and stories.
                                 Such a world would lack the expression of much human creativity.
-                                The arts can remind us of what is truly important in life, who we really are, and what our purpose is.
+                                The arts can remind us of what is truly important in life, who we really are, and what
+                                our purpose is.
                                 That is the reason why we cannot live in the world without the art.
                                 <br>Exploring the art of you here!</p>
                             <a href="search_login.php?keyword=Atrs" class="nino-btns">See all events</a>
@@ -367,8 +443,6 @@ require_once ('helper.php');
         </div>
     </div>
 </section><!--/#nino-uniqueDesign-->
-
-
 
 
 <!-- Up Coming
@@ -416,7 +490,7 @@ require_once ('helper.php');
 										<i class="mdi mdi-account-multiple nino-icon"></i>
 										More details
 									</span>
-                                <img src="images/poster/banner4.jpg" alt="" >
+                                <img src="images/poster/banner4.jpg" alt="">
                             </a>
                         </div>
                         <br>
@@ -440,7 +514,7 @@ require_once ('helper.php');
 										<i class="mdi mdi-account-multiple nino-icon"></i>
 										More details
 									</span>
-                                <img src="images/poster/banner3.jpg" alt="" >
+                                <img src="images/poster/banner3.jpg" alt="">
                             </a>
                         </div>
                         <br>
@@ -471,8 +545,9 @@ require_once ('helper.php');
         <br>
         <form action="search_login.php">
             <div class="box2">
-                <div >
-                    <input name="keyword" type="text" class="form-control"  placeholder="Name, Location, or somethings that you interest" required>
+                <div>
+                    <input name="keyword" type="text" class="form-control"
+                           placeholder="Name, Location, or somethings that you interest" required>
                     <br><br>
                     <span><button class="btn btn-success" type="submit">Search</button></span>
                 </div>
@@ -480,7 +555,8 @@ require_once ('helper.php');
         </form>
 
         <br><br>
-        <p class="nino-sectionDesc-custom">Not sure what to find? Don't worry! - Check out some "tag" that we only prepared for you here. </p>
+        <p class="nino-sectionDesc-custom">Not sure what to find? Don't worry! - Check out some "tag" that we only
+            prepared for you here. </p>
     </div>
     <div class="sectionContent">
         <div class="row nino-hoverEffect">
@@ -530,13 +606,16 @@ require_once ('helper.php');
             <div class="col-md-4">
                 <div class="colInfo">
                     <div class="footerLogo">
-                        <a href="#" >EVE</a>
+                        <a href="#">EVE</a>
                     </div>
                     <p>
-                        We believed that everyone should has a chance to find their own inspiration. So, we create a single place that bring creators and people come together in the purpose of linking their creativity.
-                        Our vision is to envision a world where all people – even in the most remote areas of the globe – hold the power to create opportunity for themselves and others.
+                        We believed that everyone should has a chance to find their own inspiration. So, we create a
+                        single place that bring creators and people come together in the purpose of linking their
+                        creativity.
+                        Our vision is to envision a world where all people – even in the most remote areas of the globe
+                        – hold the power to create opportunity for themselves and others.
                         <br><br>"All our dreams can come true if we have the courage to pursue them."
-                        <br><br>     - From us, EVE.
+                        <br><br> - From us, EVE.
                     </p>
                     <div class="nino-followUs">
                         <div class="totalFollow"><span>15k</span> followers</div>
@@ -555,7 +634,13 @@ require_once ('helper.php');
                 <div class="colInfo">
                     <h3 class="nino-colHeading">Find us on Facebook</h3>
                     <!--facebook-->
-                    <div class="fb-page" data-href="https://www.facebook.com/siittu/" data-tabs="timeline" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/siittu/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/siittu/">Sirindhorn International Institute of Technology (SIIT)</a></blockquote></div>
+                    <div class="fb-page" data-href="https://www.facebook.com/siittu/" data-tabs="timeline"
+                         data-height="400" data-small-header="false" data-adapt-container-width="true"
+                         data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/siittu/" class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/siittu/">Sirindhorn International Institute of
+                                Technology (SIIT)</a></blockquote>
+                    </div>
 
 
                 </div>
