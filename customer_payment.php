@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once ('helper.php');
+require_once('connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,95 +57,62 @@ require_once ('helper.php');
     					<br>
 						<h4 class="nino-sectionHeading">Your Tickets</h4>						
 					</div>
-					
+                 <?php
+                    $q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                while($row=$result->fetch_array()){?>
+
+
 					<div class="ticketbox">
-						
 						<div class="row">
 							<div class="col-md-6 ">
-								<h4 class="quotet2">Order Numbers #0000000000</h4><br>
-								<h5 class="date1">Chang Music Connection Presents Waterzonic 2017</h5>
-								<p class="date1">20 October 2017</p><br>
+								<h4 class="quotet2">Order Numbers #<?php echo $row['payment_ID']; ?></h4><br>
+								<h5 class="date1"><?php echo $row['event_name']; ?></h5>
+								<p class="date1"><?php echo $row['event_dateStart']; ?></p><br>
 								<div class="col-md-3">
 									<h5 class="quotet2">Name   : </h5>
 									<h5 class="date1">E-mail : </h5>
-									<h5 class="date1">Phone  : </h5>
 								</div>
 								<div class="col-md-9">
-									<h5 class="date1">Nuttapol Saiboonruen</h5>
-									<h5 class="date1">Nua@mail.com</h5>
-									<h5 class="date1">+66808188216</h5>
+									<h5 class="date1"><?php echo $row['account_fname']." ".$row['account_lname']; ?></h5>
+									<h5 class="date1"><?php echo $row['account_email']; ?></h5>
 								</div>
 								
 
 							</div>
 							<div class="col-md-3 " >
 								<h4 class="quotet2">Payment method</h4>
-								<p class="quotet2">Total price   3,500</p>
+								<p class="quotet2">Total price   <?php echo $row['payment_money']; ?> ฿</p>
+                                          <p class="quotet2"><?php echo $row['payment_method']; ?></p>
 								<br><br>
 								<h5 class="topic6 ">Payment has done</h5>
 							</div>
 							<div class="col-md-3 " >
+								<?php
+                    $q = "SELECT * FROM `ticket`,`paymentlog`,`account`,`event`,`tickettype` WHERE ticket.payment_ID=paymentlog.payment_ID AND account.account_ID=".$_SESSION['current_ID']." AND paymentlog.event_ID=event.event_ID AND ticket.account_ID=account.account_ID AND tickettype.ticketType_ID=ticket.ticketType_ID ORDER BY tickettype.ticketType_name";
+                    $result=$mysqli->query($q);                    
+                    if(!$result){
+                        echo "Select failed. Error: ".$mysqli->error ;
+                    }
+                while($row=$result->fetch_array()){?>
 								<h4 class="quotet2">Your Ticket</h4><br>
-								<h5 class="date1">Normal ticket</h5>
-								<h5 class="date1">1 Ticket</h5><br><br><br>								
+								<h5 class="date1"><?php echo $row['ticketType_name']; ?></h5>
+								<h5 class="date1">1 Ticket</h5>
+
+
+								<br><br><br>								
 								<a href="detail.html" class="nino-btnn">See The Ticket</a>
 							</div>
 							<div style="clear:both;"></div>
 						</div>
 						<br>
-						<div class="paymentbox">
-							<h4 class="quotet2">Your Order</h4>
-							<hr>
-							<div class="row">
-								<div class="col-md-6">
-									<h5 class="quotet2">Order</h5><br>
-								</div>
-								<div class="col-md-2">
-									<h5 class="quotet2">price</h5><br>
-								</div>
-								<div class="col-md-2">
-									<h5 class="quotet2">Number</h5><br>
-								</div>
-								<div class="col-md-2">
-									<h5 class="quotet2">Total</h5><br>
-								</div>
-							</div>
-						</div>
-						<div class="paymentbox">
-							<div class="row">
-								<div class="col-md-6">
-									<h5 class="topic6">Chang Music Connection Presents Waterzonic 2017</h5>
-									<p class="quotet2">Normal Ticket</p>
-								</div>
-								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
-								</div>
-								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">1</h5>
-								</div>
-								<div class="col-md-2 ">
-									<h5 class="topic6 pull-right">3,500 ฿</h5>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div class="paymentbox">
-							<div class="col-md-8">
-								
-							</div>
-							<div class="col-md-2">
-								<h5 class="quotet2">Total</h5><br>
-							</div>
-							<div class="col-md-2">
-								<h5 class="topic6 pull-right">3,500 ฿</h5>
-							</div>
-						</div>
-
-						<hr><br>
-						<p class="quotet2 pull-right">DATE:29 October 2017</p>
-						<br>
 					</div>
+					<?php } ?>
 					
+
 				</div>
 				<br><br>
     		</div>
