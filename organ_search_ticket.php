@@ -10,7 +10,7 @@ if (!isset($_SESSION['current_ID'])){
 }
 //case user type isn't Customer
 if (isset($_SESSION['current_type'])){
-  if ($_SESSION['current_type']!="Admin"){
+  if ($_SESSION['current_type']!="Organizer"){
     header('Location: homepage.php');
     exit;
   }
@@ -87,27 +87,12 @@ if (isset($_SESSION['current_type'])){
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
                     <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
-                    <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
-                      <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
+                    <li class="active ripple" onclick="location.href='org_index_stat.php';">
+                      <a class="tree-toggle nav-header" href="org_index_stat.php"><span class="fa-home fa"></span> Home 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
-                    <li class="active ripple">
-                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                      <ul class="nav nav-list tree">
-                          <li ><a href="admin_search_organ.php">Organizers</a></li>
-                          <li ><a href="admin_search_user.php">Customers</a></li>
-                      </ul>
-                    </li>
-                    <li class="active ripple" onclick="location.href='admin_search_event.php';">
-                      <a class="tree-toggle nav-header">
-                        <span class="fa fa-calendar-o"></span> Event
-                      </a>
-                      
-                    </li>
-                    <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
+                    <li class="active ripple" onclick="location.href='organ_search_ticket.php';">
                       <a class="tree-toggle nav-header">
                         <span class="fa fa-ticket"></span> Ticket
                       </a>
@@ -125,7 +110,6 @@ if (isset($_SESSION['current_type'])){
              <?php
              if (isset($_POST['submit'])) {
               $Ename = $_POST['ename'];
-              $Oname = $_POST['oname'];
               $Cusname = $_POST['cusname'];
               $Etype = $_POST['etype'];
               $Day = $_POST['day'];
@@ -142,8 +126,6 @@ if (isset($_SESSION['current_type'])){
               <div class="col-md-12">
                 <div class="form-group"><label class="col-sm-1 control-label text-left"><strong>Event Name</strong></label>
                   <div class="col-sm-4"><input name="ename" type="text" class="form-control border-bottom"></div>
-                  <label class="col-sm-1 control-label text-left"><strong>Organizer Name</strong></label>
-                  <div class="col-sm-4"><input name="oname" type="text" class="form-control border-bottom"></div>
                 </div>
               </div>
               <div class="col-md-12">
@@ -243,7 +225,6 @@ if (isset($_SESSION['current_type'])){
                     <th>Event Name</th>
                     <th>Event Type</th>
                     <th>Event Date</th>
-                    <th>Organizer Name</th>
                     <th>Customer Name</th>
                     <th>Status</th>
                   </tr>
@@ -254,11 +235,6 @@ if (isset($_SESSION['current_type'])){
                     $sename = " AND event_name LIKE '%".$Ename."%' ";
                   }else{
                     $sename = "";
-                  }
-                  if (!$_POST['oname']=='') {
-                    $soname = " AND organizer_name LIKE '%".$Oname."%' ";
-                  }else{
-                    $soname = "";
                   }
                   if (!$_POST['cusname']=='') {
                     $slo = " AND (account_fname LIKE '%".$Cusname."%' OR account_lname LIKE '%".$Cusname."%')";
@@ -302,7 +278,7 @@ if (isset($_SESSION['current_type'])){
                   }else{
                     $sdate = "";
                   }
-                  $q = "SELECT * FROM ticket,account,organizer,tickettype,event,paymentlog,eventtype WHERE ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_organizerID=organizer.account_ID AND paymentlog.payment_ID=ticket.payment_ID AND eventtype.eventType_ID=event.event_typeID".$sename.$soname.$slo.$setype.$sdate;
+                  $q = "SELECT * FROM ticket,account,organizer,tickettype,event,paymentlog,eventtype WHERE ticket.account_ID=account.account_ID AND ticket.event_ID=event.event_ID AND ticket.ticketType_ID=tickettype.ticketType_ID AND event.event_organizerID=organizer.account_ID AND paymentlog.payment_ID=ticket.payment_ID AND eventtype.eventType_ID=event.event_typeID AND event.event_organizerID='".$_SESSION['current_ID']."'".$sename.$slo.$setype.$sdate;
                   $result=$mysqli->query($q);                    
                   if(!$result){
                     echo "Select failed. Error: ".$mysqli->error ;
@@ -319,7 +295,6 @@ if (isset($_SESSION['current_type'])){
                       echo "<td>".$row['event_name']."</td>";
                       echo "<td>".$row['eventType_name']."</td>";
                       echo "<td>".$row['event_dateEnd']."</td>";
-                      echo "<td>".$row['organizer_name']."</td>";
                       echo "<td>".$row['account_fname']." ".$row['account_lname']."</td>";
                       if($row['ticket_status']==1){
                         $statusname = "Vaild";

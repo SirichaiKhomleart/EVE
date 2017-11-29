@@ -88,7 +88,7 @@ require_once('connect.php');
             </li>
             <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
               <a class="tree-toggle nav-header">
-                <span class="fa fa-calendar-o"></span> Ticket
+                <span class="fa fa-ticket"></span> Ticket
               </a>
               
             </li>

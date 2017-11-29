@@ -71,6 +71,12 @@ require_once('connect.php');
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                     </li>
+                    <li class="active ripple" onclick="location.href='organ_search_ticket.php';">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-ticket"></span> Ticket
+                      </a>
+                      
+                    </li>
                     <!-- <li class="active ripple">
                       <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Attendees 
                         <span class="fa-angle-right fa right-arrow text-right"></span>
