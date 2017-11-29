@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2017 at 03:43 AM
+-- Generation Time: Nov 29, 2017 at 05:40 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -52,10 +52,14 @@ INSERT INTO `account` (`account_ID`, `account_type`, `account_email`, `account_f
 (4, 'Admin', 'nuttapol@mail.com', 'Nuttapol', 'Saiboonruen', 'admin', 20, 'Male', NULL, '2017-11-26 22:27:47'),
 (5, 'Admin', 'pasin@mail.com', 'Pasin', 'Jiratthiticheep', 'admin', 20, 'Male', NULL, '2017-11-26 22:27:47'),
 (6, 'Customer', 'panthakan@mail.com', 'Panthakan', 'Maisopa', 'custom', 20, 'Male', NULL, '2017-11-26 22:27:47'),
-(37, 'Customer', 'custom', 'customer', 'test', 'custom', 60, 'Male', NULL, '2017-11-26 22:27:47'),
-(38, 'Organizer', 'organ', 'Organizer', 'test', 'organ', 40, 'Others', NULL, '2017-11-26 22:27:47'),
-(39, 'Organizer', 'test', '', '', 'test', 0, 'Male', NULL, '2017-11-27 00:07:17'),
-(40, 'Customer', 'customertest', '', '', '', 0, 'Male', NULL, '2017-11-28 01:24:00');
+(37, 'Customer', 'jack@mail.com', 'Jack', 'Tonio', 'custom', 60, 'Male', NULL, '2017-11-26 22:27:47'),
+(41, 'Admin', 'prayut@mail.com', 'Prayut', 'Junocha', 'admin', 33, 'Others', NULL, '2017-11-28 08:00:44'),
+(43, 'Customer', 'two@mail.com', 'Tanyut', 'Sumalee', 'custom', 39, 'Female', NULL, '2017-11-29 01:45:57'),
+(44, 'Organizer', 'imagine@mail.com', 'Jacop', 'Kaiki', 'organ', 40, 'Female', NULL, '2017-11-29 01:48:49'),
+(45, 'Organizer', 'golf@mail.com', 'Hopper', 'Hunterman', 'organ', 39, 'Male', NULL, '2017-11-29 02:20:02'),
+(46, 'Organizer', 'teryxc@mail.com', 'Hung', 'Nguyen', 'organ', 44, 'Female', NULL, '2017-11-29 02:41:22'),
+(47, 'Customer', 'tan@mail.com', 'Tanya', 'Bobby', 'custom', 33, 'Female', NULL, '2017-11-29 02:58:08'),
+(48, 'Customer', 'siripron@mail.com', 'Siripron', 'Tankun', 'custom', 67, 'Male', NULL, '2017-11-29 03:17:50');
 
 -- --------------------------------------------------------
 
@@ -76,7 +80,8 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`account_ID`, `staff_ID`, `staff_position`) VALUES
 (1, 'admin001', 'Database Administrator'),
 (4, 'admin002', 'Webpage Designer'),
-(5, 'admin003', 'Database Designer');
+(5, 'admin003', 'Database Designer'),
+(41, 'thailand_headcoach', 'Permanent President');
 
 -- --------------------------------------------------------
 
@@ -95,10 +100,12 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`account_ID`, `customer_status`) VALUES
 (1, 1),
-(2, 0),
+(2, 1),
 (6, 1),
 (37, 1),
-(40, 1);
+(43, 1),
+(47, 1),
+(48, 1);
 
 -- --------------------------------------------------------
 
@@ -133,28 +140,27 @@ CREATE TABLE `event` (
   `event_posterPicture` text,
   `event_detail` longtext NOT NULL,
   `event_createTimeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `event_approveStatus` tinyint(1) DEFAULT NULL
+  `event_approveStatus` tinyint(1) DEFAULT NULL,
+  `event_disapproveMessage` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`event_ID`, `event_name`, `event_organizerID`, `event_typeID`, `event_location`, `event_dateStart`, `event_dateEnd`, `event_timeStart`, `event_timeEnd`, `event_iconPicture`, `event_posterPicture`, `event_detail`, `event_createTimeStamp`, `event_approveStatus`) VALUES
-(1, 'KemonoOnlyEvent', 3, 3, 'Siam Paragon', '2017-11-01', '2017-11-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', NULL, 'wwss', '2017-11-26 18:17:03', 1),
-(2, 'Hackathon 2015', 38, 2, 'Thammasat U', '2015-11-26', '2015-11-26', '15:58:02', '15:58:02', 'images/poster/icone1.jpg', NULL, 'Boring Event', '2017-11-26 18:17:03', 1),
-(3, 'Hackathon 2016', 38, 2, 'Thammasat U', '2016-11-26', '2016-11-26', '18:11:36', '18:11:36', 'images/poster/icone1.jpg', NULL, 'Interesting Event', '2017-11-26 18:17:03', 1),
-(4, 'Hackathon 2018', 38, 3, 'Bangkadi Campus', '2018-11-30', '2018-12-12', '20:12:14', '20:12:14', 'images/poster/icone1.jpg', NULL, 'I don\'t know. Coming Soon', '2017-11-26 20:12:14', 0),
-(5, 'Hackathon 2017', 38, 3, 'Rangsit', '2017-11-26', '2017-11-30', '20:21:21', '20:21:21', 'images/poster/noImage.jpg', NULL, '', '2017-11-26 20:21:21', 1),
-(6, 'testEvent', 38, 0, 'Bangkok', '2016-11-26', '2018-11-26', '00:00:00', '20:12:14', 'images/poster/noImage.jpg', 'test', 'boring', '2017-11-26 22:00:34', NULL),
-(28, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/1510478699944.jpg', '', '2017-11-27 00:22:40', NULL),
-(29, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:22:57', NULL),
-(30, 'try', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', 'users/ID38/users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:23:30', NULL),
-(31, 'rr', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'users/ID38/Dragons_fur_adult.png', 'users/ID38/users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:25:16', NULL),
-(32, 'rr', 38, 0, '', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/poster/noImage.jpg', 'users/ID38/users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:25:38', NULL),
-(33, 'trydragon', 38, 0, 'www', '0000-00-00', '2019-01-01', '00:00:00', '00:00:00', 'users/ID38/Dragons_fur_adult.png', 'users/ID38/Dragons_fur_adult.png', '', '2017-11-27 00:28:18', 2),
-(34, 'long', 38, 0, '', '0000-00-00', '2010-01-10', '00:00:00', '00:00:00', 'users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', 'users/ID38/Screen Shot 2560-11-27 at 9.47.13 PM.png', '', '2017-11-27 00:29:29', 1),
-(35, '', 38, 0, '', '0000-00-00', '0000-00-00', '00:00:00', '00:00:00', 'users/ID38/', 'users/ID38/', '', '2017-11-28 01:58:39', NULL);
+INSERT INTO `event` (`event_ID`, `event_name`, `event_organizerID`, `event_typeID`, `event_location`, `event_dateStart`, `event_dateEnd`, `event_timeStart`, `event_timeEnd`, `event_iconPicture`, `event_posterPicture`, `event_detail`, `event_createTimeStamp`, `event_approveStatus`, `event_disapproveMessage`) VALUES
+(2, 'Hackathon 2015', 45, 3, 'Thammasat U', '2015-11-26', '2015-11-26', '15:58:02', '15:58:02', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-26 18:17:03', 1, ''),
+(3, 'Hackathon 2016', 45, 3, 'Thammasat U', '2016-11-26', '2016-11-26', '18:11:36', '18:11:36', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-26 18:17:03', 1, ''),
+(5, 'Hackathon 2017', 45, 3, 'Thammasat U', '2017-11-26', '2017-11-30', '20:21:21', '20:21:21', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-26 20:21:21', 1, ''),
+(42, 'Hackathon 2019', 45, 3, 'Thammasat U', '2019-01-10', '2019-12-12', '22:22:22', '11:11:11', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-28 06:24:34', 1, ''),
+(43, 'TECHJAM 2019', 45, 3, 'Thammasat U', '2019-09-09', '2019-12-12', '12:12:12', '12:12:12', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-28 10:33:59', 1, ''),
+(44, 'FINAL CRISIS', 45, 5, 'Thammasat U', '2019-01-01', '2018-01-01', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-28 11:00:06', 1, ''),
+(45, 'MIDTERM CRISIS', 45, 5, 'Thammasat U', '2018-12-12', '2019-11-11', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-28 11:00:54', 1, ''),
+(46, 'Pokemon Go Challenge', 45, 1, 'Thammasat U', '2019-01-01', '2020-01-01', '12:12:12', '12:12:12', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-29 00:06:51', 1, ''),
+(47, 'Travel around the world', 3, 4, 'Thammasat U', '2019-09-09', '2022-09-09', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-29 00:26:11', 1, ''),
+(48, 'Improve Yourself Camp', 44, 5, 'Thammasat U', '2019-09-09', '2020-09-09', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-29 01:49:44', 1, ''),
+(49, 'WWDC2018', 45, 3, 'Thammasat U', '0000-00-00', '2018-09-09', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-29 02:20:26', 1, ''),
+(50, 'Happy New Year Party', 46, 1, 'Thammasat U', '0000-00-00', '2018-01-01', '00:00:00', '00:00:00', 'images/user/hackathonold.png', 'images/user/hackathonold.png', 'Coming Soon', '2017-11-29 02:42:22', 1, '');
 
 -- --------------------------------------------------------
 
@@ -175,7 +181,6 @@ CREATE TABLE `eventEditLog` (
   `edit_iconPicture` text,
   `edit_posterPicture` text,
   `edit_detail` longtext NOT NULL,
-  `edit_ticketChange` tinyint(1) NOT NULL DEFAULT '0',
   `edit_approveStatus` tinyint(1) DEFAULT NULL,
   `edit_informMessage` text NOT NULL,
   `edit_timeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -185,8 +190,14 @@ CREATE TABLE `eventEditLog` (
 -- Dumping data for table `eventEditLog`
 --
 
-INSERT INTO `eventEditLog` (`edit_ID`, `event_ID`, `edit_name`, `edit_typeID`, `edit_location`, `edit_dateStart`, `edit_dateEnd`, `edit_timeStart`, `edit_timeEnd`, `edit_iconPicture`, `edit_posterPicture`, `edit_detail`, `edit_ticketChange`, `edit_approveStatus`, `edit_informMessage`, `edit_timeStamp`) VALUES
-(1, 5, 'Hackathon 2017 Return', 3, 'erererer', '2017-12-12', '2018-01-01', '02:43:03', '02:43:03', NULL, NULL, 'eeeee', 0, NULL, '', '2017-11-28 02:43:03');
+INSERT INTO `eventEditLog` (`edit_ID`, `event_ID`, `edit_name`, `edit_typeID`, `edit_location`, `edit_dateStart`, `edit_dateEnd`, `edit_timeStart`, `edit_timeEnd`, `edit_iconPicture`, `edit_posterPicture`, `edit_detail`, `edit_approveStatus`, `edit_informMessage`, `edit_timeStamp`) VALUES
+(13, 5, 'RERUN Hackathon 2017', 3, 'Rangsit', '2017-11-26', '2017-11-30', '20:21:21', '20:21:21', 'users/ID38/noImage.jpg', 'users/ID38/noImage.jpg', 'Coming Soon', 1, '', '2017-11-28 06:28:35'),
+(14, 43, 'My lovely dragon ', 5, 'UTHOPIA', '2019-09-09', '2019-12-12', '12:12:12', '12:12:12', 'users/ID42/noImage.jpg', 'users/ID42/noImage.jpg', 'NO DATA', 1, '', '2017-11-28 10:52:21'),
+(17, 46, 'new', 0, 'new', '2019-01-01', '2020-01-01', '12:12:12', '12:12:12', 'users/ID38/noImage.jpg', 'users/ID38/noImage.jpg', 'new', 1, '', '2017-11-29 00:13:43'),
+(18, 47, 'dddedit', 0, 'dddd', '2019-09-09', '2022-09-09', '00:00:00', '00:00:00', 'users/ID38/1510478699944.jpg', 'users/ID38/1510478699944.jpg', 'qqq', 1, '', '2017-11-29 00:27:32'),
+(19, 48, 'testFINAL', 0, 'try', '2019-09-09', '2020-09-09', '00:00:00', '00:00:00', 'users/ID44/1510478699944.jpg', 'users/ID44/1510478699944.jpg', 'eee', 1, '', '2017-11-29 01:51:27'),
+(20, 49, 'tets', 0, '', '0000-00-00', '2019-09-09', '00:00:00', '00:00:00', 'users/ID45/hackathonnew.png', 'users/ID45/hackathonnew.png', '', 1, '', '2017-11-29 02:33:25'),
+(21, 50, 'teterdie', 2, 'dwef', '0000-00-00', '2019-09-09', '00:00:00', '00:00:00', 'users/ID46/hackathonold.png', 'users/ID46/hackathonold.png', 'riririr', 0, '', '2017-11-29 02:44:07');
 
 -- --------------------------------------------------------
 
@@ -248,9 +259,10 @@ CREATE TABLE `organizer` (
 --
 
 INSERT INTO `organizer` (`account_ID`, `organizer_name`, `organizer_address`, `organizer_phone`, `organizer_email`, `organizer_status`) VALUES
-(3, 'Sex Shop by Sun', 'Line Group', '1150', 'sexshopbysun@mail.com', 1),
-(38, 'SIIT', 'bangkok', '33', 'siit', 1),
-(39, 'test', '', '', '', 1);
+(3, 'Shop by Sun', 'Line Group', '1150', 'sexshopbysun@mail.com', 1),
+(44, 'Thammasat', 'Thammasat University', '021234567', 'mail@tu.ac.th', 1),
+(45, 'SIIT', 'Bangkadi Campus', '0811234567', 'siit@mail.tu.ac.th', 1),
+(46, 'Google', 'Google Headquartered ', '0999999999', 'fw@google.com', 1);
 
 -- --------------------------------------------------------
 
@@ -271,9 +283,14 @@ CREATE TABLE `paymentLog` (
 --
 
 INSERT INTO `paymentLog` (`payment_ID`, `event_ID`, `payment_money`, `payment_method`, `payment_timeStamp`) VALUES
-(1, 3, 500, 'VISA', '2017-11-26 18:40:49'),
-(2, 3, 1000, 'VISA', '2017-11-26 18:55:41'),
-(3, 3, 2000, 'VISA', '2017-11-26 19:12:59');
+(4, 5, 0, 'VISA', '2017-11-28 10:02:47'),
+(5, 2, 10500, 'VISA', '2017-11-29 01:04:55'),
+(6, 2, 10500, 'MasterCard', '2017-11-29 01:07:12'),
+(7, 2, 33000, 'MasterCard', '2017-11-29 01:46:56'),
+(8, 2, 56500, 'MasterCard', '2017-11-29 02:58:34'),
+(9, 2, 3500, 'MasterCard', '2017-11-29 03:04:06'),
+(10, 2, 10000, 'MasterCard', '2017-11-29 03:18:12'),
+(11, 2, 19500, 'MasterCard', '2017-11-29 03:18:51');
 
 -- --------------------------------------------------------
 
@@ -288,6 +305,13 @@ CREATE TABLE `refundLog` (
   `refund_timeStamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `refund_approveStatus` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `refundLog`
+--
+
+INSERT INTO `refundLog` (`refund_ID`, `ticket_ID`, `account_ID`, `refund_timeStamp`, `refund_approveStatus`) VALUES
+(1, 7, 6, '2017-11-28 10:15:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -310,12 +334,36 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`ticket_ID`, `account_ID`, `payment_ID`, `event_ID`, `ticketType_ID`, `event_dateEnd`, `ticket_status`) VALUES
-(1, 6, 1, 3, 1, '2017-11-26', 1),
-(2, 2, 2, 3, 2, '2017-11-26', 1),
-(3, 2, 3, 3, 2, '0000-00-00', 1),
-(4, 2, 3, 3, 2, '0000-00-00', 1),
-(5, 6, 1, 5, 18, '0000-00-00', 1),
-(6, 6, 1, 5, 18, '2018-01-01', 1);
+(7, 6, 4, 5, 48, '2018-11-11', 1),
+(8, 37, 5, 2, 1, '2017-09-30', 1),
+(9, 37, 5, 2, 1, '2017-09-30', 1),
+(10, 37, 5, 2, 1, '2017-09-30', 1),
+(11, 37, 6, 2, 1, '2017-12-30', 1),
+(12, 37, 6, 2, 1, '2017-12-30', 1),
+(13, 37, 6, 2, 1, '2017-12-30', 1),
+(14, 43, 7, 2, 1, '2017-12-30', 1),
+(15, 43, 7, 2, 1, '2017-12-30', 1),
+(16, 43, 7, 2, 2, '2017-12-30', 1),
+(17, 43, 7, 2, 2, '2017-12-30', 1),
+(18, 43, 7, 2, 2, '2017-12-30', 1),
+(19, 43, 7, 2, 2, '2017-12-30', 1),
+(20, 47, 8, 2, 1, '2017-12-30', 1),
+(21, 47, 8, 2, 1, '2017-12-30', 1),
+(22, 47, 8, 2, 1, '2017-12-30', 1),
+(23, 47, 8, 2, 1, '2017-12-30', 1),
+(24, 47, 8, 2, 1, '2017-12-30', 1),
+(25, 47, 8, 2, 2, '2017-12-30', 1),
+(26, 47, 8, 2, 2, '2017-12-30', 1),
+(27, 47, 8, 2, 2, '2017-12-30', 1),
+(28, 47, 8, 2, 2, '2017-12-30', 1),
+(29, 47, 8, 2, 2, '2017-12-30', 1),
+(30, 47, 8, 2, 2, '2017-12-30', 1),
+(31, 47, 9, 2, 1, '2017-12-30', 1),
+(32, 48, 10, 2, 1, '2017-12-30', 1),
+(33, 48, 10, 2, 2, '2017-12-30', 1),
+(34, 48, 11, 2, 2, '2017-12-30', 1),
+(35, 48, 11, 2, 2, '2017-12-30', 1),
+(36, 48, 11, 2, 2, '2017-12-30', 1);
 
 -- --------------------------------------------------------
 
@@ -337,20 +385,27 @@ CREATE TABLE `ticketType` (
 --
 
 INSERT INTO `ticketType` (`ticketType_ID`, `event_ID`, `ticketType_name`, `ticketType_price`, `ticketType_totalSeats`, `ticketType_approveStatus`) VALUES
-(1, 3, 'Standard', 500, 20, 1),
-(2, 3, 'Premium', 1000, 10, 1),
-(17, 28, '', 0, 0, NULL),
-(18, 28, '', 0, 0, NULL),
-(19, 28, '', 0, 0, NULL),
-(20, 31, '', 0, 0, NULL),
-(21, 31, '', 0, 0, NULL),
-(22, 33, '', 0, 0, NULL),
-(23, 34, '', 0, 0, NULL),
-(24, 35, '', 0, 0, NULL),
-(25, 35, '', 0, 0, NULL),
-(26, 35, '', 0, 0, NULL),
-(27, 35, '', 0, 0, NULL),
-(28, 35, '', 0, 0, NULL);
+(1, 3, 'Standard', 500, 100, 1),
+(2, 3, 'Premium', 1000, 100, 1),
+(46, 42, 'Standard', 20, 100, 1),
+(47, 42, 'Premium', 40, 300, 1),
+(48, 5, 'Standard', 0, 150, 1),
+(49, 5, 'Premium', 50, 20, 1),
+(50, 43, 'Standard', 300, 20, 1),
+(51, 43, 'Premium', 200, 20, 1),
+(52, 43, 'Standard (Special Deal)', 100, 10, 1),
+(53, 43, 'Premium (Special Deal)', 50, 10, 1),
+(54, 44, 'Standard', 0, 20, 1),
+(55, 46, 'Standard', 100, 100, 1),
+(56, 46, 'Premium', 200, 200, 1),
+(57, 47, 'Standard', 1000, 10, 1),
+(58, 47, 'Premium', 20000, 90, 1),
+(59, 48, 'Standard', 200, 50, 1),
+(60, 48, 'Premium', 300, 40, 1),
+(61, 49, 'Standard', 200, 20, 1),
+(62, 49, 'Premium', 3000, 20, 1),
+(63, 50, 'Standard', 300, 60, 1),
+(64, 50, 'Premium', 400, 90, 1);
 
 --
 -- Indexes for dumped tables
@@ -394,8 +449,8 @@ ALTER TABLE `event`
 --
 ALTER TABLE `eventEditLog`
   ADD PRIMARY KEY (`edit_ID`),
-  ADD KEY `edit_event_link` (`event_ID`),
-  ADD KEY `edit_eventType_link` (`edit_typeID`);
+  ADD KEY `edit_eventType_link` (`edit_typeID`),
+  ADD KEY `edit_event_link` (`event_ID`);
 
 --
 -- Indexes for table `eventType`
@@ -456,19 +511,19 @@ ALTER TABLE `ticketType`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `databaseActivityLog`
@@ -480,13 +535,13 @@ ALTER TABLE `databaseActivityLog`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `event_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `eventEditLog`
 --
 ALTER TABLE `eventEditLog`
-  MODIFY `edit_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `edit_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `eventType`
@@ -498,31 +553,31 @@ ALTER TABLE `eventType`
 -- AUTO_INCREMENT for table `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `account_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `paymentLog`
 --
 ALTER TABLE `paymentLog`
-  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `payment_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `refundLog`
 --
 ALTER TABLE `refundLog`
-  MODIFY `refund_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `refund_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ticket_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `ticketType`
 --
 ALTER TABLE `ticketType`
-  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ticketType_ID` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Constraints for dumped tables
@@ -545,13 +600,6 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `databaseActivityLog`
   ADD CONSTRAINT `activity_account_link` FOREIGN KEY (`activity_accountID`) REFERENCES `account` (`account_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `event`
---
-ALTER TABLE `event`
-  ADD CONSTRAINT `event_eventType_link` FOREIGN KEY (`event_typeID`) REFERENCES `eventType` (`eventType_ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `event_organizer_link` FOREIGN KEY (`event_organizerID`) REFERENCES `organizer` (`account_ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `eventEditLog`
@@ -599,7 +647,7 @@ ALTER TABLE `ticket`
 -- Constraints for table `ticketType`
 --
 ALTER TABLE `ticketType`
-  ADD CONSTRAINT `ticketType_event_link` FOREIGN KEY (`event_ID`) REFERENCES `event` (`event_ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ticketType_event_link` FOREIGN KEY (`event_ID`) REFERENCES `event` (`event_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

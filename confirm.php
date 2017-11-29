@@ -344,7 +344,7 @@ if (isset($_POST['submit'])) {
 									</div>
 								</div>
 								<div style="padding-right: 230px; padding-left: 230px; padding-top: 30px; padding-bottom: 30px">
-									<a href="detail.html" class="nino-btnh pull-left">Cancle</a>
+									<a href="detail.php" class="nino-btnh pull-left">Cancle</a>
 									<input type="submit" name="submit" value="CONFIRM" class="nino-btnb pull-right">
 									<div style="clear:both;"></div>
 								</div>
