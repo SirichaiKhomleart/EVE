@@ -78,40 +78,45 @@ if (isset($_SESSION['current_type'])){
     </header>
     <div class="container-fluid mimin-wrapper">
       <!-- start:Left Menu -->
-     <div id="left-menu">
-              <div class="sub-left-menu scroll">
-                <ul class="nav nav-list">
-                    <li><div class="left-bg"></div></li>
-                    <li class="time">
-                      <h1 class="animated fadeInLeft">21:00</h1>
-                      <p class="animated fadeInRight">Sat,October 1st 2029</p>
-                    </li>
-                    <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
-                    <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
-                      <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                    </li>
-                    <li class="active ripple">
-                      <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                      <ul class="nav nav-list tree">
-                          <li ><a href="admin_search_organ.php">Organizers</a></li>
-                          <li ><a href="admin_search_user.php">Customers</a></li>
-                      </ul>
-                    </li>
-                    <li class="active ripple" onclick="location.href='admin_search_event.php';">
-                      <a class="tree-toggle nav-header">
-                        <span class="fa fa-calendar-o"></span> Event
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
-                      </a>
-                      
-                    </li>
-                    
-                  </ul>
-                </div>
-            </div>
+      <div id="left-menu">
+        <div class="sub-left-menu scroll">
+          <ul class="nav nav-list">
+            <li><div class="left-bg"></div></li>
+            <li class="time">
+              <h1 class="animated fadeInLeft">21:00</h1>
+              <p class="animated fadeInRight">Sat,October 1st 2029</p>
+            </li>
+            <p class="text-center"> Welcome <?php echo $_SESSION['current_name'];?></p>
+            <li class="active ripple" onclick="location.href='Admin_index_stat.php';"> 
+              <a class="tree-toggle nav-header" href="Admin_index_stat.php"><span class="fa-home fa"></span> Home 
+                <span class="fa-angle-right fa right-arrow text-right"></span>
+              </a>
+            </li>
+            <li class="active ripple">
+              <a class="tree-toggle nav-header"><span class="icon-user icons icon text-right"></span> Users 
+                <span class="fa-angle-right fa right-arrow text-right"></span>
+              </a>
+              <ul class="nav nav-list tree">
+                <li ><a href="admin_search_organ.php">Organizers</a></li>
+                <li ><a href="admin_search_user.php">Customers</a></li>
+              </ul>
+            </li>
+            <li class="active ripple" onclick="location.href='admin_search_event.php';">
+              <a class="tree-toggle nav-header">
+                <span class="fa fa-calendar-o"></span> Event
+              </a>
+              
+            </li>
+            <li class="active ripple" onclick="location.href='admin_search_ticket.php';">
+              <a class="tree-toggle nav-header">
+                <span class="fa fa-calendar-o"></span> Ticket
+              </a>
+              
+            </li>
+            
+          </ul>
+        </div>
+      </div>
       <!-- end: Left Menu -->
       <div id="content">
         <div class="col-md-12">
@@ -139,21 +144,21 @@ if (isset($_SESSION['current_type'])){
             <form action="" method="post">
              <div>
               <div class="col-md-12">
-                <div class="form-group"><label class="col-sm-1 control-label text-right">First Name</label>
+                <div class="form-group"><label class="col-sm-1 control-label text-right"><strong>First Name</strong></label>
                   <div class="col-sm-5"><input name="fname" type="text" class="form-control border-bottom"></div>
-                  <label class="col-sm-1 control-label text-right">Last Name</label>
+                  <label class="col-sm-1 control-label text-right"><strong>Last Name</strong></label>
                   <div class="col-sm-5"><input name="lname" type="text" class="form-control border-bottom"></div>
                 </div>
               </div>
               <div class="col-md-12">
                 <div>
-                  <div class="form-group"><label class="col-sm-1 control-label text-right">Email</label>
+                  <div class="form-group"><label class="col-sm-1 control-label text-right"><strong>Email</strong></label>
                     <div class="col-sm-5"><input name="email" type="text" class="form-control border-bottom"></div>
                   </div>
                 </div>
                 
                 <div class="col-md-6">
-                 <label class="col-sm-3 control-label text-left">Range of Age</label>
+                 <label class="col-sm-3 control-label text-left"><strong>Range of Age</strong></label>
                </div>
                <div class="col-md-6" style="padding-left: 100px">
                  <div class="form-group"><label class="col-sm-1 control-label text-right">Min.</label>
@@ -165,7 +170,7 @@ if (isset($_SESSION['current_type'])){
             </div>
             <div class="col-md-12">
               <div class="col-md-6"">
-               <div class="form-group"><label class="col-sm-2 control-label text-right">Gendar</label>
+               <div class="form-group"><label class="col-sm-2 control-label text-right"><strong>Gendar</strong></label>
                 <div class="col-sm-2">
                   <div class="col-sm-12 padding-0">
                     <input type="radio" name="sex" value="0" checked=""> All
@@ -194,7 +199,7 @@ if (isset($_SESSION['current_type'])){
 <div class="col-md-12 top-20 padding-0">
   <div class="col-md-12">
     <div class="panel">
-      <div class="panel-heading"><h3>Data Tables</h3></div>
+      <div class="panel-heading"><h3>Customers Tables</h3></div>
       <div class="panel-body">
         <div class="responsive-table">
           <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">

@@ -24,8 +24,10 @@ if (isset($_POST['submit'])) {
 		header('Location: detail.html');
 	}else{
 		$t1 = $_POST['number1'];
+		$_SESSION['type1'] = $t1;
 		$p1 = 3500*$t1;
 		$t2 = $_POST['number2'];
+		$_SESSION['type2'] = $t2;
 		$p2 = 6500*$t2;
 	}
 }
