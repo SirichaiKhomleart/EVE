@@ -116,7 +116,7 @@ echo "<br><a href='logout.php'>Logout</a>";*/
                                     <h5 class="date1"><?php echo $row['event_name']?></h5>
                                     <p class="date1"><?php echo $datename ?><br><img src="images/ico/loca.png" width="15px"> <?php echo $row['event_location']?></p>
 
-                                    <a href="detail.html" class="nino-btnn">More Details</a>
+                                    <a href="detail.php" class="nino-btnn">More Details</a>
                                 </div>
                                 <div class="col-md-3 " >
                                     <img src="images/qrcode/qr-code.png" width="100%">
