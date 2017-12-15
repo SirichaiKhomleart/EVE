@@ -21,14 +21,14 @@ if (isset($_SESSION['current_type'])){
 
 if (isset($_POST['submit'])) {
 	if (($_POST['number1']==0) and ($_POST['number2']==0)) {
-		header('Location: detail.html');
+		header('Location: detail.php');
 	}else{
 		$t1 = $_POST['number1'];
 		$_SESSION['type1'] = $t1;
-		$p1 = 3500*$t1;
+		$p1 = 500*$t1;
 		$t2 = $_POST['number2'];
 		$_SESSION['type2'] = $t2;
-		$p2 = 6500*$t2;
+		$p2 = 1000*$t2;
 	}
 }
 ?>
@@ -284,8 +284,8 @@ if (isset($_POST['submit'])) {
 									echo "<br>PAYMENT DATE : ".$datename."<br>";?>
 								</p>
 								<?php 
-								echo ("<p class='quotet'>Regular ticket ".$t1." x 3,500฿  = ".$p1." ฿</p>");
-								echo ("<p class='quotet'>Premium ticket ".$t2." x 6,500฿  = ".$p2." ฿</p>");?>
+								echo ("<p class='quotet'>Standard ticket ".$t1." x 500฿  = ".$p1." ฿</p>");
+								echo ("<p class='quotet'>Premium ticket ".$t2." x 1,000฿  = ".$p2." ฿</p>");?>
 								<p class='quotet'>
 									<?php
 									echo ("TOTAL ".($p1+$p2)." ฿");
