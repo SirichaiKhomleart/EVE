@@ -111,7 +111,7 @@
     						<h4 class="topic3">Ticket</h4>
     						<br><br>
     						<div class="col-md-4">
-    							<h2 class="topic">Normal</h2><br>
+    							<h2 class="topic">Standard</h2><br>
     						</div>
     						<div class="col-md-8">
     							<p class="quotef">฿ 500 x</p><input class="inputbox" type="number" name="number1" min="0" max="100" step="1" value="0"/>
